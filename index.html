@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="de"> 
+<head>
+    <link rel="shortcut icon" type="image/ico" href="img/favicon.ico"/>
+    
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="true">
+    <title>Gerüstbau</title>
+    <meta name="description" content="Arbeits-und Schutzgerüste | Baugerüste | Fahrgerüste | Raumgerüste | Sonderkonstruktionen | Treppentürme">
+    
+    <link rel="preload" as="image" href="img/home-teaser.jpg" imagesrcset="img/home-teaser.jpg 360w, img/home-teaser.jpg 640w, img/home-teaser.jpg 768w, img/home-teaser.jpg 1440w" imagesizes="(max-width: 500px) 360px, (max-width: 1024px) 768px, (min-width: 1025px) 1440px, 800px"> 
+    
+    <link rel="preload" as="image" href="img/logo.png" imagesrcset="img/logo.png 325w, img/logo.png 200w" imagesizes="(min-width: 701px) 325px, (max-width: 700px) 200px">
+    
+    <link rel="preload" href="img/icons/icon-mphone4.png" as="image">
+    
+    <link rel="preload" href="font/Chivo-ExtraBold.otf" as="font" type="font/otf" crossorigin="anonymous">
+    <link rel="preload" href="font/Chivo-Medium.otf" as="font" type="font/otf" crossorigin="anonymous">
+    <link rel="preload" href="font/RedHatText-Regular.otf" as="font" type="font/otf" crossorigin="anonymous">
+    
+<!--    <link href="css/style.css" rel="stylesheet">-->
+    <link href="css/style-03.css" rel="stylesheet">
+    
+    <!--<link href="css/style-2-services.css" rel="stylesheet">
+    <link href="css/style-3-slider.css" rel="stylesheet">
+    <link href="css/style-3-min651.css" rel="stylesheet" media="(min-width: 651px)">
+    <link href="css/style-3-max650.css" rel="stylesheet" media="(max-width: 650px)">
+    <link href="css/style-4-contact.css" rel="stylesheet">  -->
+    
+<!--    <link href="css/style-3-slider-01.css" rel="stylesheet">-->
+    
+    <!-- <style>.activeArticle {background-color: #e4e4d6}</style>
+    выделение активной секции - этот стиль должен быть после всех стилей, находится css/style-4-contact.css -->
+    
+    <noscript>
+        <link href="css/style-2-services-01.css" rel="stylesheet">
+        <link href="css/style-3-slider-01.css" rel="stylesheet">
+        <link href="css/style-4-contact-01.css" rel="stylesheet">
+    </noscript>
+</head>
+<body>
+<section class="hero" id="navone">
+    <script>
+        let hero = document.querySelector('.hero')
+
+        let bgImg = document.createElement('img')
+        bgImg.srcset = 'img/home-teaser.jpg 360w, img/home-teaser.jpg 640w, img/home-teaser.jpg 768w, img/home-teaser.jpg 1440w'
+        bgImg.sizes = '(max-width: 500px) 360px, (max-width: 1024px) 768px, (min-width: 1025px) 1440px, 800px'
+        bgImg.src = 'img/home-teaser.jpg'
+
+        bgImg.onload = function() { 
+            let bgUrl = bgImg.currentSrc  
+            hero.style.background = "url("+bgUrl+") no-repeat rgba(112, 107, 88, .9) top center"
+            hero.style.backgroundSize = 'cover'
+        }
+    </script>
+    <header class="header header_fixed header_grid">
+        <div class="logo"> 
+            <img class="img" src="img/logo.png" alt="logo">
+        </div>  
+        <div class="nav-toggle">
+            <!-- создаем img в js - для смены иконки открыть/закрыть 
+            <img class="img" src="img/icons/icon-menu-1.png" alt="Menu"> -->
+        </div> 
+        <nav class="nav close"> 
+            <ul class="nav__ul"> 
+                <li>
+                    <a class="link nav__link link_anim" href="#navone">Home
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="link nav__link link_anim" href="#navtwo">Leistungen
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="link nav__link link_anim" href="#navthree">Referenzen
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </li>
+                <li> 
+                    <a class="link nav__link link_anim" href="#navfour">Kontakt
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </li>
+                <!--<li> 
+                    <a class="link nav__link link_anim" href="">Secures
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </li>-->
+            </ul>
+        </nav>
+        <a class="link header__link" href="tel:+491794555025">
+            <img class="img link__img" src="img/icons/icon-mphone4.png" alt="phone">
+            <span class="link__info">+49 179 45 55 025</span>
+        </a>
+    </header>
+    <h1 class="h1 hero__h1">Wir bringen Sie sicher nach Oben!</h1>  
+</section>
+
+<article class="page-wrap" id="navtwo">
+   <div class="services">
+        <section class="images">
+               <div class="img-1">
+                   <img class="img" src="img/slider/geruestbau-21.jpg" alt="foto">
+               </div>
+               <div class="img-2">
+                   <img class="img" src="img/slider/geruestbau-22.jpg" alt="foto">
+               </div>
+               <div class="img-3">
+                   <img class="img" src="img/slider/geruestbau-23.jpg" alt="foto">
+               </div>
+        </section>
+        <section class="content">
+           <h1 class="h1 services__h1">Unsere Leistungen im Gerüstbau</h1>
+           <ul class="content__ul">
+               <li>Arbeits - und Schutzgerüste</li>
+               <li>Baugerüste</li>
+               <li>Fahrgerüste</li>
+               <li>Raumgerüste</li>
+               <li>Sonderkonstruktionen</li>
+               <li>Treppentürme</li>
+           </ul>
+        </section>
+    </div>
+</article>
+
+<article class="gallery" id="navthree">
+    <h1 class="h1 h1__padding gallery__h1">Beispiele unserer Arbeiten</h1>
+    <div class="container">
+        <section class="slider slider_horizontal">
+            <div class="slider__imagesWrap">
+                <!--<div class="slider__img">
+                     <img class="img" src="img/slider/geruestbau-31.jpg" alt="geruestbau"> 
+                </div>
+                <div class="slider__img">
+                     <img class="img" src="img/slider/geruestbau-32.jpg" alt="geruestbau"> 
+                </div>
+                <div class="slider__img">
+                     <img class="img" src="img/slider/geruestbau-33.jpg" alt="geruestbau"> 
+                </div>-->
+            </div>  
+            <!--<a class="slider__control" href="#" role="button">
+                <img class="img" src="img/icons/icon-g-left-white.png" alt="left">
+            </a>   
+            <a class="slider__control" href="#" role="button">
+                <img class="img" src="img/icons/icon-g-right-white.png" alt="right">
+            </a>   -->
+        </section>      
+        <nav class="slider slider_vertical">
+            <div class="slider__imagesWrap">
+                <!--<div class="slider__img">
+                     <img class="img" src="img/slider/geruestbau-31.jpg" alt="geruestbau"> 
+                </div>
+                <div class="slider__img">
+                     <img class="img" src="img/slider/geruestbau-32.jpg" alt="geruestbau"> 
+                </div>
+                <div class="slider__img">
+                     <img class="img" src="img/slider/geruestbau-33.jpg" alt="geruestbau"> 
+                </div>-->
+            </div>  
+            <!--<a class="slider__control" href="#" >
+                <img class="img" src="img/icons/icon-g-up-white.png" alt="up">
+            </a>   
+            <a class="slider__control" href="#">
+                <img class="img" src="img/icons/icon-g-down-white.png" alt="down">
+            </a> -->
+        </nav>    
+    </div>
+</article>
+<script>
+    function asyncCSS(href, media = '') {
+        let css = document.createElement('link')
+        css.rel = 'stylesheet'
+        css.href = href
+        css.media = media
+        css.rel = 'stylesheet'
+        document.head.appendChild(css)
+    }
+//    asyncCSS('css/style-3-slider.css')
+    asyncCSS('css/style-3-slider-01.css')
+</script>
+
+<article class="contactPage" id="navfour">
+    <h1 class="h1 h1__padding">VRBA Gerüstbau &amp; Containerservice GmbH</h1>
+    <aside class="contact">
+        <ul>
+           <li> 
+                <h2 class="h2 contact__h2">Geschäftsführer Michel Nötzold</h2>
+            </li>
+            <li> 
+                <a class="link contact__link" href="tel:+491794555025">
+                    <img class="img contact__img" src="img/icons/icon-mphone4.png" alt="mobiltelefon">
+                    <span class="contact__info">+49 179 45 55 025 
+                    </span>
+                </a>
+            </li>
+            <li> 
+                <a class="link contact__link" href="tel:+49375525210">
+                    <img class="img contact__img" src="img/icons/icon-phone2.png" alt="telefon">
+                    <span class="contact__info">+49 375 52 52 10
+                    </span> 
+                </a>
+            </li>
+            <li> 
+                <a class="link contact__link" href="tel:+493755400048">
+                    <img class="img contact__img" src="img/icons/icon-fax.png" alt="fax">
+                    <span class="contact__info">+49 375 54 000 48
+                    </span> 
+                </a>
+            </li>
+            <!--<li>
+                <a class="link contact__link" href="mailto:info@gerust.de"> 
+                  <img class="img contact__img" src="img/icons/icon-mail2.png" alt="mail">
+                  <span class="contact__info">info@gerust.de</span>
+                </a>		
+            </li>-->
+            <li>
+                <a class="link contact__link" href="#">
+                    <img class="img contact__img" src="img/icons/icon-location2.png" alt="location">
+                    <span class="contact__info">Werdauer Str. 162 08060 Zwickau</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+    <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2525.378117665643!2d12.441657450413954!3d50.73147547941458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a72c78785adc97%3A0xe709a493ee528528!2sWerdauer%20Str.%20162%2C%2008060%20Zwickau%2C%20Deutschland!5e0!3m2!1sde!2sua!4v1615911679734!5m2!1sde!2sua" allowfullscreen="" loading="lazy"></iframe>
+    <div class="formWrapper">
+        <form class="form" accept-charset="UTF-8">
+        <!--<form class="main__item gform" method="post" action="js/contact-form.php" accept-charset="UTF-8">-->
+            <div class="thankyou_message">
+                <p>Danke für die Nachricht!<br> Wir werden uns so schnell wie möglich bei Ihnen melden.</p>
+            </div>
+            <label class="form__label form__label_font"> &#x0002A; Benötigtes Feld</label>
+            
+            <label class="form__label" for="name">Name <abbr title="required">&#x0002A;</abbr></label>
+            <input class="form__input" name="name" type="text" id="name" required>
+            
+            <label class="form__label" for="email">E-Mail <abbr title="required">&#x0002A;</abbr></label>
+            <input class="form__input" name="email" type="email" id="email" required>
+            
+            <label class="form__label" for="thema">Betreff <abbr title="required">&#x0002A;</abbr></label>
+            <input class="form__input" name="thema" type="text" id="thema" required>
+            
+            <label class="form__label" for="message">Nachricht <abbr title="required">&#x0002A;</abbr></label>
+            <textarea class="form__input" rows="12" name="message" id="message" required></textarea>
+            
+            <!--<label for="copy">Eine Kopie dieser <br>Mail erhalten  <br>&lpar;optional&rpar;</label>
+            <input name="copy" type="checkbox" id="copy" value="">-->
+            
+            <label class="form__label form__label_font" for="pilot" >4+6/2= <abbr title="required">*</abbr></label>
+            <input class="form__input form__label_font" id="pilot" name="pilot" type="text" placeholder="vul in" required>
+                       
+            <label class="hnp" for="honeypot">honeypot</label>
+            <input class="hnp" id="honeypot" type="text" name="honeypot" value=""/>
+                        
+            <label class="hnp" for="something">something</label>
+            <input class="hnp" id="something" type="text" name="something" value=""/>
+                     
+            <button class="form__button" type="submit">E-Mail senden</button>
+        </form>
+    </div>
+</article>
+
+<footer class="footer nav__filter">
+    <ul class="footer__list">
+        <li><a class="link footer__link link_anim" href="#">Impressum <!--выходные-->
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </li>
+        <li><a class="link footer__link link_anim" href="#">Datenschutz <!--Защита данных-->
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </li>
+        <li>
+            <a class="link footer__link link_anim" href="https://adsbooster.one" target="_blank" rel="noreferrer noopener">Copyright &copy; AdsBooster 2021
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </li>
+    </ul>
+</footer>
+
+<script src="js/header-nav.js" defer></script>
+<script src="js/slider.js" defer></script>
+<script src="js/lazysizes.min.js" defer></script>
+<script>
+    /*asyncCSS('css/style-2-services.css')
+    asyncCSS('css/style-4-contact.css')*/    
+    asyncCSS('css/style-2-services-01.css')
+    asyncCSS('css/style-4-contact-01.css')
+    
+    //    asyncCSS('style/style-p1-d-01.css', '(min-width: 1025px)')
+</script>
+</body>
+</html>
+
+
+<!--
+Position: Geschäftsführer Michel Nötzold
+Adresse:
+Werdauer Str. 162
+08060 Zwickau
+Telefon:
++49 375 - 52 52 10
+Fax:
++49 375 - 54 000 48
+Mobil:
++49 179 - 45 55 025
+                        -->
