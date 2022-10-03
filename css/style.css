@@ -1,8 +1,3 @@
-:root { 
-    --minGap: 10px; 
-    --maxGap: 15px; 
-}
-
 *, 
 ::before, 
 ::after {
@@ -11,12 +6,29 @@
     box-sizing: border-box;
 } 
 
-html, body {width: 100%}
-body {margin: 0 auto}
+html, body {
+    width: 100%; 
+    max-width: 100%;  
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
 
 a {
     text-decoration: none;
     background-color: transparent; /* Remove the gray background on active links in IE 10 */
+}
+
+ul {
+    list-style-type: none; 
+}
+
+::-webkit-scrollbar {
+	display: none;
 }
 
 img {
@@ -26,455 +38,242 @@ img {
     border-style: none;  /*Remove the border on images inside links in IE 10 */
 }
 
-ul {
-    list-style-type: none;
-}
+/*************************************************************
+  Wrapper > main 
+**************************************************************/
+/*body {background-color: lightblue}*/
+/*.wrapper {border: 5px solid blue}*/
+/*header {border: 3px solid red}*/
+/*.main {background-color: gold}*/
+/*.el {border: 3px solid red}*/
+/*.hero {border: 7px solid black}*/
+/*.el {border: 3px solid red}*/
+/*.wrap {border: 5px solid blue}*/
+/*.wrap_above {border: 3px solid black}*/
+/*.wrap_under {border: 3px solid blue}*/
+/*.el_above_background {border: 3px solid blue}*/
+/*.wrap_flex > * {border: 3px solid red}*/
+/*. {border: 1px solid blue}*/
+:root {   
+    --minGap: 10px; 
+    --maxGap: 15px;     
+    
+    --maxWidthPage: 1600px;
+    /* @media all and (min-width: 1601px) {.header} */
+    
+/*    --maxHeightPage: 900px;*/
+}  
 
-.hero { 
+.wrapper {
+    /* parallax */
+    overflow: hidden;
     width: 100%;
+    max-width: var(--maxWidthPage);
     height: 100vh;
-} 
-
-.hero__h1 {
-    padding-top: 75.5vh;
+    /*max-height: 1050px;*/ /* если больше, header без background при запуске сайта */
 }
 
-.header {
-    padding: var(--minGap) 3% 0 10%;
-    z-index: 1;
+.hero {
+    max-width: 1600px;
+    height: 100vh;
+/*    max-height: var(--maxHeightPage);*/
 }
 
-@media all and (max-width: 1024px) {
-    .header {
-        padding: 0px var(--minGap) 0px var(--minGap) 10%;
-    }
-}
-
-/* ширина elem_fixed - относительно ширины html */
-.header_fixed {
-    width: 100%; 
-    position: fixed;
-}
-
-.header_grid {
-    display: grid;
-    grid-template-areas: "logo nav-toggle nav"
-                         "logo . headerLink";
-    
-    grid-template-columns: 18% auto 82%;
-    grid-template-rows: auto 1fr;
-    
-    align-items: center;
-    justify-items: end;
-    /* если не указывать center/end, то по умолчанию stretch - все элементы растягиваются на доступную ширину/высоту */
-}
-
-@media all and (max-width: 1024px) {
-    .header_grid {
-        grid-template-columns: 19% auto 40%;
-        grid-template-areas: "nav-toggle headerLink logo"
-                             ". headerLink .";
-    }
-}
-
-.logo {grid-area: logo}
-.nav-toggle {grid-area: nav-toggle}
-.nav {grid-area: nav}
-.header__link {grid-area: headerLink}
-
-@media all and (max-width: 1024px) {
-    .logo {
-        margin-right: 5px;
-    }
-}
-
-.nav-toggle {
-    display: none;
-}
-
-@media all and (max-width: 1024px) { 
-    .nav-toggle {
-        display: block;
-        margin: auto 0;
-        z-index: 2;
-        cursor: pointer; 
-        padding: var(--minGap);
-    }
-}
-
-.nav__ul {
-    display: flex;
-}
-
-.link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: var(--minGap);
-}
-
-.link__img {
-    max-width: 10%;
-}
-
-@media all and (max-width: 1024px) {
-    .link__img {
-        max-width: 18%;
-    }
-}
-
-.h1__padding,
-.h2__padding {
-    padding: var(--maxGap);
-}
-
-@media all and (max-width: 1024px) {
-    .nav {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding-right: 0;
-    }
-
-    .nav ul {
-        display: block;
-        height: 90vh; 
-    }
-    
-    .nav li {
-        height: 25%; /* nav.ul.height/количество li */
-    }
-    
-    .nav__link {
-        height: 100%;
-    }
-    
-    .nav.close {
-        pointer-events: none;  /* меню в потоке и маркер для ссылок срабатывает */
-    }
-
-    /* меню закрывается */
-    .nav.close li {
-        opacity: 0;
-    }
-
-    /* меню открывается */
-    .nav.open li {
-        opacity: 1;
-    }
-
-    .nav.open li:nth-child(1) {
-        transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.1s, opacity 0.5s linear 0.1s;
-    }
-
-    .nav.open li:nth-child(2) {
-        transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s, opacity 0.5s linear 0.2s;
-    }
-
-    .nav.open li:nth-child(3) {
-        transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s, opacity 0.5s linear 0.3s;
-    }
-
-    .nav.open li:nth-child(4) {
-        transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s, opacity 0.5s linear 0.4s;
-    }
-
-    .nav.open li:nth-child(5) {
-        transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s, opacity 0.5s linear 0.5s;
-    }
-
-    .nav.close li:nth-child(5) {
-        transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0s, opacity 0.3s linear 0s;
-    }
-
-    .nav.close li:nth-child(4) {
-        transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.05s, opacity 0.3s linear 0.05s;
-    }
-
-    .nav.close li:nth-child(3) {
-        transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.1s, opacity 0.3s linear 0.1s;
-    }
-
-    .nav.close li:nth-child(2) {
-        transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.15s, opacity 0.3s linear 0.15s;
-    }
-
-    .nav.close li:nth-child(1) {
-        transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.2s, opacity 0.3s linear 0.2s;
-    }
-}
-
-.footer__list {
-    display: flex;
-    padding: var(--maxGap);
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-/* Typography - Visualization */
-@font-face { 
-    font-family: Chivo-ExtraBold;
-    font-display: swap;
-    src: url(../font/Chivo-ExtraBold.otf);
-}
-
-@font-face { 
-    font-family: Chivo-Medium;
-    font-display: swap;
-    src: url(../font/Chivo-Medium.otf);
-}
-
-@font-face { 
-    font-family: RedHatText-Regular;
-    font-display: swap;
-    src: url(../font/RedHatText-Regular.otf);
-}
-
-:root {
-    --title-font-bold: 'Chivo-ExtraBold', 'Arial', 'Helvetica', sans-serif;
-    --title-font-medium: 'Chivo-Medium', 'Arial', 'Helvetica', sans-serif;
-    --primary-font: 'RedHatText-Regular', 'Arial', 'Helvetica', sans-serif;
-    
-    --black: #00141E;
-    --dark-olive: #423a1d;
-    --beige: #ffffcc;   
-    --red: #8d150c; 
-    --dark-green: #364e41; 
-    --light-green: #deede5;
-    --light-green1: #8dbfa3;
-    --light-green2: #9dc8b0;
-    --light-green3: #add1bd;
-    --light-green4: #bedacb;
-    --light-gray: #f4f3f4; 
-    --brown: #857667; 
-    --white-opacity: rgba(255,255,255,.6);
-}
-
-html {
-    font-size: 16px;
-    line-height: 1.15;
-	-webkit-text-size-adjust: 100%; 
-    background-color: var(--light-gray);
-}
-
-@media all and (max-width: 900px) {
-    html {
-        font-size: 24px;
-    }
-}
-
-body {
-    font-family: var(--primary-font);
-    font-size: calc(0.5rem + .9vmax);
-}
-
-.h1 {
-    font-family: var(--title-font-bold);
-    font-size: calc(0.5rem + 2vmax);
-}
-
-.h2 {
-    font-family: var(--title-font-medium);
-    font-size: calc(0.1rem + 2vmax);
-}
-
-.h1,
-.h2 {
-    color: var(--dark-olive);
-    text-align: center;
-}
-
-/*.hero {
-    background: url(../img/home-teaser.jpg) no-repeat rgba(112, 107, 88, .9) top center;
-    background-size: cover;
-}*/
-
-.hero__h1 {
-    font-size: calc(0.5rem + 4vmax);
-    color: #fff;
-}
-
-/* effect: see through the header bar */
-.nav__filter {
-    padding-top: 0px;
-    color: #eac288;
-    background-color: rgba(112, 107, 88, .9);
-    transition: all .4s;
-}    
-
-/*@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    .nav__filter {
-        padding-top: 0px;
-        color: #eac288;
-        background-color: rgba(112, 107, 88, .9);
-        -webkit-backdrop-filter: brightness(1.5) blur(4px);
-        backdrop-filter: brightness(1.5) blur(4px);
-        transition: all .4s;
-    }    
-}*/
-
-.nav__filter {
-    padding-top: 0px;
-    transition: all .4s;
-}    
-
-@supports (-webkit-backdrop-filter: brightness(1.5) blur(4px)) or (backdrop-filter: brightness(1.5) blur(4px)) {
-    .nav__filter {
-        background-color: rgba(112, 107, 88, .9);
-        -webkit-backdrop-filter: brightness(1.5) blur(4px);
-        backdrop-filter: brightness(1.5) blur(4px);
-    }    
-}
-
-@supports not (-webkit-backdrop-filter: brightness(1.5) blur(4px)) or (backdrop-filter: brightness(1.5) blur(4px)) {
-    .nav__filter {
-        background-color: rgba(112, 107, 88, .99);
-    }    
-}
-
-.nav__link {
-    font-family: var(--primary-font);
-    color: var(--dark-olive);
-    text-transform: uppercase;
-}
-
-.nav__link_coror_js {
-    color: var(--beige); 
-}
-
-@media screen and (min-width: 1025px) {
-    .nav__link {
-        font-size: calc(0.5rem + .9vmax);
-    }
-}
-@media screen and (max-width: 1024px) {
-    .nav__link {
-        font-size: calc(0.5rem + 4vmax);
-    }
-    
-    .nav li:nth-child(1) {
-        background-color: var(--light-green1);
-    }
-    
-    .nav li:nth-child(2) {
-        background-color: var(--light-green2);
-    }
-    
-    .nav li:nth-child(3) {
-        background-color: var(--light-green3);
-    }
-    
-    .nav li:nth-child(4) {
-        background-color: var(--light-green4);
-    }
-}
-
-.link__info {
-    padding: 5px;
-    color: #fff;
-    font-weight: 800;
-    transition: all .5s;
-    text-align: center;
-}
-
-.link__info:hover {
-    color: var(--red);
-    box-shadow:
-		inset 1px 1px 0px rgba(255,255,255,0.25), /* highlight */
-		inset 0 0 6px #faecea, /* inner glow */
-		inset 0 80px 80px -40px #e18c84, /* gradient #ac3223*/
-		1px 1px 3px rgba(0,0,0,0.75); /* shadow */
-    transition: .5s;
-}
-
-.link__info:active {
-    background-color: #fff;
-}
-
-@media all and (min-width: 561px) {
-    .link__info {font-size: calc(0.5rem + 1.2vmax)}
-    .link__info:active {font-size: calc(0.5rem + 1.1vmax)}
-}
-
-@media all and (max-width: 560px) {
-    .link__info {font-size: calc(0.4rem + .9vmax)}
-    .link__info:active {font-size: calc(0.4rem + .26vmax)}
-}
-
-.footer__link {
-    font-family: var(--primary-font);
-    color: var(--beige);
-    text-transform: uppercase;
-    font-size: calc(0.5rem + .9vmax);
-    text-align: center;
-}
-
-/* ---------------------------------- */
-.link_anim {
-    position: relative;
-    transition: .5s; 
-}
-
-.link_anim span {
-    position: absolute;
-    width: 25%;
+.main {
+    /* длина страницы */
     height: 100%;
-    background-color: var(--dark-green);
-    z-index: -1;
-    transform-origin: top;
-    transform: scaleY(0);
-    transition: transform .5s;
+    width: 100%;
+    
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: mandatory;
+    scroll-snap-points-y: repeat(100vh);
+    
+    /* parallax */
+    perspective: 1px;
+    transform-style: preserve-3d;
 }
 
-.link_anim:hover {
-    color: #fff;
+/*************************************************************
+  El
+**************************************************************/
+.el {
+    width: 100%;
+    max-width: var(--maxWidthPage);
+    
+    /* parallax */
+    position: relative;
+    transform-style: inherit;
 }
 
-.link_anim:hover span {
-    transform-origin: bottom;
-    transform: scaleY(1);
+/* высота .el__break опускает контент секции ниже header при клике на пункт меню */
+.el__break {
+    height: 150px;
+/*    height: 15vh;*/
+/*    background-color: lightblue*/
 }
-.link_anim span:nth-child(1) {
-    left: 0;
-    transition-delay: 0s;
-}
-.link_anim span:nth-child(2) {
-    left: 25%;
-    transition-delay: 0.15s;
-}
-.link_anim span:nth-child(3) {
+
+/*************************************************************
+  Wrap
+**************************************************************/
+.wrap {
+    /* центрирование */
+    position: absolute;
+    top: 50%; 
     left: 50%;
-    transition-delay: 0.3s;
-}
-.link_anim span:nth-child(4) {
-    left: 75%;
-    transition-delay: 0.45s;
+/*    width: 100%; */
 }
 
-/* должен быть после всех стилей nav__link */
-.activeNav {
-    color: #fff;
-    background-color: var(--dark-green);
-/*    border-bottom: 1px solid var(--dark-green);*/
-/*    outline: 5px solid #e3e3e3;*/
+/* wrap появляется над el, всегда в центре блока */  
+.wrap_above {
+    transform: translate(-50%, -50%); 
 }
 
-/* ------------------- */ 
-.alert_up {
+.wrap_under {
+  transform: translateZ(-.3px) scale(1.3) translate(-38.32%, -39%); 
+    /* translateZ, scale - увеличивает/уменьшает блок 
+       translate  - влево/вправо, поднимает/опускает блок */
+}
+
+/*************************************************************
+  Hero
+**************************************************************/
+.hero {
+    /* для ::before в JS */
+    position: relative;
+}
+
+.hero::before {
+    content: '::before';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: block;
+    min-height: 100%;
+    /* для ::before в JS */
+    background: var(--img, auto);
+    background-size: 100% 100%;
+    transform: translateZ(-1px) scale(2.1);
+}
+
+/*
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: block;
+    min-height: 100%;
+    background: url(../img/flags-1440.jpg) no-repeat top center;      
+    background-size: 100% 100%;
+    transform: translateZ(-1px) scale(2.1);
+}
+*/
+
+.hero__wrap {
+    width: 100%;	
+    top: 20%;
+     /* parallax */
+    transform: translateZ(-1px) scale(2) translate(-25%, -25%);
+/*    z-index: 1;*/
+}
+
+.hero__txt {
     position: fixed;
-    width: 50px;
-    height: 50px;
-    right: 5px;
-    bottom: 1%;
-    z-index: 1;
-    background: url(../img/icons/icon-g-up-red-4.png);
-    background-repeat: no-repeat;
-    background-size: cover; 
-    cursor: pointer;
-    background-color: var(--white-opacity);
-    border-radius: 50%; 
-/*    border-style: dotted;*/
+    bottom: 5%;
+    right: 3%;
 }
 
+/*************************************************************
+  Wrap_grid
+**************************************************************/
+/*.boxImg {border: 2px solid green}*/
+/*.wrap > * {border: 2px solid blue}*/
+/*.content3 {border: 3px solid green}*/
+/*p {border: 1px solid red}*/
+/*figure {border: 3px solid green}*/
+/*figcaption {border: 1px solid red}*/
 
+.boxImg_flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img {
+    height: 100%; 
+/*    object-fit: contain;*/
+    object-fit: cover;
+}
+
+.img_maxWidth {
+    max-height: 400px;
+    max-width: 500px
+}
+
+figure {
+    display: flex;
+    flex-direction: column;
+}
+
+figcaption {
+    padding: 5px;
+    text-align: center;
+}
+
+/*
+
+el-2:   img h1 content1 content2
+el-31:  img h1 h2 content1 
+el-32:  img h2 content1       
+el-33:  img h2 content1      
+el-34:  img h2 content1        
+el-4:   img content1 content2 content3 (kontakt) 
+el-5:   img h1 content1 content2 
+el-6:   img h1 content1 
+
+-----------------------------
+el-2, el-5
+el-31
+el-32, el-34
+el-33, el-6
+el-4
+el-6
+
+*/
+
+.grid {
+    display: grid;
+    grid-template-rows: auto;
+}
+
+/* (el-2, el-5) (el-32, el-34) */
+.grid_1,
+.grid_3 {
+    width: 100%;
+}
+
+/* (el-31) (el-33, el-6) (el-4)  */
+.grid_2,
+.grid_4,
+.grid_5 {
+    width: 95%;
+}
+
+.boxImg {grid-area: img}
+.h1 {grid-area: h1}
+.h2 {grid-area: h2}
+.content1 {grid-area: content1}
+.content2 {grid-area: content2}
+.content3 {grid-area: content3}
+
+.list__span {
+    padding-left: 20.5px;
+}
+
+.grid_4 .content1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

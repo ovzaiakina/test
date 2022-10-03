@@ -1,186 +1,221 @@
-let pathIcons = 'img/icons/' 
-let body = document.querySelector('body')
+'use strict'      
+ 
+//const pathImg = 'img/' 
+//let mql = window.matchMedia('(max-width: 1024px)') 
+let mql = window.matchMedia('(max-width: 900px)') 
+let currentlang = (document.querySelector('html')).getAttribute('lang');
+
+/* submenu arrow */
+let red = '#cd2727'
+//let white = '#fff'
+let lightGray = '#cdd7e5'
+let darkBlue = '#101e5a'
+let lightBlue = '#8cc4f3'
+let whiteOpacity = 'rgba(255,255,255,.6)' 
+
+let topLinks = new Array()     
+topLinks[0]='#el-1'
+topLinks[1]='#el-2'
+topLinks[2]='#' /*submenu*/
+topLinks[3]='#el-4'
+topLinks[4]='#el-5'
+topLinks[5]='#el-6' 
+
+let topTitles = new Array()
+topTitles[0]='Ukraine-hilfe' 
+topTitles[1]='Ukraine jetzt'  
+topTitles[2]='So können Sie helfen'  
+topTitles[3]='Kontakt für Mithilfe'  
+topTitles[4]='Desinformation erkennen'  
+topTitles[5]='Datakabelmanagement' 
+
+let topTitlesUkr = new Array()
+topTitlesUkr[0]='Україна-Допомога' 
+topTitlesUkr[1]='Україна зараз' 
+topTitlesUkr[2]='Як ви можете допомогти'  
+topTitlesUkr[3]='Контакт для допомоги'  
+topTitlesUkr[4]='Розпізнавати дезінформацію'  
+topTitlesUkr[5]='Контакти для співпраці' 
+
+let topTitlesRu = new Array()
+topTitlesRu[0]='Украина-Помощь' 
+topTitlesRu[1]='Украина сейчас'  
+topTitlesRu[2]='Как вы можете помочь'
+topTitlesRu[3]='Контакт для помощи'
+topTitlesRu[4]='Распознавать дезинформацию' 
+topTitlesRu[5]='Контакты для сотрудничества'
+
+let subLinks1 = new Array()     
+subLinks1[0]='#el-31'  
+subLinks1[1]='#el-32' 
+subLinks1[2]='#el-33' 
+subLinks1[3]='#el-34'
+
+let subTitles1 = new Array()  
+subTitles1[0]='Etwas abgeben'  
+subTitles1[1]='Hilfstransporte'  
+subTitles1[2]='Wohnungen'     
+subTitles1[3]='Betreuung der ukrainischen Gäste' 
+
+let subTitles1Ukr = new Array()  
+subTitles1Ukr[0]='Надати щось'  
+subTitles1Ukr[1]='Транспортна допомога'  
+subTitles1Ukr[2]='Житло'  
+subTitles1Ukr[3]='Турбота про українських гостей'  
+
+let subTitles1Ru = new Array()  
+subTitles1Ru[0]='Предоставить что-то' 
+subTitles1Ru[1]='Транспортная помощь'  
+subTitles1Ru[2]='Жилье'   
+subTitles1Ru[3]='Забота об украинских гостях'
+
+// -----------------------------------------------------
+function createElem(elemE, classN, innerH, hrefE, srcE, altE, srcsetE, sizesE) { 
+    let elem = document.createElement(elemE)
+    
+    if(classN) elem.className = classN 
+    if(innerH) elem.innerHTML = innerH
+    if(hrefE)  elem.href = hrefE
+    if(srcE) {
+        elem.src = srcE
+        elem.alt = altE
+    }
+    if(srcsetE) {
+        elem.srcset = srcsetE
+        elem.sizes = sizesE
+    }
+    
+    return elem
+}
+
+/*************************************************************
+  NAV
+**************************************************************/
 let header = document.querySelector('.header') 
-let logo = document.querySelector('.logo')
-let nav = document.querySelector('nav')
-let navLi = document.querySelectorAll('nav li') 
-let navLinks = document.querySelectorAll('.nav__link')
-let contactInfoColor = document.querySelector('.contact__info')
-let heroLink = document.querySelector('.hero__link')
-let articles = document.querySelectorAll('*[id^="nav"]');  // выбираем id всех article, начинающегося с nav
-let onlyArticles = document.querySelectorAll('article')
-//console.log(onlyArticles.length)
 
-let navToggle = document.querySelector('.nav-toggle') 
-let toggleImg = document.createElement('img')
-toggleImg.className = 'img'
-toggleImg.alt = 'Menu'
-toggleImg.src = pathIcons + 'icon-menu-1-red.png'
-navToggle.append(toggleImg) 
-
-// ------------------------------------------
-logo.classList.add('nav__filter')  
-
-window.addEventListener('scroll', function() {
-    if (window.pageYOffset > 0) {
-        header.classList.add('nav__filter')
-        
-        logo.style.willChange = 'auto';
-        logo.classList.remove('nav__filter')
-        
-        Object.keys(navLinks).forEach(link => navLinks[link].classList.add('nav__link_coror_js'))
-        
-    } else {
-        header.classList.remove('nav__filter')
-        
-        // Свойство will-change позволяет заранее проинформировать браузер об изменениях, которые возможно будут применены к элементу
-        logo.style.willChange = 'padding, backgroundColor';
-        logo.classList.add('nav__filter')
-        
-        Object.keys(navLinks).forEach(link => navLinks[link].classList.remove('nav__link_coror_js'))
-    }
+let navToggle = createElem('div', 'nav-toggle') 
+header.append(navToggle)
+let barsToggle = ['bar bar1', 'bar bar2', 'bar bar3', 'bar bar4', 'bar bar5']
+barsToggle.forEach(elem => {
+    let barNavToggle = createElem('span', elem)
+    navToggle.append(barNavToggle)
 })
 
+let nav = createElem('nav', 'nav close')
+header.append(nav)
+let navUl = createElem('ul', 'nav__ul')
+nav.append(navUl)
 
-// ----------------------------------------------
-let direc1 = 'translateX(' //меню открывается по горизонтали
-//let direc1 = 'translateY(' //меню открывается по вертикали
+let menuLevel // для класса navLink: 'nav__link nav__link_anim'/'nav__link'
 
-let direc2 = '-300' // слева / сверху
-//let direc2 = '300' // справа / снизу
+if (currentlang === 'de') navUl.append(...getMenu(topLinks, topTitles))
+else if (currentlang === 'uk') navUl.append(...getMenu(topLinks, topTitlesUkr))
+else if (currentlang === 'ru') navUl.append(...getMenu(topLinks, topTitlesRu))
 
-let direc3 = '%)'
-let direction = direc1 + direc2 + direc3 
-let directionValue = 0
-
-let mql = window.matchMedia('(max-width: 1024px)')
-mqFunction(mql) 
-mql.addListener(mqFunction) 
-
-function mqFunction(mql) { 
-    if (mql.matches) {      
-        Object.keys(navLi).forEach(elem => navLi[elem].style.transform = direction) 
+// меню 1-го уровня
+function getMenu(arrayLinks, arrayTitles) {
+    let result = []
+    for (let i = 0; i < arrayLinks.length; i++) {
+        let li = document.createElement('li')
+        if (arrayLinks[i] == '#') li.className = 'topmenu'
         
-        h = header.offsetHeight
-        //console.log(`1. offsetHeight: ${h}`) 
-        showAfterHeader(h)
+        menuLevel = 1
+        li.append(getNavLinks(arrayLinks, arrayTitles, i, menuLevel))
         
-    } else {    
-        Object.keys(navLi).forEach(elem => navLi[elem].style.transform = direc1 + '0%)')
-        
-        h = header.clientHeight - 10
-        //console.log(`2. clientHeight: ${h}`) 
-        showAfterHeader(h)
-    }
-}
-
-// переход по ссылке со смещением на длину fixed header
-function showAfterHeader(height) {
-    let h1 = height + 'px'
-    let h2 = height*(-1) + 'px'
-    //console.log(`2.1 ${h1}, ${h2}`)  
-    Object.keys(onlyArticles).forEach(elem => {
-    onlyArticles[elem].style.borderTopWidth = h1
-    onlyArticles[elem].style.borderTopStyle = 'solid'
-    onlyArticles[elem].style.borderTopColor = 'transparent'
-    onlyArticles[elem].style.marginTop = h2
-    onlyArticles[elem].style.backgroundClip = 'padding-box'
-})
-}
-
-// меню - открываем/закрываем
-navToggle.addEventListener('click', fNavToggle);
-
-function fNavToggle(e) {  
-    if (nav.classList.contains('close')) {
-        /* меню закрыто и мы его открываем */
-        nav.classList.remove('close')
-        nav.classList.add('open') 
-        toggleImg.src = pathIcons + 'icon-menu-2-red.png'
-        
-        Object.keys(navLi).forEach( elem => {           
-            navLi[elem].style.transform = direc1 + '0%)'         
-//            console.log(`2. ${navLi[elem].style.transform}`)
-        }) 
-        
-        direc2 = direc2*(-1) /* меню появляеся и исчезает в одном направлении */
-        
-    } else {
-        /* меню открыто и мы его закрываем */ 
-        nav.classList.remove('open')
-        nav.classList.add('close')
-        toggleImg.src = pathIcons + 'icon-menu-1-red.png'
-        
-        Object.keys(navLi).forEach(elem => {   
-            navLi[elem].style.transform = direc1 + direc2 + direc3
-//            console.log(`3. ${navLi[elem].style.transform}`) 
-        })
-    }
-}
-
-
-// ----------------------------------------------
-// подсвечиваем пункты меню при прокрутке окна - если координата top секции > половины длины видимой части окна (content+padding)
-
-showVisible()
-window.addEventListener('scroll', showVisible) 
-
-function showVisible() {
-    Object.keys(articles).forEach(elem => {
-        if (isVisible(articles[elem])) {          
-            let toNavLink = document.querySelector('.nav__link[href="#' + articles[elem].id + '"]') 
-            activeNav(toNavLink)
-            activeArticle(articles[elem])
+        if (arrayLinks[i] == '#') {
+            let arrowTopmenu = document.createElement('div')
+            arrowTopmenu.className = 'arrow arrow_down nav__arrow'
+            li.append(arrowTopmenu)
+            let subUl = document.createElement('ul')
+            subUl.className = 'submenu filter_background'
+            li.append(subUl)
+            menuLevel = 2
+            if (i === 2) {
+                if (currentlang === 'de') subUl.append(...getSubMenu(subLinks1, subTitles1, subUl, menuLevel))
+                else if (currentlang === 'uk') subUl.append(...getSubMenu(subLinks1, subTitles1Ukr, subUl, menuLevel))
+                else if (currentlang === 'ru') subUl.append(...getSubMenu(subLinks1, subTitles1Ru, subUl, menuLevel))
+            }
+//            else if (i === 4) subUl.append(...getSubMenu(subLinks4, subTitles4, subUl, menuLevel))
         }
-    })
+        result.push(li) 
+    }
+//    console.log(`1. ${result.length}`)
+    return result 
 }
 
-function isVisible(elem) {
-    let coordsElem = elem.getBoundingClientRect();
-    let elemVisible = coordsElem.top < document.documentElement.clientHeight/2
-    return elemVisible
+// меню 2-го уровня
+function getSubMenu(arrayLinks, arrayTitles, subMenu) {
+    let result = []
+    for(let i = 0; i < arrayLinks.length; i++) {
+        let li = document.createElement('li')
+        subMenu.append(li)
+        li.append(getNavLinks(arrayLinks, arrayTitles, i)) 
+        result.push(li) 
+    }    
+//    console.log(`2. ${result.length}`)
+    return result
 }
 
-function activeNav(elem) {  
-    let currentlyActive = document.querySelector('.nav__link.activeNav'); 
-    let shouldBeActive = elem
+// тэг <a>.navLink 
+function getNavLinks(arrayLinks, arrayTitles, i) {  
+    let fragment = new DocumentFragment()
     
-    if (currentlyActive) { 
-        currentlyActive.classList.remove('activeNav')
-    }
-    if (shouldBeActive) {
-        shouldBeActive.classList.add('activeNav')
-    }
-}
-
-// .activeArticle in the <head> of HTML
-function activeArticle(elem) {  
-    let currentlyActive = document.querySelector('article.activeArticle'); 
-    let shouldBeActive = elem
+    let navLink = document.createElement('a')
+    if (menuLevel === 1) {
+                                // стрелку сдвинуть вправо - submenu
+        if(arrayLinks[i] == '#') navLink.className = 'nav__link nav__link_1level nav__link_paddingRight'
+        else navLink.className = 'nav__link nav__link_1level'
+    } 
+        /*nav__link_1level - для цвета в мобильном меню */
+    if (menuLevel === 2) navLink.className = 'nav__link'
     
-    if (currentlyActive) { 
-    currentlyActive.classList.remove('activeArticle')
-    }
-    if (shouldBeActive) {
-        shouldBeActive.classList.add('activeArticle')
-    }
+    navLink.textContent = arrayTitles[i]
+   
+    navLink.href = arrayLinks[i]
+    fragment.append(navLink)
+
+    /*if (document.title == arrayTitles[i]) {
+        navLink.style.color = red
+        navLink.style.backgroundColor = beige
+    } else {
+        navLink.href = arrayLinks[i]
+    }*/
+
+    /*let spansNav = ['span', 'span', 'span', 'span']
+    spansNav.forEach(elem => {
+        let span = createElem(elem, '', '')
+        navLink.append(span)
+    })*/
+    return fragment
 }
 
-// ---------------------------------
-let alertUp = document.createElement('a'); 
-alertUp.className = 'alert_up';  
-window.onscroll = function () {
-    body.append(alertUp);
-    alertUp.style.display = (window.pageYOffset > '300' ? 'block' : 'none');
-}
+/*************************************************************
+  Lang buttons
+**************************************************************/
+let langButtonsDiv = createElem('div', 'lang') 
+header.append(langButtonsDiv)
+let langButtons = ['de', 'uk', 'ru']
+let flags = ['germany-flag-icon.png', 'ukraine-flag-icon.png', 'russia-flag-icon.png'] 
 
-alertUp.addEventListener('click', scrollUp, false);
-function scrollUp(){
-    var t, s;
-    s = document.body.scrollTop || window.pageYOffset;
-    t = setInterval (function() {
-        if(s > 0) window.scroll(0, s -= 15);
-        else clearInterval(t)
-    },5);
-}
+langButtons.forEach((elem, ind) => {
+    let btn = document.createElement('button')
+    langButtonsDiv.append(btn)
+    btn.id = elem
+    btn.className = 'btn'
+    btn.type = 'button'
+    btn.style.background = 'url(../img/' + flags[ind] + ') no-repeat center'
+    btn.style.backgroundSize = '100% 100%'
+})
+
+
+
+
+
+
+
+
+
+
+
+
 

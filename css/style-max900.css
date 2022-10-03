@@ -1,0 +1,299 @@
+/*************************************************************
+  Button - lang
+**************************************************************/
+.btn { 
+    min-width: 70px;
+    min-height: 70px;
+}
+
+.btn:not(:last-child) {
+    margin-right: 3px;
+}
+
+/*************************************************************
+  NAV
+**************************************************************/
+/*.header {background-color: yellow}
+.nav {border: 1px solid blue}
+.lang {border: 1px solid red}*/
+/*.nav-toggle {border: 1px solid blue}*/
+
+.nav { 
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    padding-right: 0;
+}
+
+.nav ul {
+    display: block;
+}
+
+.nav__link {
+    justify-content: center;
+    padding: 24px;
+}
+
+.submenu .nav__link {
+    justify-content: flex-end;
+}
+
+.nav__arrow {
+    top: 40%;
+    left: 90%;
+}
+
+.submenu-open {
+    position: static;
+    transition: all .5s linear; 
+}
+ 
+.nav.close {
+    pointer-events: none;  /* меню в потоке и маркер для ссылок срабатывает */
+}
+
+/* меню закрывается */
+.nav.close li {
+    opacity: 0;
+}
+
+/* меню открывается */
+.nav.open li {
+    opacity: 1;
+}
+
+.nav.open li:nth-child(1) {
+     transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.1s, opacity 0.5s linear 0.1s;
+}
+.nav.open li:nth-child(2) {
+    transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s, opacity 0.5s linear 0.2s;
+}
+.nav.open li:nth-child(3) {
+    transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s, opacity 0.5s linear 0.3s;
+}
+.nav.open li:nth-child(4) {
+    transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s, opacity 0.5s linear 0.4s;
+}
+.nav.open li:nth-child(5) {
+    transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s, opacity 0.5s linear 0.5s;
+}
+.nav.open li:nth-child(6) {
+    transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.6s, opacity 0.5s linear 0.6s;
+}
+
+
+.nav.close li:nth-child(6) {
+    transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.25s, opacity 0.3s linear 0.25s;
+}
+.nav.close li:nth-child(5) {
+    transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.3s, opacity 0.3s linear 0.3s;
+}
+.nav.close li:nth-child(4) {
+    transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.35s, opacity 0.3s linear 0.35s;
+}
+.nav.close li:nth-child(3) {
+    transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.4s, opacity 0.3s linear 0.4s;
+}
+.nav.close li:nth-child(2) {
+    transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.45s, opacity 0.3s linear 0.45s;
+}
+.nav.close li:nth-child(1) {
+    transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.5s, opacity 0.3s linear 0.5s;
+}
+
+/* Typography - Visualization */
+.nav__link {
+    color: var(--white);
+}
+
+.nav__link_1level {
+    background-color: var(--dark-blue);
+    transition: all .4s;
+} 
+
+/*.nav__link_1level {
+    border-bottom: 1px solid rgba(255,255,255,.6);
+}*/
+
+/*.nav__link {font-size: calc(0.5rem + 1.5vmax)}*/
+
+/*.nav li:nth-child(1) .nav__link_1level {background-color: #0f538a}
+.nav li:nth-child(2) .nav__link_1level {background-color: #1160a2}
+.nav li:nth-child(3) .nav__link_1level {background-color: #136eb9}
+.nav li:nth-child(4) .nav__link_1level {background-color: #167cd0}
+.nav li:nth-child(5) .nav__link_1level {background-color: #188ae7}
+.nav li:nth-child(6) .nav__link_1level {background-color: #2f96e9}*/
+
+/*************************************************************
+  nav-toggle
+**************************************************************/
+:root {      
+    /* полоски */
+    --toggleWidth: 22vw; --toggleHeight: 14vw;
+    
+    /* крестик */
+/*    --toggleWidth: 20vw; --toggleHeight: 20vw;*/
+    
+    /* для полосок - средняя полоса, для крестика - перемещаем вниз, вверх*/
+    --toggleGap: calc(var(--toggleHeight)/2 - var(--barHeight)/2); 
+    --barHeight: 4px; /* толщина полосок */
+}
+
+/*
+bar1 - полоска 1
+bar2 - крестик: полоска левая
+bar3 - крестик: полоска правая
+bar4 - полоска 2
+bar5 - полоска 3
+*/
+
+.nav-toggle {
+    position: relative;
+    width: var(--toggleWidth);
+    height: var(--toggleHeight);
+/*    margin: var(--maxGap) auto;*/
+    z-index: 2;
+    cursor: pointer;
+    
+    /* крестик */
+    /*background-color: var(--blue);
+    border-radius: 50%;*/
+}
+
+.bar {
+    position: absolute; 
+    display: block;
+    width: 100%;  
+    height: var(--barHeight);
+    background-color: var(--red);
+    transition: all 0.4s ease-in-out, transform 0.4s ease-in-out 0.4s;
+}
+
+.bar2,
+.bar3,
+.bar4 {
+    top: var(--toggleGap); 
+}
+
+.bar2,
+.bar3 {
+    width: 1px;
+}
+
+.bar2 {
+    transform: rotate(90deg);
+}
+
+.bar5 {
+    bottom: 0px;
+}
+
+.bar2_open {
+    width: 100%;
+    transform: rotate(45deg);
+}
+
+.bar3_open {
+    width: 100%;
+    transform: rotate(-45deg);
+}
+
+.bar1_open,
+.bar4_open,
+.bar5_open {
+    background-color: transparent;
+}
+
+/*************************************************************
+  wrap_grid 
+**************************************************************/
+.el {
+    /* чтобы блоки не наезжали друг на друга */
+    margin-bottom: 25%; 
+}
+
+.padding-bottom,
+.padding-bottom_tablet
+{
+    padding-bottom: var(--minGap);
+}
+
+.grid_gap {
+    grid-gap: var(--maxGap);
+    padding: var(--maxGap);
+}
+
+/* (el-2, el-5) */
+.grid_1 {
+    grid-template-columns: 99%;;
+    grid-template-areas: "h1"
+                         "content1"
+                         "img"
+                         "content2"; 
+}
+
+/* el-31 */
+.grid_2 {
+    grid-template-columns: minmax(150px, auto) auto;
+    grid-template-areas: "h1       h1"
+                         "img      h2"
+                         "content1 content1";
+}
+
+/* (el-32, el-34) */
+#el-34 .grid_3 {
+    grid-template-columns: auto minmax(150px, auto);
+    grid-template-areas: "h2  img"
+                         "content1 content1";
+}
+#el-32 .grid_3 {
+    grid-template-columns: minmax(150px, auto) auto;
+    grid-template-areas: "h2 img"
+                         "content1 content1";
+}
+/*@media all and (orientation: portrait) {
+    #el-32 .grid_3 {
+        grid-template-columns: 99%;
+        grid-template-areas: "h2"
+                             "img"
+                             "content1";
+    }
+}
+@media all and (orientation: landscape) {
+    #el-32 .grid_3 {
+        grid-template-columns: minmax(150px, auto) auto;
+        grid-template-areas: "h2 img"
+                             "content1 content1";
+    }
+}*/
+
+/* (el-33, el-6) */
+#el-33 .grid_4 {
+    grid-template-columns: minmax(150px, auto) auto;
+    grid-template-areas: "img h2"
+                         "content1 content1";
+}
+#el-6 .grid_4 {
+    grid-template-columns: 99%;
+    grid-template-areas: "h1"
+                         "img"
+                         "content1";
+}
+
+/* el-4 */
+.grid_5 {
+    grid-template-columns: 48.8% 48.8%;
+    grid-template-areas: "content1 content1"
+                         "content2 content2"
+                         "content3 content3"
+                         "img      img";
+}
+
+.grid_2 .h2,
+.grid_3 .h2,
+.grid_4 .h2,
+.grid_4 .h1 {
+    margin: auto;
+}
+

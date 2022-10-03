@@ -1,335 +1,307 @@
-<!DOCTYPE html>
-<html lang="de"> 
-<head>
-    <link rel="shortcut icon" type="image/ico" href="img/favicon.ico"/>
+<!DOCTYPE html> 
+<html lang="de">
+    <head>
+        <link rel="shortcut icon" type="image/ico" href="/img/favicon.ico"/>
     
-    <meta charset="utf-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="true">
-    <title>Gerüstbau</title>
-    <meta name="description" content="Arbeits-und Schutzgerüste | Baugerüste | Fahrgerüste | Raumgerüste | Sonderkonstruktionen | Treppentürme">
-    
-    <link rel="preload" as="image" href="img/home-teaser.jpg" imagesrcset="img/home-teaser.jpg 360w, img/home-teaser.jpg 640w, img/home-teaser.jpg 768w, img/home-teaser.jpg 1440w" imagesizes="(max-width: 500px) 360px, (max-width: 1024px) 768px, (min-width: 1025px) 1440px, 800px"> 
-    
-    <link rel="preload" as="image" href="img/logo.png" imagesrcset="img/logo.png 325w, img/logo.png 200w" imagesizes="(min-width: 701px) 325px, (max-width: 700px) 200px">
-    
-    <link rel="preload" href="img/icons/icon-mphone4.png" as="image">
-    
-    <link rel="preload" href="font/Chivo-ExtraBold.otf" as="font" type="font/otf" crossorigin="anonymous">
-    <link rel="preload" href="font/Chivo-Medium.otf" as="font" type="font/otf" crossorigin="anonymous">
-    <link rel="preload" href="font/RedHatText-Regular.otf" as="font" type="font/otf" crossorigin="anonymous">
-    
-<!--    <link href="css/style.css" rel="stylesheet">-->
-    <link href="css/style-03.css" rel="stylesheet">
-    
-    <!--<link href="css/style-2-services.css" rel="stylesheet">
-    <link href="css/style-3-slider.css" rel="stylesheet">
-    <link href="css/style-3-min651.css" rel="stylesheet" media="(min-width: 651px)">
-    <link href="css/style-3-max650.css" rel="stylesheet" media="(max-width: 650px)">
-    <link href="css/style-4-contact.css" rel="stylesheet">  -->
-    
-<!--    <link href="css/style-3-slider-01.css" rel="stylesheet">-->
-    
-    <!-- <style>.activeArticle {background-color: #e4e4d6}</style>
-    выделение активной секции - этот стиль должен быть после всех стилей, находится css/style-4-contact.css -->
-    
-    <noscript>
-        <link href="css/style-2-services-01.css" rel="stylesheet">
-        <link href="css/style-3-slider-01.css" rel="stylesheet">
-        <link href="css/style-4-contact-01.css" rel="stylesheet">
-    </noscript>
-</head>
-<body>
-<section class="hero" id="navone">
-    <script>
-        let hero = document.querySelector('.hero')
-
-        let bgImg = document.createElement('img')
-        bgImg.srcset = 'img/home-teaser.jpg 360w, img/home-teaser.jpg 640w, img/home-teaser.jpg 768w, img/home-teaser.jpg 1440w'
-        bgImg.sizes = '(max-width: 500px) 360px, (max-width: 1024px) 768px, (min-width: 1025px) 1440px, 800px'
-        bgImg.src = 'img/home-teaser.jpg'
-
-        bgImg.onload = function() { 
-            let bgUrl = bgImg.currentSrc  
-            hero.style.background = "url("+bgUrl+") no-repeat rgba(112, 107, 88, .9) top center"
-            hero.style.backgroundSize = 'cover'
-        }
-    </script>
-    <header class="header header_fixed header_grid">
-        <div class="logo"> 
-            <img class="img" src="img/logo.png" alt="logo">
-        </div>  
-        <div class="nav-toggle">
-            <!-- создаем img в js - для смены иконки открыть/закрыть 
-            <img class="img" src="img/icons/icon-menu-1.png" alt="Menu"> -->
-        </div> 
-        <nav class="nav close"> 
-            <ul class="nav__ul"> 
-                <li>
-                    <a class="link nav__link link_anim" href="#navone">Home
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </a>
+        <meta charset="utf-8">  
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="alternate" hreflang="x-default" href="http://127.0.0.1:56225/index.html"/>
+        <link rel="alternate" hreflang="de" href="http://127.0.0.1:56225/index.html"/>
+        <link rel="alternate" hreflang="uk" href="http://127.0.0.1:56225/uk/index.html"/>
+        <link rel="alternate" hreflang="ru" href="http://127.0.0.1:56225/ru/index.html"/>
+        
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/style-header.css" rel="stylesheet">
+        <link href="css/style-max900.css" rel="stylesheet" media="(max-width: 900px)">
+        <link href="css/style-min901.css" rel="stylesheet" media="(min-width: 901px)">
+        <link href="css/style-visual.css" rel="stylesheet">
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <title>Ukraine-hilfe</title>
+        <meta name="description" content="Ukraine-Hilfe ACHTUNG! | Neue Telefon-Nummer: 03521-72806-700">
+    </head>
+    <body>
+      <div class="wrapper">  
+       <header class="header">
+        <!--<div class="nav-toggle">
+            <span class="bar bar1"></span>
+            <span class="bar bar2"></span>
+            <span class="bar bar3"></span>
+            <span class="bar bar4"></span>
+        </div>
+        <nav class="nav close">  
+            <ul class="nav__ul">
+                <li><a class="nav__link nav__link_1level" href="#el-1">Ukraine-hilfe</a></li>
+                <li><a class="nav__link nav__link_1level" href="#el-2">Украина сейчас</a></li>
+                <li class="topmenu">
+                    <a class="nav__link nav__link_1level nav__link_paddingRight" href="#">Как вы можете помочь</a>
+                    <div class="arrow arrow_down nav__arrow"></div>
+                    <ul class="submenu">
+                        <li><a class="nav__link" href="#el-31">Предоставить что-то</a></li>
+                        <li><a class="nav__link" href="#el-32">Транспортная помощь</a></li>
+                        <li><a class="nav__link" href="#el-33">Жилье</a></li>
+                        <li><a class="nav__link" href="#el-34">Забота об украинских гостях</a></li>
+                    </ul>
                 </li>
-                <li>
-                    <a class="link nav__link link_anim" href="#navtwo">Leistungen
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </a>
-                </li>
-                <li>
-                    <a class="link nav__link link_anim" href="#navthree">Referenzen
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </a>
-                </li>
-                <li> 
-                    <a class="link nav__link link_anim" href="#navfour">Kontakt
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </a>
-                </li>
-                <!--<li> 
-                    <a class="link nav__link link_anim" href="">Secures
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </a>
-                </li>-->
+                <li><a class="nav__link nav__link_1level" href="#el-4">Контакт для помощи</a></li>
+                <li><a class="nav__link nav__link_1level" href="#el-5">Распознавать дезинформацию</a></li>
+                <li><a class="nav__link nav__link_1level" href="#el-6">Контакты для сотрудничества</a></li>
             </ul>
-        </nav>
-        <a class="link header__link" href="tel:+491794555025">
-            <img class="img link__img" src="img/icons/icon-mphone4.png" alt="phone">
-            <span class="link__info">+49 179 45 55 025</span>
-        </a>
-    </header>
-    <h1 class="h1 hero__h1">Wir bringen Sie sicher nach Oben!</h1>  
-</section>
+        </nav>-->
+        <!--<div class="lang">
+            <button id="de-click" class="btn" type="button" aria-label="Deutsch"></button>
+            <button id="uk-click" class="btn" type="button" aria-label="Ukrainisch">uk</button>
+            <button id="ru-click" class="btn" type="button" aria-label="Russisch">ru</button>
+        </div>-->
+       </header>
+       <script src="js/header-nav.js" defer></script>
+       <main class="main">
+           
+           <section id="el-1" class="el hero">
+            <script>
+                let hero = document.querySelector('.hero')
 
-<article class="page-wrap" id="navtwo">
-   <div class="services">
-        <section class="images">
-               <div class="img-1">
-                   <img class="img" src="img/slider/geruestbau-21.jpg" alt="foto">
-               </div>
-               <div class="img-2">
-                   <img class="img" src="img/slider/geruestbau-22.jpg" alt="foto">
-               </div>
-               <div class="img-3">
-                   <img class="img" src="img/slider/geruestbau-23.jpg" alt="foto">
-               </div>
-        </section>
-        <section class="content">
-           <h1 class="h1 services__h1">Unsere Leistungen im Gerüstbau</h1>
-           <ul class="content__ul">
-               <li>Arbeits - und Schutzgerüste</li>
-               <li>Baugerüste</li>
-               <li>Fahrgerüste</li>
-               <li>Raumgerüste</li>
-               <li>Sonderkonstruktionen</li>
-               <li>Treppentürme</li>
-           </ul>
-        </section>
-    </div>
-</article>
-
-<article class="gallery" id="navthree">
-    <h1 class="h1 h1__padding gallery__h1">Beispiele unserer Arbeiten</h1>
-    <div class="container">
-        <section class="slider slider_horizontal">
-            <div class="slider__imagesWrap">
-                <!--<div class="slider__img">
-                     <img class="img" src="img/slider/geruestbau-31.jpg" alt="geruestbau"> 
-                </div>
-                <div class="slider__img">
-                     <img class="img" src="img/slider/geruestbau-32.jpg" alt="geruestbau"> 
-                </div>
-                <div class="slider__img">
-                     <img class="img" src="img/slider/geruestbau-33.jpg" alt="geruestbau"> 
-                </div>-->
+                let bgImg = document.createElement('img'); 
+                bgImg.srcset = 'img/flags-360.jpg 360w, img/flags-640ls.jpg 640w, img/flags-768.jpg 768w, img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w';
+                bgImg.sizes = '(max-width: 500px) 360px, (max-width: 1024px) 768px, (max-width: 1500px) 1440px, (min-width: 1501px) 1920px, 800px';
+                bgImg.src = 'img/flags-360.jpg';
+                
+                bgImg.onload = function() { 
+                    let bgUrl = bgImg.currentSrc;  
+                    console.log(bgUrl)
+                    hero.style.setProperty('--img', "url("+bgUrl+") top center no-repeat")
+                }
+                
+            </script>
+            <div class="wrap hero__wrap">
+              <h1 class="h1 hero__h1">Ukraine &#45; Hilfe</h1>
+              <h2 class="h2 hero__h2">Achtung! Neue telefon&#45;nummer: <span class="hero__tel">03521&#45;72806&#45;700</span></h2>     
             </div>  
-            <!--<a class="slider__control" href="#" role="button">
-                <img class="img" src="img/icons/icon-g-left-white.png" alt="left">
-            </a>   
-            <a class="slider__control" href="#" role="button">
-                <img class="img" src="img/icons/icon-g-right-white.png" alt="right">
-            </a>   -->
-        </section>      
-        <nav class="slider slider_vertical">
-            <div class="slider__imagesWrap">
-                <!--<div class="slider__img">
-                     <img class="img" src="img/slider/geruestbau-31.jpg" alt="geruestbau"> 
+            <p class="hero__txt">Solidarität mit den Opfern des<br>verbrecherischen russischen Angriffskriegs</p> 
+           </section>
+           <!-- Солидарность с жертвами - преступная российская агрессивная война -->
+           <!-- Солідарність із постраждалими - злочинна російсько-загарбницька війна -->
+           
+           <article id="el-2" class="el el_above_background">
+            <div class="wrap wrap_above grid grid_1 grid_gap">
+                <div class="boxImg">
+                    <!--<img class="img" 
+                      src="img/3-ukraine-hilfe-01-1200x900.jpg" 
+                      width="1200" height="900"
+                      alt="Ukraine-hilfe"
+                      title="Ukraine-hilfe">-->
+                    <img class="img lazy" 
+                             data-srcset="img/ukraine-hilfe-386.jpg 386w,
+                                          img/ukraine-hilfe-472.jpg 472w,
+                                          img/ukraine-hilfe-755.jpg 755w"
+                             sizes="(max-width: 350px) 386px,
+                                    (min-width: 1025px) 755px,
+                                    472px"
+                             data-src="img/ukraine-hilfe-755.jpg" 
+                             width="755" height="566"
+                             alt="Ukraine-hilfe">  
                 </div>
-                <div class="slider__img">
-                     <img class="img" src="img/slider/geruestbau-32.jpg" alt="geruestbau"> 
+                <h1 class="h1">Ukraine jetzt</h1>
+                <div class="content1 hyphenate">
+                      <p class="padding-bottom">Anfang 2022 hatte das russische Regime entlang der ukrainischen Grenze in Weißrußland und Rußland enorme Truppenmengen konzentriert. Bis zum  23. Februar 2022 tischten sowohl der russische Machthaber Putin als auch sein Außenminister Lawrow der Weltöffentlichkeit die Lüge auf, es handele sich lediglich um Truppenübungen. </p>
+                      <p>Februar 2022 fielen russische Truppen dann ohne Vorwarnung in der Ukraine ein. Der Versuch, im Handstreich die Hauptstadt Kiew zu besetzen, scheiterte jedoch am erbitterten Widerstand der Ukrainer und dem Unvermögen des russischen Militärs. Aktuell konzentrieren sich die militärischen Aktivitäten der russischen Invasoren darauf, Territorium der Ukraine im Osten und Westen zu erobern und unter Kontrolle zu bringen.</p>
                 </div>
-                <div class="slider__img">
-                     <img class="img" src="img/slider/geruestbau-33.jpg" alt="geruestbau"> 
-                </div>-->
-            </div>  
-            <!--<a class="slider__control" href="#" >
-                <img class="img" src="img/icons/icon-g-up-white.png" alt="up">
-            </a>   
-            <a class="slider__control" href="#">
-                <img class="img" src="img/icons/icon-g-down-white.png" alt="down">
-            </a> -->
-        </nav>    
-    </div>
-</article>
-<script>
-    function asyncCSS(href, media = '') {
-        let css = document.createElement('link')
-        css.rel = 'stylesheet'
-        css.href = href
-        css.media = media
-        css.rel = 'stylesheet'
-        document.head.appendChild(css)
-    }
-//    asyncCSS('css/style-3-slider.css')
-    asyncCSS('css/style-3-slider-01.css')
-</script>
-
-<article class="contactPage" id="navfour">
-    <h1 class="h1 h1__padding">VRBA Gerüstbau &amp; Containerservice GmbH</h1>
-    <aside class="contact">
-        <ul>
-           <li> 
-                <h2 class="h2 contact__h2">Geschäftsführer Michel Nötzold</h2>
-            </li>
-            <li> 
-                <a class="link contact__link" href="tel:+491794555025">
-                    <img class="img contact__img" src="img/icons/icon-mphone4.png" alt="mobiltelefon">
-                    <span class="contact__info">+49 179 45 55 025 
-                    </span>
-                </a>
-            </li>
-            <li> 
-                <a class="link contact__link" href="tel:+49375525210">
-                    <img class="img contact__img" src="img/icons/icon-phone2.png" alt="telefon">
-                    <span class="contact__info">+49 375 52 52 10
-                    </span> 
-                </a>
-            </li>
-            <li> 
-                <a class="link contact__link" href="tel:+493755400048">
-                    <img class="img contact__img" src="img/icons/icon-fax.png" alt="fax">
-                    <span class="contact__info">+49 375 54 000 48
-                    </span> 
-                </a>
-            </li>
-            <!--<li>
-                <a class="link contact__link" href="mailto:info@gerust.de"> 
-                  <img class="img contact__img" src="img/icons/icon-mail2.png" alt="mail">
-                  <span class="contact__info">info@gerust.de</span>
-                </a>		
-            </li>-->
-            <li>
-                <a class="link contact__link" href="#">
-                    <img class="img contact__img" src="img/icons/icon-location2.png" alt="location">
-                    <span class="contact__info">Werdauer Str. 162 08060 Zwickau</span>
-                </a>
-            </li>
-        </ul>
-    </aside>
-    <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2525.378117665643!2d12.441657450413954!3d50.73147547941458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a72c78785adc97%3A0xe709a493ee528528!2sWerdauer%20Str.%20162%2C%2008060%20Zwickau%2C%20Deutschland!5e0!3m2!1sde!2sua!4v1615911679734!5m2!1sde!2sua" allowfullscreen="" loading="lazy"></iframe>
-    <div class="formWrapper">
-        <form class="form" accept-charset="UTF-8">
-        <!--<form class="main__item gform" method="post" action="js/contact-form.php" accept-charset="UTF-8">-->
-            <div class="thankyou_message">
-                <p>Danke für die Nachricht!<br> Wir werden uns so schnell wie möglich bei Ihnen melden.</p>
+                <div class="content2 hyphenate">
+                      <h2 class="h3">Die russische Kriegsführung ist gekennzeichnet durch:</h2>
+                      <ul class="list padding-bottom">
+                          <li>den massiven Beschuß ukrainischer Städte,</li>
+                          <li>die gezielte Vernichtung von Leben der Zivilbevölkerung,</li>
+                          <li>gezielte Angriffe auf Schulen, Krankenhäuser, Infrastruktur  und Kultureinrichtungen,</li>
+                          <li>den feigen Einsatz von Fernwaffen gegen zivile Einrichtungen und Wohngebiete in der gesamten Ukraine</li>
+                          <li>schwere Kriegsverbrechen, Mißhandlung von Zivilbevölkerung und Kriegsgefangenen und Plünderungen in den besetzten Gebieten.</li>
+                      </ul>
+                      <p>Politisch und wirtschaftlich spüren wir in Deutschland ebenfalls die Auswirkungen der russischen Gewalt in der Ukraine. Die Menschen in dem angegriffen Land sind dagegen mit dem Tode bedroht. Nach dem Überfall der russischen Truppen brennt die Ukraine. Menschen werden umgebracht, verletzt und in die Flucht getrieben, alte Städte fallen in Schutt und Asche. Das können wir nicht ändern, aber wir können den Menschen in und aus der Ukraine helfen. Viele Menschen, besonders Frauen und Kinder sind vor dem Krieg geflüchtet. In der Stadt Meißen sind derzeit ca. 500 Ukrainerinnen und Ukrainer, meist Frauen und Kinder zu Gast. Lassen Sie uns gemeinsam zeigen, wie stark und solidarisch unsere deutsche Zivilgesellschaft trotz der Auswirkungen des russischen Großmachtstrebens ist. Unterstützen Sie die &laquo;Ukraine-Hilfe&raquo;!</p> 
+              </div> 
+            </div> 
+           </article>
+           
+           <section id="el-31" class="el">  
+            <div class="wrap wrap_under wrap_under_background grid grid_2 grid_gap">
+                <div class="boxImg boxImg_flex">
+                    <img class="img img_maxWidth" 
+                      src="img/4-piktogramm-haus-400x300.jpg" 
+                      width="400" height="300"
+                      alt="piktogramm-haus"
+                      title="piktogramm-haus">
+                </div> 
+                <h1 class="h1">So können Sie helfen</h1>
+                <h2 class="h2">Etwas abgeben</h2>
+                <div class="content1 hyphenate">
+                    <p class="padding-bottom">Ukrainische Gäste brauchen eine Wohnung und eine Grundausstattung dafür. Wenn Sie eine Wohnung vermieten wollen oder Einrichtungsgegenstände bereitstellen können, melden Sie sich bei uns! Geldspenden ermöglichen es, auch Hilfsgüter in die Ukraine zu bringen.</p>
+                    <h3 class="h3">Helfen Sie:</h3>
+                    <dl class="list">
+                      <dt>durch Bereitstellung von Mietwohnungen:</dt>
+                        <dd>auch 1- und 2-Zimmerwohnungen sind willkommen,</dd>
+                        <dd>die Miete wird im Rahmen der Bestimmungen vom Jobcenter zugewendet,</dd>
+                        <dd>der Verein kümmert sich um die Grundausstattung,</dd>
+                      <dt>indem Sie Einrichtungsgegenstände für Wohnungen anbieten (Möbel, Küchengeräte, Geschirr ...),</dt>
+                      <dt>durch eine Geldspende.</dt>
+                    </dl>
+                 </div>
             </div>
-            <label class="form__label form__label_font"> &#x0002A; Benötigtes Feld</label>
-            
-            <label class="form__label" for="name">Name <abbr title="required">&#x0002A;</abbr></label>
-            <input class="form__input" name="name" type="text" id="name" required>
-            
-            <label class="form__label" for="email">E-Mail <abbr title="required">&#x0002A;</abbr></label>
-            <input class="form__input" name="email" type="email" id="email" required>
-            
-            <label class="form__label" for="thema">Betreff <abbr title="required">&#x0002A;</abbr></label>
-            <input class="form__input" name="thema" type="text" id="thema" required>
-            
-            <label class="form__label" for="message">Nachricht <abbr title="required">&#x0002A;</abbr></label>
-            <textarea class="form__input" rows="12" name="message" id="message" required></textarea>
-            
-            <!--<label for="copy">Eine Kopie dieser <br>Mail erhalten  <br>&lpar;optional&rpar;</label>
-            <input name="copy" type="checkbox" id="copy" value="">-->
-            
-            <label class="form__label form__label_font" for="pilot" >4+6/2= <abbr title="required">*</abbr></label>
-            <input class="form__input form__label_font" id="pilot" name="pilot" type="text" placeholder="vul in" required>
-                       
-            <label class="hnp" for="honeypot">honeypot</label>
-            <input class="hnp" id="honeypot" type="text" name="honeypot" value=""/>
-                        
-            <label class="hnp" for="something">something</label>
-            <input class="hnp" id="something" type="text" name="something" value=""/>
+           </section>
+                   
+           <section id="el-32" class="el el_above_background">
+            <div class="wrap wrap_above grid grid_3 grid_gap">
+               <div class="boxImg boxImg_flex">
+                    <img class="img img_maxWidth" 
+                      src="img/5-piktogramm-transport-400x300.jpg" 
+                      width="400" height="300"
+                      alt="piktogramm-transport"
+                      title="piktogramm-transport">
+               </div>
+               <h1 class="h2">Hilfstransporte</h1>      
+               <div class="content1 hyphenate">
+                   <p class="padding-bottom_tablet">Nahezu wöchentlich bringen wir Hilfsgüter in die Ukraine. Ehrenamtliche Helfer bereiten den Transport vor, ehrenamtliche Fahrer bringen die Hilfsgüter mit Vereinsfahrzeugen zur Übergabe an die ukrainische Grenze.</p>  
+                   <h2 class="h3">Helfen Sie den Menschen in der Ukraine:</h2>
+                   <ul class="list">
+                       <li>durch die Mitarbeit bei der Beschaffung von Hilfsgütern,</li>
+                       <li>durch die Vorbereitung von Transporten an die ukrainische Grenze,</li>
+                       <li>als Helfer beim Verpacken von Hilfsgütern und der Beladung,</li>
+                       <li>als Fahrer für einen Hilfsgütertransport an die ukrainische Grenze.</li>
+                   </ul>
+               </div>
+            </div>       
+           </section>    
                      
-            <button class="form__button" type="submit">E-Mail senden</button>
-        </form>
-    </div>
-</article>
+           <section id="el-33" class="el">
+             <div class="wrap wrap_under wrap_under_background grid grid_4 grid_gap">
+              <div class="boxImg boxImg_flex">
+                    <img class="img img_maxWidth" 
+                      src="img/6-piktogramm-wohnungseinrichtung-400x300.jpg" 
+                      width="400" height="300"
+                      alt="piktogramm-wohnungseinrichtung"
+                      title="piktogramm-wohnungseinrichtungt">
+              </div>
+              <h1 class="h2">Wohnungen</h1>
+              <div class="content1 hyphenate">
+                   <p class="padding-bottom_tablet">Bisher konnten wir ca. 100 ukrainischen Gästen, vielen Müttern mit Kindern, den Bezug einfach ausgestatteter kleiner Wohnungen ermöglichen. Im Gegensatz zu Gemeinschaftsunterkünften schafft das von Anfang an Sicherheit und stärkt die Integrationsperspektive.</p>
+                   <h2 class="h3">Helfen Sie mit:</h2>
+                   <ul class="list">
+                       <li>indem Sie Wohnungen zur Vermietung anbieten,</li>
+                       <li>bei der Koordination von Wohnungssuchenden und Wohnungsangeboten,</li>
+                       <li>bei der Beschaffung von Wohnungsausstattungen,</li>
+                       <li>bei Möbelabholungen (Transport) zur Ausstattung von Wohnungen,</li>
+                       <li>beim Aufbau von Möbeln in vorzubereitenden Wohnungen.</li>
+                   </ul>
+              </div> 
+             </div>
+           </section>
+                  
+           <section id="el-34" class="el el_above_background">
+            <div class="wrap wrap_above grid grid_3 grid_gap">
+               <div class="boxImg boxImg_flex">
+                    <img class="img img_maxWidth" 
+                      src="img/7-piktogramm-betreuung-400x300.jpg" 
+                      width="400" height="300"
+                      alt="piktogramm-betreuung"
+                      title="piktogramm-betreuung">
+               </div> 
+               <h1 class="h2">Betreuung der ukrainischen Gäste</h1>
+               <div class="content1 hyphenate">
+                   <p class="padding-bottom">Es ist nicht leicht, mit schlimmen Erlebnissen, in einem fremden Land mit fremder Schrift, ohne Sprachkenntnisse und getrennt von Partnern, Freunden und Verwandten zurechtzukommen. Alles wird leichter, wenn man Kontakt aufnehmen kann und nicht mehr allein ist.</p>
+                   <h2 class="h3">Dabei können Sie helfen:</h2>
+                   <ul class="list">
+                       <li>werden Sie Pate! Als Pate für einen ukrainischen Gast oder eine Familie helfen Sie bei der Wohnungsübernahme, der Wohnungseinrichtung und der Orientierung in unserer Stadt. Und vielleicht gewinnen Sie neue Freunde,</li>
+                       <li>als Helfer koordinieren Sie die bereitstehenden Paten und die ukrainischen Gäste, damit möglichst alles zusammenpaßt,</li>
+                       <li>als Begleiter und Berater stehen Sie ukrainischen Gästen bei Behördengängen, in Schul- und Arztangelegenheiten zur Seite,</li>
+                       <li>sie machen Begegnungs- und Integrationsangebote für ukrainische Gäste im Stadtteiltreff &laquo;Kreuzpunkt&raquo; im Triebischtal.</li>
+                   </ul>
+               </div>
+              </div>       
+           </section>     
+                   
+           <section id="el-4" class="el">
+            <div class="wrap wrap_under wrap_under_background grid grid_5 grid_gap">
+                  <div class="boxImg">
+                    <img class="img" 
+                      src="img/8-Eingang-LeFa-600x450.jpg" 
+                      width="1200" height="900"
+                      alt="Ukraine-hilfe"
+                      title="Ukraine-hilfe">
+                  </div>
+                  <div class="content1 hyphenate">
+                      <h1 class="h2">Kontakt für Spenden, Wohnungsangebote, Mithilfe</h1>
+                      <ul class="list">
+                          <li>Lebensfahrten e.V. Bahnhofstraße 2 01662 Meißen</li>
+                          <li>E-Mail: Ukraine-hilfe@lwp.info</li>
+                          <li>Telefon (neu!): 03521-72806700</li>
+                      </ul>
+                </div>
+                <div class="content2 hyphenate">
+                      <h2 class="h2">Spendenkonto</h2>
+                      <ul class="list">
+                          <li>IBAN: DE21 8707 0024 0699 5906 00</li>
+                          <li>BIC (SWIFT): 	DEUTDEDBCHE </li>
+                          <li>Bank:	Deutsche Bank 24</li>
+                          <li>Verwendungszweck:	Ukraine-Hilfe</li>
+                      </ul>
+                </div>
+                <div class="content3 hyphenate">
+                      <p>Geldspenden verwenden wir vollständig für die Unterstützung der Ukraine, den Aufwand der Hilfstransporte und die Aufnahme von ukrainischen Gästen.</p> 
+                </div> 
+            </div> 
+           </section>
+           
+           <article id="el-5" class="el el_above_background">
+            <div class="wrap wrap_above grid grid_1 grid_gap">
+               <figure class="boxImg">
+                   <img class="img" width="1920" height="1278"
+                        src="img/9-imago0159738760h-web.jpg" 
+                        alt="So sehen die von Russland besetzten Gebiete aus"> 
+                   <figcaption class="caption">So sehen die von Russland besetzten Gebiete aus: Ein Wohnhaus in der größtenteils zerstörten Hafenstadt Mariupol. (Foto: Vladimir Gerdo/Imago)<br> Quelle: https://www.sueddeutsche.de/politik/lawrow-ukraine-russland-sjewjerodonezk-donbass-1.5594320</figcaption>
+                    <!--Вот так выглядят оккупированные Россией территории: жилой дом в сильно разрушенном портовом городе Мариуполь. (Фото: Владимир Гердо/Имаго)--> 
+               </figure>
+               <h1 class="h1 grid__h">Desinformation erkennen</h1>
+               <div class="content1 hyphenate">
+                   <p class="padding-bottom_tablet">Neben der Gewaltanwendung auf dem Gebiet der Ukraine führt die russische Diktatur einen gezielten, von Desinformation und Lügen geprägten Propagandakrieg in der freien Welt. Leider lassen sich davon immer wieder Menschen beeindrucken.</p>
+                   <p>Das russische Regime muß die völkerrechtswidrige Gewaltanwendung in der Ukraine umgehend beenden und die Voraussetzungen für eine friedliche Beilegung des von ihm selbst heraufbeschworenen Konflikts schaffen.</p>
+                </div>
+               <div class="content2 hyphenate">
+                   <h2 class="h3">Festzuhalten ist:</h2>
+                   <ul class="list">
+                       <li>Der Überfall auf den völkerrechtlich anerkannten Staat Ukraine ist ein schwerer Verstoß gegen das Gewaltverbot der UN-Charta und ein Bruch von Vereinbarungen zwischen Rußland, der Ukraine und weiteren Staaten. Rußland tritt offensichtlich das internationale Recht mit Füßen und setzt an dessen Stelle das Recht des vermeintlich stärkeren.</li>
+                       <li>Weder wurde Rußland zuvor bedroht noch angegriffen. Es gab auch keine Vereinbarungen zu NATO-Mitgliedschaften oder Stationierungen, auf die sich Rußland zur Rechtfertigung seiner Gewalttat berufen könnte. Es gibt schlicht keine Rechtfertigung für den Überfall auf das Nachbarland.</li>
+                       <li>Rußland hat keinen exklusiven Anspruch darauf, daß seine Sicherheitsinteressen zu Lasten der Nachbarländer vorrangig zu beachten sind. Jedes Volk und jeder Staat entscheidet selbst, mit wem er verbündet sein will.</li>
+                       <li>Die Ukraine ist kein „Nazi-Staat“, dessen Führung einen Teil Rußlands besetzt hält, für den die russische Führung das Territorium der Ukraine hält. Vielmehr wurden der ukrainische Präsident und das Parlament frei gewählt. In Rußland wird dagegen die Opposition unterdrückt. An die Stelle der freien Meinungsäußerung sind staatlich gelenkte Medien getreten und Wahlen werden in Rußland durch die Verhaftung von Gegenkandidaten zur Farce. Rußland weist bereits mehrere Merkmale eines faschistischen Systems auf</li>
+                       <li>Die russische Kriegsführung verstößt gegen die kriegsvölkerrechtlichen Regeln und ist durch äußersten Terror gegen die Bevölkerung, die angeblich „befreit“ werden soll, gekennzeichnet. Die russische Führung bezeichnet den von ihr angezettelten Vernichtungskrieg irreführend als „Spezialoperation“, um die eigene Bevölkerung zu beruhigen, während täglich Menschen in der Ukraine umgebracht werden.</li>
+                   </ul>
+               </div>
+              </div>       
+           </article> 
 
-<footer class="footer nav__filter">
-    <ul class="footer__list">
-        <li><a class="link footer__link link_anim" href="#">Impressum <!--выходные-->
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </a>
-        </li>
-        <li><a class="link footer__link link_anim" href="#">Datenschutz <!--Защита данных-->
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </a>
-        </li>
-        <li>
-            <a class="link footer__link link_anim" href="https://adsbooster.one" target="_blank" rel="noreferrer noopener">Copyright &copy; AdsBooster 2021
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </a>
-        </li>
-    </ul>
-</footer>
-
-<script src="js/header-nav.js" defer></script>
-<script src="js/slider.js" defer></script>
-<script src="js/lazysizes.min.js" defer></script>
-<script>
-    /*asyncCSS('css/style-2-services.css')
-    asyncCSS('css/style-4-contact.css')*/    
-    asyncCSS('css/style-2-services-01.css')
-    asyncCSS('css/style-4-contact-01.css')
-    
-    //    asyncCSS('style/style-p1-d-01.css', '(min-width: 1025px)')
-</script>
-</body>
+           <section id="el-6" class="el">
+            <div class="wrap wrap_under wrap_under_background grid grid_4 grid_gap">
+               <div class="boxImg">
+                    <img class="img" 
+                      src="img/10-Start-Konvoi.jpg" 
+                      width="1920" height="1440" 
+                      alt="piktogramm-betreuung"
+                      title="piktogramm-betreuung">
+               </div> 
+               <h1 class="h1">Wir kooperieren mit allen Helfern!</h1>
+               <div class="content1 hyphenate">
+                   <h2 class="h2">Weitere Informationen finden Sie auch hier:</h2>
+                   <ul class="list">
+                      <li>Buntes Meißen Bündnis Zivilcourage e.V.<br>
+                          <span class="list__span">Hirschberstraße 59</span><br>
+                          <span class="list__span">01662 Meißen</span></li>
+                      <li>E-Mail: info@buntes-meissen.de</li>       
+                   </ul>
+               </div>
+            </div>
+           </section>
+           
+        </main>
+        <script src="js/nav-footer.js" defer></script>
+      </div>
+      
+    </body>
 </html>
-
-
-<!--
-Position: Geschäftsführer Michel Nötzold
-Adresse:
-Werdauer Str. 162
-08060 Zwickau
-Telefon:
-+49 375 - 52 52 10
-Fax:
-+49 375 - 54 000 48
-Mobil:
-+49 179 - 45 55 025
-                        -->
