@@ -97,6 +97,9 @@ function showVisible() {
         // к header добавляем класс filter_background
         header.classList.add('filter_background')
         
+        //        console.log(`1. ${document.querySelector('.lang').className}: ${document.querySelector('.lang').style.zIndex}`)
+//        document.querySelector('.lang').style.zIndex = '-1'
+        
         // laptop - пункты меню 1-го уровня: color - darkBlue
         Object.keys(navLinks1Level).forEach(elem => navLinks1Level[elem].classList.add('nav__link_scroll'))
 
@@ -380,7 +383,7 @@ function mqFunctionMobMenu(mql) {
 function fNavToggle(e) {  
     if (nav.classList.contains('close')) {
         nav.classList.remove('close')
-        nav.classList.add('open') 
+        nav.classList.add('open')  
         
         /* Hamburger - крестик */
         Object.keys(bars).forEach(elem => {          
@@ -411,6 +414,9 @@ function closeMobMenu() {
     })
 
     Object.keys(navLi).forEach(elem => navLi[elem].style.transform = direc1 + direc2 + direc3)
+    
+//    console.log(`2. ${document.querySelector('.lang').style.zIndex}`)
+//    document.querySelector('.lang').style.zIndex = '1'
 }
 
 /*************************************************************
@@ -445,8 +451,9 @@ function selectBtn(btn, currentlg) {
     btn.disabled = true
     btn.style.outline = 'none'
     btn.style.boxShadow = '0 0 0 4px' + white
-    btn.style.transform = 'translateZ(-1px) scale(.9)'
-    btn.style.zIndex = '-1' // == btn.style.cursor = 'no-drop'
+//    btn.style.transform = 'translateZ(-1px) scale(.9)'
+//    btn.style.transform = 'scale(.9)'
+    /*btn.style.zIndex = '-1' */// == btn.style.cursor = 'no-drop'
     let arr = arrayAriaLabel.filter(item => item.lg == currentlg)
     langBtns[0].areaLabel = arr[0].ariaL.de
     langBtns[1].areaLabel = arr[0].ariaL.uk
