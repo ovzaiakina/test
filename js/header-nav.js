@@ -5,13 +5,14 @@
 let mql = window.matchMedia('(max-width: 900px)') 
 let currentlang = (document.querySelector('html')).getAttribute('lang');
 
-/* submenu arrow */
-let red = '#cd2727'
-//let white = '#fff'
+/* submenu arrow */ 
+//let red = '#cd2727'
+let white = '#fff'
 let lightGray = '#cdd7e5'
 let darkBlue = '#101e5a'
 let lightBlue = '#8cc4f3'
 let whiteOpacity = 'rgba(255,255,255,.6)' 
+let myBorderStyle = '3px solid'
 
 let topLinks = new Array()     
 topLinks[0]='#el-1'
@@ -195,7 +196,7 @@ function getNavLinks(arrayLinks, arrayTitles, i) {
 let langButtonsDiv = createElem('div', 'lang') 
 header.append(langButtonsDiv)
 let langButtons = ['de', 'uk', 'ru']
-let flags = ['germany-flag-icon.png', 'ukraine-flag-icon.png', 'russia-flag-icon.png'] 
+//let flags = ['icon-germany.png', 'icon-ukraine.png', 'icon-russia.png'] 
 
 langButtons.forEach((elem, ind) => {
     let btn = document.createElement('button')
@@ -203,9 +204,12 @@ langButtons.forEach((elem, ind) => {
     btn.id = elem
     btn.className = 'btn'
     btn.type = 'button'
-    btn.style.background = 'url(../img/' + flags[ind] + ') no-repeat center'
-    btn.style.backgroundSize = '100% 100%'
+//    btn.style.background = 'url(../img/' + flags[ind] + ') no-repeat center'
+//    console.log(`buttons: ${btn.style.background}`)
+//    btn.style.backgroundSize = '100% 100%'
 })
+
+//console.log(`1.btn ${document.querySelectorAll('.btn').length}`);
 
 
 

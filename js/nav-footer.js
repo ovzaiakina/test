@@ -67,6 +67,8 @@ showVisible()
 main.addEventListener('scroll', showVisible) 
 
 function showVisible() { 
+    
+    // (1), (2), (3)
     Object.keys(articles).forEach(elem => {  
         if (isVisible(articles[elem])) {  
             
@@ -117,8 +119,9 @@ function showVisible() {
 }
 
 function isVisible(elem) {  
-    let coordsElem = elem.getBoundingClientRect();
+    let coordsElem = elem.getBoundingClientRect()
     let elemVisible = coordsElem.top < document.documentElement.clientHeight/2
+    
     return elemVisible
 }
 
@@ -128,7 +131,8 @@ function activeSubmenu(elem) {
     if (parentHref) {  
         parent = elem.parentElement.parentElement.parentElement.firstElementChild
         parent.classList.add('activeTopmenu') 
-        parent.style.borderBottom = '2px solid' + red
+        parent.style.borderBottom = myBorderStyle + white
+//        parent.style.borderBottom = '2px solid' + red
     } else {
         if(parent) {
             parent.classList.remove('activeTopmenu')
@@ -162,7 +166,8 @@ function activeNav(elem) {
     }
     if (shouldBeActive) {
         shouldBeActive.classList.add('activeNav')
-        shouldBeActive.style.borderBottom = '2px solid' + red
+        shouldBeActive.style.borderBottom = myBorderStyle + white
+//        shouldBeActive.style.borderBottom = '2px solid' + red
     }
 }
 
@@ -254,7 +259,7 @@ function moveSection() {
   Lazyload
 **************************************************************/
 let lazyloadImages = document.querySelectorAll('.lazy')
-console.log(lazyloadImages.length)
+//console.log(lazyloadImages.length)
 
 lazyload()
 main.addEventListener('scroll', lazyload)
@@ -289,7 +294,7 @@ function isVisibleImg(elem) {
     let topVisible = coords.top > 0 && coords.top < windowHeight
     let bottomVisible = coords.bottom < windowHeight && coords.bottom > 0
     
-    console.log(`${elem} = ${topVisible}: ${coords.top}>0 and ${coords.top}<${windowHeight}; ${bottomVisible}: ${coords.bottom}<${windowHeight} and ${coords.bottom}>0`)
+//    console.log(`${elem} = ${topVisible}: ${coords.top}>0 and ${coords.top}<${windowHeight}; ${bottomVisible}: ${coords.bottom}<${windowHeight} and ${coords.bottom}>0`)
 
     return topVisible || bottomVisible;
 }
@@ -439,7 +444,7 @@ else if (currentlang == "ru") selectBtn(btnRu, currentlang)
 function selectBtn(btn, currentlg) {
     btn.disabled = true
     btn.style.outline = 'none'
-    btn.style.boxShadow = '0 0 0 4px' + red
+    btn.style.boxShadow = '0 0 0 4px' + white
     btn.style.transform = 'translateZ(-1px) scale(.9)'
     btn.style.zIndex = '-1' // == btn.style.cursor = 'no-drop'
     let arr = arrayAriaLabel.filter(item => item.lg == currentlg)
