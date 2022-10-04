@@ -141,8 +141,7 @@ figcaption {
   El
 **************************************************************/
 .el_above_background {
-  -webkit-box-shadow: 0 0 7px #333;
-          box-shadow: 0 0 7px #333;
+  box-shadow: 0 0 7px #333;
   background-color: var(--white);
 }
 
@@ -176,9 +175,7 @@ figcaption {
     border-width: 4px;
     cursor: pointer;
     left: 50%;
-    -webkit-transform: rotate(-45deg) translate(-90%, 20%);
-        -ms-transform: rotate(-45deg) translate(-90%, 20%);
-            transform: rotate(-45deg) translate(-90%, 20%)
+    transform: rotate(-45deg) translate(-90%, 20%)
 }
 
 /*@media all and (min-width: 1024px) {
@@ -194,6 +191,7 @@ figcaption {
  word-wrap: break-word;
  
  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
   -ms-hyphens: auto;
   hyphens: auto;  
 	
@@ -215,9 +213,7 @@ figcaption {
 .list dd:before{
     padding-right: 5px;
     color: var(--red);
-    -webkit-transition-duration: 0.5s;
-         -o-transition-duration: 0.5s;
-            transition-duration: 0.5s;
+    transition-duration: 0.5s;
 }
 
 .list dd:before {
@@ -256,3 +252,4 @@ figcaption {
     content: "\2727";
 /*    content: "\002A";*/
 }
+

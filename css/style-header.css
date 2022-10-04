@@ -1,328 +1,235 @@
-*, 
-::before, 
-::after {
-    padding: 0;
-    margin: 0;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-} 
-
-html, body {
-    width: 100%; 
-    max-width: 100%;  
-}
-
-body {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-    min-height: 100vh;
-}
-
-a {
-    text-decoration: none;
-    background-color: transparent; /* Remove the gray background on active links in IE 10 */
-}
-
-ul {
-    list-style-type: none; 
-}
-
-::-webkit-scrollbar {
-	display: none;
-}
-
-img {
-	display: block;
-	width: 100%;
-	max-width: 100%;
-    border-style: none;  /*Remove the border on images inside links in IE 10 */
-}
-
 /*************************************************************
-  Wrapper > main 
+  HEADER 
 **************************************************************/
-/*body {background-color: lightblue}*/
-/*.wrapper {border: 5px solid blue}*/
-/*header {border: 3px solid red}*/
-/*.main {background-color: gold}*/
-.el {border: 2px solid red}
-/*.hero {border: 7px solid green}*/
-/*.el:not(:last-child) {border: 3px solid blue}*/
-.wrap {border: 1px solid blue}
-/*.wrap_above {border: 3px solid black}*/
-/*.wrap_under {border: 3px solid blue}*/
-/*.el_above_background {border: 3px solid blue}*/
-/*.wrap_flex > * {border: 3px solid red}*/
-/*.hero__txt {border: 1px solid blue}*/
-
-:root {   
-    --minGap: 10px; 
-    --maxGap: 15px;     
-    
-    --maxWidthPage: 1600px;
-    /* @media all and (min-width: 1601px) {.header} */
-    
-/*    --maxHeightPage: 900px;*/
-}  
-
-.wrapper {
-    /* parallax */
-    overflow: hidden;
-    width: 100%;
-    max-width: var(--maxWidthPage);
-    height: 100vh;
-    /*max-height: 1050px;*/ /* если больше, header без background при запуске сайта */
+/*@media all and (min-width: 600px) {
+    .header {
+        position:-webkit-sticky; 
+        position: sticky;
+    }
 }
 
-.hero {
-    max-width: 1600px;
-    height: 100vh;
-/*    max-height: var(--maxHeightPage);*/
-}
+@media all and ((max-width: 599px) and (orientation: portrait)), 
+    ((max-height: 599px) and (orientation: landscape)) {
+    .header {
+        position: fixed;
+    }
+}*/ 
 
-.main {
-    /* длина страницы */
-    height: 100vh;
-    width: 100%;
-    
-    position: relative;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-    -ms-scroll-snap-type: y mandatory;
-        scroll-snap-type: y mandatory;
-    
-    /* parallax */
-    -webkit-perspective: 1px;
-            perspective: 1px;
-    -webkit-transform-style: preserve-3d;
-            transform-style: preserve-3d;
-}
-
-@media all and (min-width: 1360px) { .main {scroll-padding-top: 10%} }
-@media all and (max-width: 1359px) { .main {scroll-padding-top: 13%} }
-@media all and (max-width: 900px) { .main {scroll-padding-top: 13%} }
-
-/*************************************************************
-  El
-**************************************************************/
-.el {
-    width: 100%;
-    max-width: var(--maxWidthPage);
-    scroll-snap-align: start;
-    
-    /* parallax */
-    position: relative;
-    -webkit-transform-style: inherit;
-            transform-style: inherit;
-}
-
-/* высота .el__break опускает контент секции ниже header при клике на пункт меню */
-/*.el__break {
-    height: 150px;
-}*/
-
-/*************************************************************
-  Wrap
-**************************************************************/
-.wrap {
-    /* центрирование */
-    position: absolute;
-    top: 50%; 
-    left: 50%;
-/*    width: 100%; */
-}
-
-/* wrap появляется над el, всегда в центре блока */  
-.wrap_above {
-    -webkit-transform: translate(-50%, -45%);
-        -ms-transform: translate(-50%, -45%);
-            transform: translate(-50%, -45%); 
-    /* координата Y - чем меньше значение, тем ниже блок и не залезает на предыдущие блоки */
-}
-
-.wrap_under {
-    -webkit-transform: translateZ(-.3px) scale(1.3) translate(-38.32%, -35%);
-            transform: translateZ(-.3px) scale(1.3) translate(-38.32%, -35%); 
-    /* translateZ, scale - увеличивает/уменьшает блок 
-       translate  - влево/вправо, поднимает/опускает блок */
-}
-
-/*************************************************************
-  Hero
-**************************************************************/
-.hero {
-    /* для ::before в JS */
-    position: relative;
-}
-
-.hero::before {
-    content: '::before';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    display: block;
-    min-height: 100%;
-    /* для ::before в JS */
-    background: var(--img, auto);
-    background-size: 100% 100%;
-    -webkit-transform: translateZ(-1px) scale(2.1);
-            transform: translateZ(-1px) scale(2.1);
-}
-
-/*
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    display: block;
-    min-height: 100%;
-    background: url(../img/flags-1440.jpg) no-repeat top center;      
-    background-size: 100% 100%;
-    transform: translateZ(-1px) scale(2.1);
-}
-*/
-
-.hero__wrap {
-    width: 100%;	
-    top: 20%;
-     /* parallax */
-    -webkit-transform: translateZ(-1px) scale(2) translate(-25%, -25%);
-            transform: translateZ(-1px) scale(2) translate(-25%, -25%);
-/*    z-index: 1;*/
-}
-
-.hero__txt { 
-    position: sticky;
-    top: 80%;
-    padding-right: 3%;
-}
-
-/*.hero__txt {
+.header {
     position: fixed;
-    bottom: 5%;
-    right: 3%;
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+    max-width: var(--maxWidthPage);
+    z-index: 1;
+    
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    
+    padding: var(--maxGap) var(--minGap);
+}
+
+/*@media all and (min-width: 1601px) {
+    .header {  
+         центрирвание по горизонтали 
+        left: 50%;
+        margin-left: calc(var(--maxWidthPage)/2*(-1));
+    }
 }*/
 
+.filter_background {
+    background-color: var(--filter);
+    transition: all .4s;
+}    
+
+@supports (-webkit-backdrop-filter: brightness(1.5) blur(4px)) or (backdrop-filter: brightness(1.5) blur(4px)) {
+    .filter_background {
+        background-color: var(--filter);
+        -webkit-backdrop-filter: brightness(1.5) blur(4px);
+        backdrop-filter: brightness(1.5) blur(4px);
+    }    
+}
+
+@supports not (-webkit-backdrop-filter: brightness(1.5) blur(4px)) or (backdrop-filter: brightness(1.5) blur(4px)) {
+    .filter_background {
+        background-color: var(--filter);
+    }    
+}
+
 /*************************************************************
-  Wrap_grid
+  NAV
 **************************************************************/
-/*.boxImg {border: 2px solid green}*/
-/*.wrap > * {border: 2px solid blue}*/
-/*.content3 {border: 3px solid green}*/
-/*p {border: 1px solid red}*/
-/*figure {border: 3px solid green}*/
-/*figcaption {border: 1px solid red}*/
+/*.header {background-color: yellow}*/
+/*.nav {border: 1px solid red}*/
+/*.lang {border: 1px solid red}*/
+/*.nav__link {background-color: blue}*/
+/*.nav__arrow {border: 1px solid red}*/
+/*.submenu {background-color: lightcyan}*/
 
-.boxImg_flex {
-    display: -webkit-box;
-    display: -ms-flexbox;
+:root {      
+    --arrowNavSize: calc(0.3rem + .65vmax);
+}
+
+.nav__link {
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    align-items: center;
 }
 
-.img {
-    height: 100%; 
-/*    object-fit: contain;*/
-    -o-object-fit: cover;
-       object-fit: cover;
+.submenu { 
+    position: absolute;
+    top: 100%;
+    transform-origin: 0% 0%;
+    transform: rotateX(-90deg);
+    transition: .5s linear;  
 }
 
-.img_maxWidth {
-    max-height: 400px;
-    max-width: 500px
+.submenu-open {
+    transform: rotateX(0deg);
 }
 
-figure {
-    display: -webkit-box;
-    display: -ms-flexbox;
+/* Typography - Visualization */
+.nav__link[href="#"] {
+    cursor: default;
+}
+
+.nav__link {
+    white-space: nowrap;
+    transition: .5s; 
+}
+
+.nav__link:hover{
+    color: var(--dark-blue);
+    background-color: var(--white);
+/*    background-color: var(--white-opacity);*/
+    transition: all .4s;
+}    
+
+@supports (-webkit-backdrop-filter: brightness(1.5) blur(4px)) or (backdrop-filter: brightness(1.5) blur(4px)) {
+    .nav__link:hover {
+        background-color: var(--white);
+/*        background-color: var(--white-opacity);*/
+        -webkit-backdrop-filter: brightness(1.5) blur(4px);
+        backdrop-filter: brightness(1.5) blur(4px);
+    }    
+}
+
+@supports not (-webkit-backdrop-filter: brightness(1.5) blur(4px)) or (backdrop-filter: brightness(1.5) blur(4px)) {
+    .nav__link:hover {
+        background-color: var(--white);
+/*        background-color: var(--white-opacity);*/
+    }    
+}
+
+/*.submenu {subUl.className = 'submenu filter_background'}*/
+
+/*************************************************************
+  Аctive Nav/Topmenu - должен быть после всех стилей nav__link
+**************************************************************/
+.activeNav,
+.activeTopmenu {
+    cursor: no-drop;
+}
+
+/*************************************************************
+  arrow
+**************************************************************/
+.arrow {
+    /*width: ;
+    height: ;*/
+    /*border-top: 3px solid var(--white);
+    border-right: 3px solid var(--white);*/
+    transition: .3s linear;  
+    cursor: pointer;
+    z-index: 1;
+}
+
+.arrow_up {
+    transform: rotate(-45deg);
+    border-top: 3px solid var(--dark-blue);
+    border-right: 3px solid var(--dark-blue);
+}
+.arrow_down {
+    transform: rotate(135deg); 
+    border-top: 3px solid var(--white);
+    border-right: 3px solid var(--white);
+}
+/*.arrow_right {transform: rotate(45deg)}*/
+/*.arrow_left {transform: rotate(-135deg)}*/
+
+.nav__arrow {
+    position: absolute;
+    width: var(--arrowNavSize);
+    height: var(--arrowNavSize);
+/*    z-index: 1;*/ 
+}
+
+/*************************************************************
+  lang
+**************************************************************/
+/*.lang {border: 3px solid red}*/
+
+.lang {
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-wrap: nowrap;
+/*    z-index: 2;*/
 }
 
-figcaption {
-    padding: 5px;
-    text-align: center;
+.btn {
+    /* сбросить стандартные стили кнопки */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;  
+    border: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all var(--trans); 
+/*    z-index: 3;*/
 }
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+    outline: none;
+    box-shadow: 0 0 0 4px var(--white);
+    transform: translateZ(-1px) scale(.9);
+}
+
+/* .btn:focus: только после hover, получение фокуса при использовании клавиатуры - клавиша ТAB*/
+
 
 /*
+.lang {
+    display: flex;
+    flex-wrap: nowrap;
+}
 
-el-2:   img h1 content1 content2
-el-31:  img h1 h2 content1 
-el-32:  img h2 content1       
-el-33:  img h2 content1      
-el-34:  img h2 content1        
-el-4:   img content1 content2 content3 (kontakt) 
-el-5:   img h1 content1 content2 
-el-6:   img h1 content1 
+.btn {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;  
+    border: 0;
+    
+    cursor: pointer;
+    border-radius: 50%;
+    background: radial-gradient(farthest-side ellipse at top left, white, #aaaaaa);
+    box-shadow: 5px 10px 20px rgba(0,0,0,0.3), -5px -10px 20px rgba(255,255,255,0.5);
+    font-size: 16px;
+    font-family: inherit;   
+}
 
------------------------------
-el-2, el-5
-el-31
-el-32, el-34
-el-33, el-6
-el-4
-el-6
+.btn:hover {
+    color: #fff;
+    background: radial-gradient(farthest-side ellipse at top left, white, #1d49aa);
+    box-shadow: 5px 10px 20px rgba(0,0,0,0.3), -5px -10px 20px rgba(255,255,255,0.5);
+    transition: all var(--trans);
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #cbd6ee;
+    transition: all var(--trans);
+}
 
 */
-
-.grid {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-rows: auto;
-    grid-template-rows: auto;
-}
-
-/* (el-2, el-5) (el-32, el-34) */
-.grid_1,
-.grid_3 {
-    width: 100%;
-}
-
-/* (el-31) (el-33, el-6) (el-4)  */
-.grid_2,
-.grid_4,
-.grid_5 {
-    width: 95%;
-}
-
-.boxImg {grid-area: img}
-.h1 {grid-area: h1}
-.h2 {grid-area: h2}
-.content1 {grid-area: content1}
-.content2 {grid-area: content2}
-.content3 {grid-area: content3}
-
-.list__span {
-    padding-left: 20.5px;
-}
-
-.grid_4 .content1 {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-}
