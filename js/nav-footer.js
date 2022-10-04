@@ -2,19 +2,20 @@ let navLi = document.querySelectorAll('nav li')
 let navLinks = document.querySelectorAll('.nav__link')
 let navLinks1Level = document.querySelectorAll('.nav__link_1level')
 let topmenus = document.querySelectorAll('.topmenu')
-let submenus = document.querySelectorAll('.submenu')
+//let submenus = document.querySelectorAll('.submenu')
+//let submenu = document.querySelector('.submenu')
 let navLiNotSub = document.querySelectorAll('li:not(.topmenu)') 
 let bars = document.querySelectorAll('.bar') // nav-toggle
+
+let main = document.querySelector('.main')
 let articles = document.querySelectorAll('*[id^="el"]');  // выбираем id всех article, начинающегося с el
 let wraps = document.querySelectorAll('.wrap') // контент секций
-let borderTop = document.querySelectorAll('.borderTop')
-let main = document.querySelector('.main') 
-let submenu = document.querySelector('.submenu') 
+let borderTop = document.querySelectorAll('.borderTop')  
 let parent  // function activeSubmenu(elem)
 //let navANotSub = document.querySelectorAll('.nav__link:not(.submenu a)')
 let submenyFirstChild = document.querySelectorAll('.nav__link[href="#"')
 
-//console.log(document.querySelectorAll('.nav__link_1level').length)
+//console.log(submenus.length)
 
 // мобильное меню - открываем/закрываем
 //let nav = document.querySelector('.nav')
@@ -34,8 +35,50 @@ arrowUp.href = '#el-1'
 alertUp.append(arrowUp)
 document.body.append(alertUp)
 
+/*************************************************************
+  (1) - Определяем высоту секций: 
+            при изменении (resize) размеров окна (window) для каждой секции el:
+            el.height = высоте окна
+            el.minHeight = высоте контента в блоке wrap
+**************************************************************/
+setHeight(articles, wraps)
+window.addEventListener('resize', function() {setHeight(articles, wraps)})
+// без function() 'resize' не работает
+
+function setHeight(section, item) {
+    Object.keys(section).forEach(elem => {
+        if(elem > 0) {
+            section[elem].style.height = outerHeight(item[elem]) + 'px'
+        }
+    })
+}
+
+function outerHeight(elem){
+    let curStyle = window.getComputedStyle(elem)
+    let offsetHeight = elem.offsetHeight
+    let a = parseInt(offsetHeight)
+    let c = parseInt(curStyle.marginTop.replace("px", ""))
+    let d = parseInt(curStyle.marginBottom.replace("px", ""))
+    let e1 = parseInt(curStyle.paddingTop)
+    let e = parseInt(curStyle.paddingTop.replace("px", ""))
+    let f = parseInt(curStyle.paddingBottom.replace("px", ""))
+    let height1 = a + c + d + e1 + f
+    
+    let height2 = Math.max(
+  		elem.scrollHeight, // content+padding - невидимая часть
+  		elem.offsetHeight, // content+padding+border+scrollbar - видимая часть
+  		elem.clientHeight  // content+padding - видимая часть
+	)
+    
+    return Math.max(height1, height2)
+}
+
+
+
+/*************************************************************
+  для tablet устанавливаем светлый borderBottom
+**************************************************************/
 setBorderColor()
-// для tablet устанавливаем светлый borderBottom
 function setBorderColor() {
     mqFunctionMobMenuBorder(mql) // mql=max-width:1024px (header-nav.js)
     mql.addListener(mqFunctionMobMenuBorder) 
@@ -128,7 +171,7 @@ function isVisible(elem) {
     return elemVisible
 }
 
-// для активного пункта меню borderBottom - красный, для не активеного - возвращаем светлый borderBottom (tablet) и transporant (laptop), также класс activeTopmenu содержит cursor: no-drop;
+// для активного пункта меню borderBottom - белый, для не активного - возвращаем светлый borderBottom (tablet) и transporant (laptop), также класс activeTopmenu содержит cursor: no-drop;
 function activeSubmenu(elem) {
     let parentHref = elem.parentElement.parentElement.parentElement.firstElementChild.getAttribute('href')
     if (parentHref) {  
@@ -173,90 +216,6 @@ function activeNav(elem) {
 //        shouldBeActive.style.borderBottom = '2px solid' + red
     }
 }
-
-/*************************************************************
-  Определяем высоту секций 
-  при изменении (resize) размеров окна (window) для каждой секции el:
-  el.height = высоте окна
-  el.minHeight = высоте контента в блоке wrap
-**************************************************************/
-setHeight(articles, wraps)
-window.addEventListener('resize', function() {setHeight(articles, wraps)})
-// без function() 'resize' не работает
-
-function setHeight(section, item) {
-    Object.keys(section).forEach(elem => {
-        if (elem > 0) {
-            section[elem].style.height = window.outerHeight + 'px'
-            section[elem].style.minHeight = determineHeight(item[elem]) + 'px'
-            
-//            большее значение присваиваем minHeight
-            /*if (window.outerHeight > determineHeight(item[elem])) {
-                section[elem].style.minHeight = window.outerHeight + 'px'
-                section[elem].style.height = determineHeight(item[elem]) + 'px'
-            } else {
-                section[elem].style.minHeight = determineHeight(item[elem]) + 'px'
-                section[elem].style.height = window.outerHeight + 'px'
-            } */
-            
-// console.log(`1. ${section[elem].id}, ${section[elem].style.minHeight}, ${section[elem].style.height}`)
-        }
-    })
-}
-
-function determineHeight(elem) {
-    return Math.max(
-        elem.scrollHeight,  // content+padding - невидимая часть
-        elem.offsetHeight,  // content+padding+border+scrollbar - видимая часть
-        elem.clientHeight   // content+padding - видимая часть	
-    )
-}
-/* --------------------------------------------------------------------- */
-/*
-moveSection()
-function moveSection() {
-    console.log(`${determineHeight(header)}`)
-    
-    Object.keys(articles).forEach(elem => {
-        if (elem > 0) {
-            console.log(`${articles[elem].scrollTop}`)
-            
-            main.addEventListener('scroll', function() { 
-                console.log(`1. Текущая прокрутка элемента: ${main.scrollTop}`)
-            })
-            
-            main.scrollBy(0, 515)
-            
-            articles[elem].addEventListener('scroll', function() { 
-                console.log(`2. Текущая прокрутка элемента: ${articles[elem].scrollTop}`)
-            })
-        }
-    })
-}
-*/
-
-/*Object.keys(navLinks).forEach(elem => {
-    let heightHeader = determineHeight(header)
-    let aa
-    navLinks[elem].addEventListener('click', {
-        handleEvent(event) {
-            console.log(event.type + " на " + event.currentTarget)
-            main.scrollBy(0, -heightHeader)
-            
-//            main - надо два раза кликнуть 
-            event.currentTarget.parentElement.parentElement.parentElement.parentElement.nextElementSibling.nextElementSibling.scrollBy(0, 515) 
-             console.log(aa.parentElement.parentElement.parentElement.parentElement.nextElementSibling.nextElementSibling)
-        }  
-    })
-    
-})*/
-
-// надо два раза кликнуть
-/*Object.keys(navLinks).forEach(elem => {
-    navLinks[elem].addEventListener('click', function() {
-        main.scrollBy(0, 515) 
-    })
-})*/
 
 /*************************************************************
   Lazyload
@@ -496,3 +455,150 @@ function selectBtn(btn, currentlg) {
 }
 
 */
+
+/*************************************************************
+  переход по пунктам меню: 
+  запрещаем переход по дефолту линка <a> и переходим по событию клик
+**************************************************************/
+/*let currentSectionIndex = 0
+
+Object.keys(navLinks).forEach(elem => {
+    navLinks[elem].addEventListener('click', function(event) {
+        event.preventDefault()
+        currentSectionIndex = elem // [0] - куда идем, по умолчанию 1-ая секция 
+        
+        let navHref = navLinks[elem].getAttribute('href') // #el-2
+        let toSection = document.querySelector(navHref)   // id == el-2
+        
+        if (toSection) {
+            main.scrollBy(0, 50)
+            toSection.scrollIntoView({ behavior: 'smooth' })
+            
+            console.log(`2. Текущая прокрутка элемента: ${`${toSection.id}: ${toSection.scrollTop}`}`)
+
+        }
+ 
+    })
+})*/
+
+/*
+Object.keys(navLinks).forEach(elem => {
+    navLinks[elem].addEventListener('click', function(event) {
+        event.preventDefault()
+        moveToSection(navLinks[elem], elem)
+    })
+    navLinks[elem].addEventListener('click', moveMain)
+})
+
+function moveToSection(item, ind) {
+    currentSectionIndex = ind // [0] - куда идем, по умолчанию 1-ая секция 
+
+    let navHref = item.getAttribute('href') // #el-2
+    let toSection = document.querySelector(navHref)   // id == el-2
+
+    if (toSection) toSection.scrollIntoView({ behavior: 'smooth' })
+}
+
+function moveMain() {
+    main.scrollBy(0, 50)
+}
+*/
+
+/*for (let i = 0; i < navLinks.length; i++) {
+    navLinks[0].classList.add('active'); // определяем цветом 1-ую секцию активной
+    navLinks[i].addEventListener('click', function(event) { 
+        event.preventDefault(); 
+        currentSectionIndex = i;
+        
+        let navHref = navLinks[i].getAttribute('href');
+        let toSection = document.querySelector(navHref); 
+        
+        console.log('1.1 navHref: ' + navHref);
+        console.log('1.2 sectionId: ' + toSection); 
+        console.log('1.4 currentSectionIndex: ' + currentSectionIndex); 
+        
+        if (toSection) {
+            toSection.scrollIntoView({ behavior: 'smooth' });
+        }    
+    })
+}*/
+
+
+
+/* --------------------------------------------------------------------- */
+/*
+moveSection()
+function moveSection() {
+    console.log(`${determineHeight(header)}`)
+    
+    Object.keys(articles).forEach(elem => {
+        if (elem > 0) {
+            console.log(`${articles[elem].scrollTop}`)
+            
+            main.addEventListener('scroll', function() { 
+                console.log(`1. Текущая прокрутка элемента: ${main.scrollTop}`)
+            })
+            
+            main.scrollBy(0, 515)
+            
+            articles[elem].addEventListener('scroll', function() { 
+                console.log(`2. Текущая прокрутка элемента: ${articles[elem].scrollTop}`)
+            })
+        }
+    })
+}
+*/
+
+/*Object.keys(navLinks).forEach(elem => {
+    let heightHeader = determineHeight(header)
+    let aa
+    navLinks[elem].addEventListener('click', {
+        handleEvent(event) {
+            console.log(event.type + " на " + event.currentTarget)
+            main.scrollBy(0, -heightHeader)
+            
+//            main - надо два раза кликнуть 
+            event.currentTarget.parentElement.parentElement.parentElement.parentElement.nextElementSibling.nextElementSibling.scrollBy(0, 515) 
+             console.log(aa.parentElement.parentElement.parentElement.parentElement.nextElementSibling.nextElementSibling)
+        }  
+    })
+    
+})*/
+
+// надо два раза кликнуть
+/*Object.keys(navLinks).forEach(elem => {
+    navLinks[elem].addEventListener('click', function() {
+        main.scrollBy(0, 515) 
+    })
+})*/
+
+// -------------------------------------
+/*function setHeight(section, item) {
+    
+    Object.keys(section).forEach(elem => {
+        if (elem > 0) {         
+            section[elem].style.height = window.outerHeight + 'px'
+            section[elem].style.minHeight = determineHeight(item[elem]) + 'px'
+  console.log(`2. ${section[elem].classList[0]}: ${section[elem].style.minHeight}`)
+            
+//            большее значение присваиваем minHeight
+            if (window.outerHeight > determineHeight(item[elem])) {
+                section[elem].style.minHeight = window.outerHeight + 'px'
+                section[elem].style.height = determineHeight(item[elem]) + 'px'
+            } else {
+                section[elem].style.minHeight = determineHeight(item[elem]) + 'px'
+                section[elem].style.height = window.outerHeight + 'px'
+            } 
+            
+ console.log(`1. ${section[elem].id}: ${outerHeight(item[elem])}, ${determineHeight(item[elem])}`) 
+        }
+    })   
+}
+
+function determineHeight(elem) {
+    return Math.max(
+        elem.scrollHeight,  // content+padding - невидимая часть
+        elem.offsetHeight,  // content+padding+border+scrollbar - видимая часть
+        elem.clientHeight   // content+padding - видимая часть	
+    )
+}*/
