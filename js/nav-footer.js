@@ -8,14 +8,17 @@ let navLiNotSub = document.querySelectorAll('li:not(.topmenu)')
 let bars = document.querySelectorAll('.bar') // nav-toggle
 
 let main = document.querySelector('.main')
-let articles = document.querySelectorAll('*[id^="el"]');  // выбираем id всех article, начинающегося с el
+// выбираем id всех article, начинающегося с el
+let articles = document.querySelectorAll('*[id^="el"]')  
+let articless = document.querySelectorAll('*[id^="el"]:not(:first-child)')
+
 let wraps = document.querySelectorAll('.wrap') // контент секций
 let borderTop = document.querySelectorAll('.borderTop')  
 let parent  // function activeSubmenu(elem)
 //let navANotSub = document.querySelectorAll('.nav__link:not(.submenu a)')
 let submenyFirstChild = document.querySelectorAll('.nav__link[href="#"')
 
-//console.log(submenus.length)
+//console.log(articless.length)
 
 // мобильное меню - открываем/закрываем
 //let nav = document.querySelector('.nav')
@@ -41,17 +44,21 @@ document.body.append(alertUp)
             el.height = высоте окна
             el.minHeight = высоте контента в блоке wrap
 **************************************************************/
-setHeight(articles, wraps)
-window.addEventListener('resize', function() {setHeight(articles, wraps)})
+setHeight(articless, wraps)
+window.addEventListener('resize', function() {setHeight(articless, wraps)})
 // без function() 'resize' не работает
 
 function setHeight(section, item) {
     
     Object.keys(section).forEach(elem => {
-        if (elem > 0) {         
+        
+//        if (elem > 0) {  
+//            console.log(`1. ${section[elem].classList[0]}, ${wraps[elem].classList[1]}`)
+            
             section[elem].style.height = window.outerHeight + 'px'
             section[elem].style.minHeight = determineHeight(item[elem]) + 'px'
-//  console.log(`2. ${section[elem].classList[0]}: ${section[elem].style.minHeight}`)
+  
+//            console.log(`2. ${section[elem].classList[0]}: ${section[elem].style.minHeight}`)
             
 //            большее значение присваиваем minHeight
             /*if (window.outerHeight > determineHeight(item[elem])) {
@@ -63,7 +70,7 @@ function setHeight(section, item) {
             } */
             
 // console.log(`1. ${section[elem].id}: ${outerHeight(item[elem])}, ${determineHeight(item[elem])}`) 
-        }
+//        }
     })   
 }
 

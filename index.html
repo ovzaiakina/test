@@ -59,20 +59,20 @@
        <script src="js/header-nav.js"></script>
        <main class="main">
            
-           <section id="el-1" class="el hero">
+           <section id="el-1" class="hero">
             <script>
                 let hero = document.querySelector('.hero');
                 let buttons = document.querySelectorAll('.btn');
                 let flags = ['img/icon-germany.png', 'img/icon-ukraine.png', 'img/icon-russia.png'];
 
-                onloadBgimg(
+                /*onloadBgimg(
                     hero, 
                         'img/flags-360.jpg 360w, img/flags-640ls.jpg 640w, img/flags-768.jpg 768w, img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w',
                         '(max-width: 500px) 360px, (max-width: 1024px) 768px, (max-width: 1500px) 1440px, (min-width: 1501px) 1920px, 800px',
                         'img/flags-360.jpg',
                         '--img'
                     );
-                Object.keys(buttons).forEach(elem => onloadBgimg(buttons[elem], '', '', flags[elem]));
+                Object.keys(buttons).forEach(elem => onloadBgimg(buttons[elem], '', '', flags[elem]));*/
                 
                 function onloadBgimg(elem, srcsetN, sizesN, srcN, elemVar) {
                     let bgImg = document.createElement('img'); 
@@ -93,11 +93,11 @@
                     }
                 }
                  
-                /*onloadElem();
+                onloadElem();
                 window.addEventListener('resize', function() {onloadElem()});
                 
                 function onloadElem() {
-                    console.log(window.outerWidth)
+//                    console.log(window.outerWidth)
                     onloadBgimg(
                         hero, 
                         'img/flags-360.jpg 360w, img/flags-640ls.jpg 640w, img/flags-768.jpg 768w, img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w',
@@ -106,7 +106,7 @@
                         '--img'
                     );
                     Object.keys(buttons).forEach(elem => onloadBgimg(buttons[elem], '', '', flags[elem]));
-                }*/
+                }
                 
                 /*let bgImg = document.createElement('img'); 
                 bgImg.srcset = 'img/flags-360.jpg 360w, img/flags-640ls.jpg 640w, img/flags-768.jpg 768w, img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w';
@@ -120,11 +120,15 @@
                 }*/
                 
             </script>
-            <div class="wrap hero__wrap">
+            <!--<div class="wrap hero__wrap">-->
+            <div class="hero__titles">
               <h1 class="h1 hero__h1">Ukraine &#45; Hilfe</h1>
-              <h2 class="h2 hero__h2">Achtung! Neue telefon&#45;nummer: <span class="hero__tel" style="#fafafa">03521&#45;72806&#45;700</span></h2>     
+              <h2 class="h2 hero__h2">Achtung! Neue telefon&#45;nummer</h2> 
+              <p class="h2 hero__h2 hero__tel">03521&#45;72806&#45;700</p> 
+              <!--<h2 class="h2 hero__h2">Achtung! Neue telefon&#45;nummer: <span class="hero__tel" style="#fafafa">03521&#45;72806&#45;700</span></h2> -->
+              <p class="hero__txt">Solidarität mit den Opfern des<br>verbrecherischen russischen Angriffskriegs</p> 
             </div>  
-            <p class="hero__txt">Solidarität mit den Opfern des<br>verbrecherischen russischen Angriffskriegs</p> 
+            
            </section>
            <!-- Солидарность с жертвами - преступная российская агрессивная война -->
            <!-- Солідарність із постраждалими - злочинна російсько-загарбницька війна -->
@@ -161,7 +165,7 @@
                           <li>gezielte Angriffe auf Schulen, Krankenhäuser, Infrastruktur  und Kultureinrichtungen,</li>
                           <li>den feigen Einsatz von Fernwaffen gegen zivile Einrichtungen und Wohngebiete in der gesamten Ukraine</li>
                           <li>schwere Kriegsverbrechen, Mißhandlung von Zivilbevölkerung und Kriegsgefangenen und Plünderungen in den besetzten Gebieten.</li>
-                      </ul>
+                      </ul> 
                       <p>Politisch und wirtschaftlich spüren wir in Deutschland ebenfalls die Auswirkungen der russischen Gewalt in der Ukraine. Die Menschen in dem angegriffen Land sind dagegen mit dem Tode bedroht. Nach dem Überfall der russischen Truppen brennt die Ukraine. Menschen werden umgebracht, verletzt und in die Flucht getrieben, alte Städte fallen in Schutt und Asche. Das können wir nicht ändern, aber wir können den Menschen in und aus der Ukraine helfen. Viele Menschen, besonders Frauen und Kinder sind vor dem Krieg geflüchtet. In der Stadt Meißen sind derzeit ca. 500 Ukrainerinnen und Ukrainer, meist Frauen und Kinder zu Gast. Lassen Sie uns gemeinsam zeigen, wie stark und solidarisch unsere deutsche Zivilgesellschaft trotz der Auswirkungen des russischen Großmachtstrebens ist. Unterstützen Sie die &laquo;Ukraine-Hilfe&raquo;!</p> 
               </div> 
             </div> 
