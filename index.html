@@ -56,14 +56,9 @@
             <button id="ru-click" class="btn" type="button" aria-label="Russisch">ru</button>
         </div>-->
        </header>
-       <script src="js/header-nav.js"></script>
-<!--       <script> 
-			if (navigator.userAgent.match(/(iPad|iPhone|iPod|Silk)/gi)) {
-      				document.write("<link rel=\"stylesheet\" href=\"css/fixparallax.css\" />");
-			}
-		</script> -->  
+       <script src="js/header-nav.js"></script>   
        <main class="main">
-           <section id="el-1" class="hero">
+           <section id="el-1" class="hero padding-bottom">
             <script>
                 let hero = document.querySelector('.hero');
                 let buttons = document.querySelectorAll('.btn');
@@ -77,6 +72,21 @@
                         '--img'
                     );
                 Object.keys(buttons).forEach(elem => onloadBgimg(buttons[elem], '', '', flags[elem]));*/
+                 
+                onloadElem();
+                window.addEventListener('resize', function() {onloadElem()});
+                
+                function onloadElem() {
+//                    console.log(window.outerWidth)
+                    onloadBgimg(
+                        hero, 
+                        'img/flags-360.jpg 360w, img/flags-640ls.jpg 640w, img/flags-768.jpg 768w, img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w',
+                        '(max-width: 500px) 360px, (max-width: 1024px) 768px, (max-width: 1500px) 1440px, (min-width: 1501px) 1920px, 800px',
+                        'img/flags-360.jpg',
+                        '--img'
+                    );
+                    Object.keys(buttons).forEach(elem => onloadBgimg(buttons[elem], '', '', flags[elem]));
+                }
                 
                 function onloadBgimg(elem, srcsetN, sizesN, srcN, elemVar) {
                     let bgImg = document.createElement('img'); 
@@ -96,21 +106,6 @@
                         }
                     }
                 }
-                 
-                onloadElem();
-                window.addEventListener('resize', function() {onloadElem()});
-                
-                function onloadElem() {
-//                    console.log(window.outerWidth)
-                    onloadBgimg(
-                        hero, 
-                        'img/flags-360.jpg 360w, img/flags-640ls.jpg 640w, img/flags-768.jpg 768w, img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w',
-                        '(max-width: 500px) 360px, (max-width: 1024px) 768px, (max-width: 1500px) 1440px, (min-width: 1501px) 1920px, 800px',
-                        'img/flags-360.jpg',
-                        '--img'
-                    );
-                    Object.keys(buttons).forEach(elem => onloadBgimg(buttons[elem], '', '', flags[elem]));
-                }
                 
                 /*let bgImg = document.createElement('img'); 
                 bgImg.srcset = 'img/flags-360.jpg 360w, img/flags-640ls.jpg 640w, img/flags-768.jpg 768w, img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w';
@@ -124,22 +119,18 @@
                 }*/
                 
             </script>
-            <!--<div class="wrap hero__wrap">-->
             <div class="hero__titles">
               <h1 class="h1 hero__h1">Ukraine &#45; Hilfe</h1>
               <h2 class="h2 hero__h2">Achtung! Neue telefon&#45;nummer</h2> 
-              <p class="h2 hero__h2 hero__tel">03521&#45;72806&#45;700</p> 
-              <!--<h2 class="h2 hero__h2">Achtung! Neue telefon&#45;nummer: <span class="hero__tel" style="#fafafa">03521&#45;72806&#45;700</span></h2> -->
+              <p class="hero__tel">03521&#45;72806&#45;700</p> 
               <p class="hero__txt">Solidarität mit den Opfern des<br>verbrecherischen russischen Angriffskriegs</p> 
             </div>  
-            
            </section>
            <!-- Солидарность с жертвами - преступная российская агрессивная война -->
            <!-- Солідарність із постраждалими - злочинна російсько-загарбницька війна -->
            
            <article id="el-2" class="el el_above_background">
-            <div class="wrap wrap_one wrap_above wrap_above_one grid grid_1 grid_gap">
-              <!--<div class="wrap wrap_above grid grid_1 grid_gap">-->
+            <div class="wrap wrap_above grid grid_1 grid_gap">
                 <div class="boxImg">
                     <!--<img class="img" 
                       src="img/3-ukraine-hilfe-01-1200x900.jpg" 
@@ -352,10 +343,8 @@
                </div>
             </div>
            </section>
-           
-        </main>
-        <script src="js/nav-footer.js"></script>
+           <script src="js/nav-footer.js"></script>
+        </main>   
       </div>
-      
     </body>
 </html>

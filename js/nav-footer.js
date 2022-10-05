@@ -18,6 +18,8 @@ let parent  // function activeSubmenu(elem)
 //let navANotSub = document.querySelectorAll('.nav__link:not(.submenu a)')
 let submenyFirstChild = document.querySelectorAll('.nav__link[href="#"')
 
+let lazyloadImages = document.querySelectorAll('.lazy')
+
 //console.log(articless.length)
 
 // мобильное меню - открываем/закрываем
@@ -37,59 +39,6 @@ arrowUp.className = 'arrow arrow_up alert-up__arrow'
 arrowUp.href = '#el-1'
 alertUp.append(arrowUp)
 document.body.append(alertUp)
-
-/*************************************************************
-  (1) - Определяем высоту секций: 
-            при изменении (resize) размеров окна (window) для каждой секции el:
-            el.height = высоте окна
-            el.minHeight = высоте контента в блоке wrap
-**************************************************************/
-// при scroll пересчитывается реальная высота контента для el-секции (особенно для 1-ой секции после hero), 
-// удаляем scroll, чтобы не было лишних вычислений
-main.addEventListener('scroll', setHeight(articless, wraps))
-main.removeEventListener('scroll', setHeight)
-
-// без function() 'resize' не работает
-window.addEventListener('resize', function() {setHeight(articless, wraps)})
-
-function setHeight(section, item) {
-    Object.keys(section).forEach(elem => {
-        section[elem].style.height = calculateHeight(item[elem]) + 'px'
-        section[elem].style.minHeight = calculateHeight(item[elem]) + 'px'
-
-//        console.log(`2. ${section[elem].id}, ${item[elem].classList[1]}: ${determineHeight(item[elem])}`) 
-    })   
-}
-
-/*function determineHeight(elem) {
-    return Math.max(
-        elem.scrollHeight,  // content+padding - невидимая часть
-        elem.offsetHeight,  // content+padding+border+scrollbar - видимая часть
-        elem.clientHeight   // content+padding - видимая часть	
-    )
-}*/
-
-function calculateHeight(elem){
-    let curStyle = window.getComputedStyle(elem)
-    let offsetHeight = elem.offsetHeight
-    let a = parseInt(offsetHeight)
-    let c = parseInt(curStyle.marginTop.replace("px", ""))
-    let d = parseInt(curStyle.marginBottom.replace("px", ""))
-    let e1 = parseInt(curStyle.paddingTop)
-    let e = parseInt(curStyle.paddingTop.replace("px", ""))
-    let f = parseInt(curStyle.paddingBottom.replace("px", ""))
-    let height1 = a + c + d + e1 + f
-    
-    let height2 = Math.max(
-  		elem.scrollHeight, // content+padding - невидимая часть
-  		elem.offsetHeight, // content+padding+border+scrollbar - видимая часть
-  		elem.clientHeight  // content+padding - видимая часть
-	)
-    
-    return Math.max(height1, height2)
-}
-
-
 
 /*************************************************************
   для tablet устанавливаем светлый borderBottom
@@ -235,22 +184,19 @@ function activeNav(elem) {
 
 /*************************************************************
   Lazyload
+  нельзя применить к предыдущему scroll, так как там функция запускается без scroll, а здесь только при scroll
 **************************************************************/
-let lazyloadImages = document.querySelectorAll('.lazy')
-//console.log(lazyloadImages.length)
+main.addEventListener('scroll', lazyload(lazyloadImages))
 
-lazyload()
-main.addEventListener('scroll', lazyload)
-
-function lazyload() {
-    if (lazyloadImages.length == 0) {
+function lazyload(images) {
+    if (images.length == 0) {
         document.removeEventListener('scroll', lazyload)
         return
     }
 
-    lazyloadImages.forEach(img => {
+    images.forEach(img => {
         if (isVisibleImg(img)) {   
-//            console.log(img)
+            console.log(img)
             const src = img.getAttribute('data-src')
             const srcset = img.getAttribute('data-srcset')
             if (src) img.src = src
@@ -261,19 +207,13 @@ function lazyload() {
 }
 
 function isVisibleImg(elem) {
-
     let coords = elem.getBoundingClientRect()
     let windowHeight = document.documentElement.clientHeight
-//    let windowHeight = main.clientHeight
-
-    // clientHeight – content+padding - размеры видимой части элемента
 
     // видны верхний ИЛИ нижний край элемента
     let topVisible = coords.top > 0 && coords.top < windowHeight
     let bottomVisible = coords.bottom < windowHeight && coords.bottom > 0
     
-//    console.log(`${elem} = ${topVisible}: ${coords.top}>0 and ${coords.top}<${windowHeight}; ${bottomVisible}: ${coords.bottom}<${windowHeight} and ${coords.bottom}>0`)
-
     return topVisible || bottomVisible;
 }
 
@@ -434,6 +374,58 @@ function selectBtn(btn, currentlg) {
     langBtns[1].areaLabel = arr[0].ariaL.uk
     langBtns[2].areaLabel = arr[0].ariaL.ru
 }
+
+/*************************************************************
+  (1) - Определяем высоту секций: 
+            при изменении (resize) размеров окна (window) для каждой секции el:
+            el.height = высоте окна
+            el.minHeight = высоте контента в блоке wrap
+**************************************************************/
+// при scroll пересчитывается реальная высота контента для el-секции (особенно для 1-ой секции после hero), 
+// удаляем scroll, чтобы не было лишних вычислений
+main.addEventListener('scroll', setHeight(articless, wraps))
+main.removeEventListener('scroll', setHeight)
+
+// без function() 'resize' не работает
+window.addEventListener('resize', function() {setHeight(articless, wraps)})
+
+function setHeight(section, item) {
+    Object.keys(section).forEach(elem => {
+        section[elem].style.height = calculateHeight(item[elem]) + 'px'
+        section[elem].style.minHeight = calculateHeight(item[elem]) + 'px'
+
+//        console.log(`2. ${section[elem].id}, ${item[elem].classList[1]}: ${determineHeight(item[elem])}`) 
+    })   
+}
+
+/*function determineHeight(elem) {
+    return Math.max(
+        elem.scrollHeight,  // content+padding - невидимая часть
+        elem.offsetHeight,  // content+padding+border+scrollbar - видимая часть
+        elem.clientHeight   // content+padding - видимая часть	
+    )
+}*/
+
+function calculateHeight(elem){
+    let curStyle = window.getComputedStyle(elem)
+    let offsetHeight = elem.offsetHeight
+    let a = parseInt(offsetHeight)
+    let c = parseInt(curStyle.marginTop.replace("px", ""))
+    let d = parseInt(curStyle.marginBottom.replace("px", ""))
+    let e1 = parseInt(curStyle.paddingTop)
+    let e = parseInt(curStyle.paddingTop.replace("px", ""))
+    let f = parseInt(curStyle.paddingBottom.replace("px", ""))
+    let height1 = a + c + d + e1 + f
+    
+    let height2 = Math.max(
+  		elem.scrollHeight, // content+padding - невидимая часть
+  		elem.offsetHeight, // content+padding+border+scrollbar - видимая часть
+  		elem.clientHeight  // content+padding - видимая часть
+	)
+    
+    return Math.max(height1, height2)
+}
+
 
 /*
 let arrayAriaLabel = [
