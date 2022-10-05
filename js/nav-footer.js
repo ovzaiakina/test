@@ -20,7 +20,7 @@ let submenyFirstChild = document.querySelectorAll('.nav__link[href="#"')
 
 let lazyloadImages = document.querySelectorAll('.lazy')
 
-//console.log(articless.length)
+console.log(lazyloadImages.length)
 
 // мобильное меню - открываем/закрываем
 //let nav = document.querySelector('.nav')
@@ -71,11 +71,10 @@ function setBorderColor() {
     (3) прокрутка вверх 
     (4) при скроллинге добавляем background-color для header и для laptop меняем цвет меню на темно-синий
 **************************************************************/
-showVisible()
+activeNav(navLinks[0]) // по умолчанию - подчеркиваем 1-ый линк меню, как активный
 main.addEventListener('scroll', showVisible) 
 
-function showVisible() { 
-    
+function showVisible() {  
     // (1), (2), (3)
     Object.keys(articles).forEach(elem => {  
         if (isVisible(articles[elem])) {  
@@ -111,7 +110,8 @@ function showVisible() {
         // laptop - пункты меню 1-го уровня: color - darkBlue
         Object.keys(navLinks1Level).forEach(elem => navLinks1Level[elem].classList.add('nav__link_scroll'))
 
-    } else {
+    } 
+    else {
         // top страницы после скролинга
         
         // header удаляем класс filter_background
@@ -125,8 +125,8 @@ function showVisible() {
                navLinks1Level[elem].classList.remove('nav__link_scroll')
            }
         })
-
     } 
+
 }
 
 function isVisible(elem) {  
@@ -186,21 +186,21 @@ function activeNav(elem) {
   Lazyload
   нельзя применить к предыдущему scroll, так как там функция запускается без scroll, а здесь только при scroll
 **************************************************************/
-main.addEventListener('scroll', lazyload(lazyloadImages))
+main.addEventListener('scroll', lazyload)
 
-function lazyload(images) {
-    if (images.length == 0) {
+function lazyload() {
+    if (lazyloadImages.length == 0) {
         document.removeEventListener('scroll', lazyload)
         return
     }
 
-    images.forEach(img => {
+    lazyloadImages.forEach(img => {
         if (isVisibleImg(img)) {   
-            console.log(img)
             const src = img.getAttribute('data-src')
             const srcset = img.getAttribute('data-srcset')
             if (src) img.src = src
             if (srcset) img.srcset = srcset
+            console.log(img.src)
             img.classList.remove('lazy') 
         }
     })
@@ -214,7 +214,7 @@ function isVisibleImg(elem) {
     let topVisible = coords.top > 0 && coords.top < windowHeight
     let bottomVisible = coords.bottom < windowHeight && coords.bottom > 0
     
-    return topVisible || bottomVisible;
+    return topVisible || bottomVisible
 }
 
 /*************************************************************
