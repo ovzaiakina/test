@@ -44,53 +44,32 @@ document.body.append(alertUp)
             el.height = высоте окна
             el.minHeight = высоте контента в блоке wrap
 **************************************************************/
-setHeight(articless, wraps)
-window.addEventListener('resize', function() {setHeight(articless, wraps)})
+// при scroll пересчитывается реальная высота контента для el-секции (особенно для 1-ой секции после hero), 
+// удаляем scroll, чтобы не было лишних вычислений
+main.addEventListener('scroll', setHeight(articless, wraps))
+main.removeEventListener('scroll', setHeight)
+
 // без function() 'resize' не работает
+window.addEventListener('resize', function() {setHeight(articless, wraps)})
 
 function setHeight(section, item) {
-    
     Object.keys(section).forEach(elem => {
-        
-//        if (elem > 0) {  
-//            console.log(`1. ${section[elem].classList[0]}, ${wraps[elem].classList[1]}`)
-            
-            section[elem].style.height = window.outerHeight + 'px'
-            section[elem].style.minHeight = determineHeight(item[elem]) + 'px'
-  
-//            console.log(`2. ${section[elem].classList[0]}: ${section[elem].style.minHeight}`)
-            
-//            большее значение присваиваем minHeight
-            /*if (window.outerHeight > determineHeight(item[elem])) {
-                section[elem].style.minHeight = window.outerHeight + 'px'
-                section[elem].style.height = determineHeight(item[elem]) + 'px'
-            } else {
-                section[elem].style.minHeight = determineHeight(item[elem]) + 'px'
-                section[elem].style.height = window.outerHeight + 'px'
-            } */
-            
-// console.log(`1. ${section[elem].id}: ${outerHeight(item[elem])}, ${determineHeight(item[elem])}`) 
-//        }
+        section[elem].style.height = calculateHeight(item[elem]) + 'px'
+        section[elem].style.minHeight = calculateHeight(item[elem]) + 'px'
+
+//        console.log(`2. ${section[elem].id}, ${item[elem].classList[1]}: ${determineHeight(item[elem])}`) 
     })   
 }
 
-function determineHeight(elem) {
+/*function determineHeight(elem) {
     return Math.max(
         elem.scrollHeight,  // content+padding - невидимая часть
         elem.offsetHeight,  // content+padding+border+scrollbar - видимая часть
         elem.clientHeight   // content+padding - видимая часть	
     )
-}
+}*/
 
-/*function setHeight(section, item) {
-    Object.keys(section).forEach(elem => {
-        if(elem > 0) {
-            section[elem].style.height = outerHeight(item[elem]) + 'px'
-        }
-    })
-}
-
-function outerHeight(elem){
+function calculateHeight(elem){
     let curStyle = window.getComputedStyle(elem)
     let offsetHeight = elem.offsetHeight
     let a = parseInt(offsetHeight)
@@ -108,7 +87,7 @@ function outerHeight(elem){
 	)
     
     return Math.max(height1, height2)
-}*/
+}
 
 
 
