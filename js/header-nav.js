@@ -7,17 +7,15 @@ let currentlang = (document.querySelector('html')).getAttribute('lang');
 
 /* submenu arrow */ 
 //let red = '#cd2727'
-let white = '#fff'
-let lightGray = '#cdd7e5'
-let darkBlue = '#101e5a'
-let lightBlue = '#8cc4f3'
+let white = '#fafafa'
 let whiteOpacity = 'rgba(255,255,255,.6)' 
-let myBorderStyle = '3px solid'
+let myBorderActive = '3px solid' + white
+let myBorder = '1px solid rgba(255,255,255,.6)'
 
 let topLinks = new Array()     
 topLinks[0]='#el-1'
 topLinks[1]='#el-2'
-topLinks[2]='#' /*submenu*/
+topLinks[2]='#' /*submenu*/ 
 topLinks[3]='#el-4'
 topLinks[4]='#el-5'
 topLinks[5]='#el-6' 

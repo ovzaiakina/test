@@ -1,6 +1,7 @@
 let navLi = document.querySelectorAll('nav li')    
 let navLinks = document.querySelectorAll('.nav__link')
 let navLinks1Level = document.querySelectorAll('.nav__link_1level')
+let navLinksSubmenu = document.querySelectorAll('.submenu li .nav__link')
 let topmenus = document.querySelectorAll('.topmenu')
 //let submenus = document.querySelectorAll('.submenu')
 //let submenu = document.querySelector('.submenu')
@@ -14,13 +15,13 @@ let articless = document.querySelectorAll('*[id^="el"]:not(:first-child)')
 
 let wraps = document.querySelectorAll('.wrap') // контент секций
 let borderTop = document.querySelectorAll('.borderTop')  
-let parent  // function activeSubmenu(elem)
+
 //let navANotSub = document.querySelectorAll('.nav__link:not(.submenu a)')
 let submenyFirstChild = document.querySelectorAll('.nav__link[href="#"')
 
 let lazyloadImages = document.querySelectorAll('.lazy')
 
-console.log(lazyloadImages.length)
+//console.log(navLinksSubmenu.length)
 
 // мобильное меню - открываем/закрываем
 //let nav = document.querySelector('.nav')
@@ -43,26 +44,55 @@ document.body.append(alertUp)
 /*************************************************************
   для tablet устанавливаем светлый borderBottom
 **************************************************************/
-setBorderColor()
-function setBorderColor() {
-    mqFunctionMobMenuBorder(mql) // mql=max-width:1024px (header-nav.js)
+setBorderColor(navLinks, navLinksSubmenu)
+function setBorderColor(item1, item2) {
+    
+    mqFunctionMobMenuBorder(mql) // mql=1024px 
     mql.addListener(mqFunctionMobMenuBorder) 
+    
     function mqFunctionMobMenuBorder(mql) {
         if (mql.matches) {
-            Object.keys(navLinks1Level).forEach(elem =>{
-                if(elem < navLinks1Level.length-1) {
-                   navLinks1Level[elem].style.borderBottom = '1px solid rgba(255,255,255,.6)'
+            Object.keys(item1).forEach(elem =>{
+                if(elem < item1.length-1) {
+                   item1[elem].style.borderBottom = myBorder
                 }
             })
         } else {
-            Object.keys(navLinks1Level).forEach(elem =>{
-                if(elem < navLinks1Level.length-1) {
-                   navLinks1Level[elem].style.borderBottom = 'none'
+            Object.keys(item1).forEach(elem =>{
+                if(elem < item1.length-1) {
+                   item1[elem].style.borderBottom = 'none'
+                }
+            })
+            Object.keys(item2).forEach(elem =>{
+                if(elem < item2.length-1) {
+                   item2[elem].style.borderBottom = myBorder
                 }
             })
         }
     }
 }
+
+/*function setBorderColor(item) {
+    mqFunctionMobMenuBorder(mql) // mql=1024px 
+    mql.addListener(mqFunctionMobMenuBorder) 
+    function mqFunctionMobMenuBorder(mql) {
+        if (mql.matches) {
+            Object.keys(item).forEach(elem =>{
+                if(elem < item.length-1) {
+                   item[elem].style.borderBottom = myBorder
+                }
+            })
+        } else {
+            Object.keys(item).forEach(elem =>{
+                if(elem < item.length-1) {
+                   item[elem].style.borderBottom = 'none'
+                }
+            })
+        }
+    }
+}*/
+
+
 
 /*************************************************************
   Scrolling - eсли координата top секции > половины длины видимой части окна (content+padding):
@@ -107,11 +137,11 @@ function showVisible() {
         //        console.log(`1. ${document.querySelector('.lang').className}: ${document.querySelector('.lang').style.zIndex}`)
 //        document.querySelector('.lang').style.zIndex = '-1'
         
-        // laptop - пункты меню 1-го уровня: color - darkBlue
+        // laptop - пункты меню 1-го уровня: color - blue
         Object.keys(navLinks1Level).forEach(elem => navLinks1Level[elem].classList.add('nav__link_scroll'))
 
     } 
-    else {
+    else { 
         // top страницы после скролинга
         
         // header удаляем класс filter_background
@@ -119,7 +149,7 @@ function showVisible() {
             header.classList.remove('filter_background')
         }
         
-        // laptop - пункты меню 1-го уровня: color - lightGray
+        // laptop - пункты меню 1-го уровня: color - белый
         Object.keys(navLinks1Level).forEach(elem => {
            if (navLinks1Level[elem].classList.contains('nav__link_scroll')) {
                navLinks1Level[elem].classList.remove('nav__link_scroll')
@@ -136,22 +166,41 @@ function isVisible(elem) {
     return elemVisible
 }
 
-// для активного пункта меню borderBottom - белый, для не активного - возвращаем светлый borderBottom (tablet) и transporant (laptop), также класс activeTopmenu содержит cursor: no-drop;
+/*************************************************************
+  topmenu будет активным (жирная белая полоса), если активен хоть один пункт из submenu:
+    1. передаем <a>
+    2. определяем в topmenu, для его 1-го ребенка <a> - href:
+    
+   parentElement      <li class="topmenu">
+   firstElementChild    <a class="nav__link nav__link_1level nav__link_paddingRight" href="#">...</a>
+                        <div class="arrow arrow_down nav__arrow"></div>
+   parentElement        <ul class="submenu"> 
+   parentElement           <li> 
+                              <a class="nav__link" href="#el-31">Предоставить что-то</a>
+                              
+    3. если href = "#", то сохраняем его в переменной topMenuLink и делаем его активным - жирная borderBottom
+    4. если у переданного линка нет topmenu, то удаляем активность через переменную topMenuLink:
+        - для tablet восстанавливаем тонкую полоску borderBottom,
+        - для laptop - вообще убираем borderBottom
+        
+    также класс activeTopmenu содержит cursor: no-drop
+**************************************************************/
+let topMenuLink 
 function activeSubmenu(elem) {
     let parentHref = elem.parentElement.parentElement.parentElement.firstElementChild.getAttribute('href')
+    
     if (parentHref) {  
-        parent = elem.parentElement.parentElement.parentElement.firstElementChild
-        parent.classList.add('activeTopmenu') 
-        parent.style.borderBottom = myBorderStyle + white
-//        parent.style.borderBottom = '2px solid' + red
+        topMenuLink = elem.parentElement.parentElement.parentElement.firstElementChild
+        topMenuLink.classList.add('activeTopmenu') 
+        topMenuLink.style.borderBottom = myBorderActive
     } else {
-        if(parent) {
-            parent.classList.remove('activeTopmenu')
+        if(topMenuLink) {
+            topMenuLink.classList.remove('activeTopmenu')
             mqFunctionMobMenuBorder(mql) // mql=max-width:1024px (header-nav.js)
             mql.addListener(mqFunctionMobMenuBorder) 
             function mqFunctionMobMenuBorder(mql) {
-                if (mql.matches) parent.style.borderBottom = '1px solid rgba(255,255,255,.6)' 
-                else parent.style.borderBottom = 'none' 
+                if (mql.matches) topMenuLink.style.borderBottom = myBorder
+                else topMenuLink.style.borderBottom = 'none' 
             }
         }
     }
@@ -162,23 +211,26 @@ function activeNav(elem) {
     let currentlyActive = document.querySelector('.nav__link.activeNav')
     let shouldBeActive = elem
     
+//    console.log(`${elem.href}`)
+    
     if (currentlyActive) {
-        currentlyActive.classList.remove('activeNav')
+        currentlyActive.classList.remove('activeNav')       
         
-        if(currentlyActive.classList.contains('nav__link_1level')) {
-            mqFunctionMobMenuBorder(mql) // mql=max-width:1024px (header-nav.js)
-            mql.addListener(mqFunctionMobMenuBorder) 
-            function mqFunctionMobMenuBorder(mql) {
-                if (mql.matches) currentlyActive.style.borderBottom = '1px solid rgba(255,255,255,.6)' 
-                else currentlyActive.style.borderBottom = 'none' 
-            }
-        } 
-        else { currentlyActive.style.borderBottom = 'none' }
+        mqFunctionMobMenuBorder(mql) // mql=1024px
+        mql.addListener(mqFunctionMobMenuBorder) 
+        
+        function mqFunctionMobMenuBorder(mql) {
+            if (mql.matches) {currentlyActive.style.borderBottom = myBorder}
+            else {
+                // laptop: если href для submenu-link совпадает с currentlyActive.href, то возвращаем borderBottom, для главных пунктов меню - нет borderBottom
+                if (Array.from(navLinksSubmenu).find(function(el) {return el.href == currentlyActive.href})) currentlyActive.style.borderBottom = myBorder
+                else currentlyActive.style.borderBottom = 'none'
+            } 
+        }
     }
     if (shouldBeActive) {
         shouldBeActive.classList.add('activeNav')
-        shouldBeActive.style.borderBottom = myBorderStyle + white
-//        shouldBeActive.style.borderBottom = '2px solid' + red
+        shouldBeActive.style.borderBottom = myBorderActive
     }
 }
 
@@ -200,7 +252,7 @@ function lazyload() {
             const srcset = img.getAttribute('data-srcset')
             if (src) img.src = src
             if (srcset) img.srcset = srcset
-            console.log(img.src)
+//            console.log(img.src)
             img.classList.remove('lazy') 
         }
     })
@@ -226,8 +278,6 @@ Object.keys(topmenus).forEach((elem,index) => {
         topmenus[elem].children[1].classList.add('arrow_up')
         topmenus[elem].children[2].classList.add('submenu-open')   
         topmenus[elem].children[2].style.transition = 'transform .7s linear'
-//        console.log(topmenus[elem].children[2].className)
-//        hero.style.zIndex = '-1'   transition: .5s linear; 
         
         mqFunctionMouseenter(mql) // mql=max-width:1024px (header-nav.js)
         mql.addListener(mqFunctionMouseenter) 
@@ -266,9 +316,7 @@ Object.keys(topmenus).forEach((elem,index) => {
             } 
             else {
                 // submenu arrow 
-//                topmenus[elem].children[1].style.top = '65%'
                 topmenus[elem].children[1].style.top = '30%'
-//                hero.style.zIndex = 'auto'
             }
         }    
     })
