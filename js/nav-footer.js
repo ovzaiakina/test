@@ -413,7 +413,7 @@ else if (currentlang == "ru") selectBtn(btnRu, currentlang)
 function selectBtn(btn, currentlg) {
     btn.disabled = true
     btn.style.outline = 'none'
-    btn.style.boxShadow = '0 0 0 4px' + white
+    btn.style.boxShadow = '0 0 0 4px' + myWhite
 //    btn.style.transform = 'translateZ(-1px) scale(.9)'
 //    btn.style.transform = 'scale(.9)'
     /*btn.style.zIndex = '-1' */// == btn.style.cursor = 'no-drop'

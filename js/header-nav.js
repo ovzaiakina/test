@@ -7,9 +7,9 @@ let currentlang = (document.querySelector('html')).getAttribute('lang');
 
 /* submenu arrow */ 
 //let red = '#cd2727'
-let white = '#fafafa'
-let whiteOpacity = 'rgba(255,255,255,.6)' 
-let myBorderActive = '3px solid' + white
+let myWhite = '#fafafa'
+let myWhiteOpacity = 'rgba(255,255,255,.6)' 
+let myBorderActive = '3px solid' + myWhite
 let myBorder = '1px solid rgba(255,255,255,.6)'
 
 let topLinks = new Array()     
