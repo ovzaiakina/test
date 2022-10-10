@@ -33,14 +33,14 @@
                 let buttons = document.querySelectorAll('.btn');
                 let flags = ['img/icon-germany.png', 'img/icon-ukraine.png', 'img/icon-russia.png'];
 
-                onloadBgimg(
+                /*onloadBgimg(
                     hero, 
                         'img/flags-360.jpg 360w, img/flags-640ls.jpg 640w, img/flags-768.jpg 768w, img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w',
                         '(max-width: 500px) 360px, (max-width: 1024px) 768px, (max-width: 1500px) 1440px, (min-width: 1501px) 1920px, 800px',
                         'img/flags-360.jpg',
                         '--img'
                     );
-                Object.keys(buttons).forEach(elem => onloadBgimg(buttons[elem], '', '', flags[elem]));
+                Object.keys(buttons).forEach(elem => onloadBgimg(buttons[elem], '', '', flags[elem]));*/
                 
                 function onloadBgimg(elem, srcsetN, sizesN, srcN, elemVar) {
                     let bgImg = document.createElement('img'); 
@@ -61,7 +61,7 @@
                     }
                 }
                 
-                                /*onloadElem();
+                onloadElem();
                 window.addEventListener('resize', function() {onloadElem()});
                 
                 function onloadElem() {
@@ -74,7 +74,7 @@
                         '--img'
                     );
                     Object.keys(buttons).forEach(elem => onloadBgimg(buttons[elem], '', '', flags[elem]));
-                }*/
+                }
                 
                 /*let bgImg = document.createElement('img'); 
                 bgImg.srcset = 'img/flags-360.jpg 360w, img/flags-640ls.jpg 640w, img/flags-768.jpg 768w, img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w';
