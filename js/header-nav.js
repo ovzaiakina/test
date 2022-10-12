@@ -1,12 +1,9 @@
 'use strict'      
  
 //const pathImg = 'img/' 
-//let mql = window.matchMedia('(max-width: 1024px)') 
 let mql = window.matchMedia('(max-width: 900px)') 
 let currentlang = (document.querySelector('html')).getAttribute('lang');
 
-/* submenu arrow */ 
-//let red = '#cd2727'
 let myWhite = '#fafafa'
 let myWhiteOpacity = 'rgba(255,255,255,.6)' 
 let myBorderActive = '3px solid' + myWhite

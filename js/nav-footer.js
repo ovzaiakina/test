@@ -19,8 +19,6 @@ let borderTop = document.querySelectorAll('.borderTop')
 //let navANotSub = document.querySelectorAll('.nav__link:not(.submenu a)')
 let submenyFirstChild = document.querySelectorAll('.nav__link[href="#"')
 
-let lazyloadImages = document.querySelectorAll('.lazy')
-
 //console.log(navLinksSubmenu.length)
 
 // мобильное меню - открываем/закрываем
@@ -91,8 +89,6 @@ function setBorderColor(item1, item2) {
         }
     }
 }*/
-
-
 
 /*************************************************************
   Scrolling - eсли координата top секции > половины длины видимой части окна (content+padding):
@@ -238,21 +234,22 @@ function activeNav(elem) {
   Lazyload
   нельзя применить к предыдущему scroll, так как там функция запускается без scroll, а здесь только при scroll
 **************************************************************/
+let lazyloadImages = document.querySelectorAll('.lazy')
 main.addEventListener('scroll', lazyload)
 
 function lazyload() {
+    
     if (lazyloadImages.length == 0) {
         document.removeEventListener('scroll', lazyload)
         return
     }
 
-    lazyloadImages.forEach(img => {
+    lazyloadImages.forEach( img => {
         if (isVisibleImg(img)) {   
             const src = img.getAttribute('data-src')
             const srcset = img.getAttribute('data-srcset')
             if (src) img.src = src
             if (srcset) img.srcset = srcset
-//            console.log(img.src)
             img.classList.remove('lazy') 
         }
     })
