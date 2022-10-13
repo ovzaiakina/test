@@ -91,6 +91,75 @@ function setBorderColor(item1, item2) {
 }*/
 
 /*************************************************************
+  при наведении мышкой меняем цвет иконок телефона, адреса
+    важно, чтобы сначала определили адреса, а затем уже описываем img
+**************************************************************/
+let one11 = ['ukr', 'hil', 'nfo', 'ma',  'ne-', 'lwp', 'ilto:', 'fe@','ai',  '.i']
+let one22 = ['in', 'tes', 'mai', 'n.de', 'lto:', 'bun', 'isse', '-me', 'fo@']
+
+let lmArray1 = [
+    [one11[3] + one11[6] + one11[0] + one11[8] + one11[4] + one11[1] + one11[7] + one11[5] + one11[9] + one11[2]],
+    [one22[2] + one22[4] + one22[0] + one22[8] + one22[5] + one22[1] + one22[7] + one22[6] + one22[3]]
+]
+
+let lmArray2 = [
+    [one11[0] + one11[8] + one11[4] + one11[1] + one11[7] + one11[5] + one11[9] + one11[2]],
+    [one22[0] + one22[8] + one22[5] + one22[1] + one22[7] + one22[6] + one22[3]]
+]
+            
+let lm = document.querySelectorAll('.ml')
+
+lmArray1.forEach((elem, ind, array) => {
+    lm[ind].href = array[ind]
+    lm[ind].textContent = lmArray2[ind]
+})
+
+let linkIcons = document.querySelectorAll('.linkIcon')
+
+let iconArray = [
+    {imgName: 'icon hero__icon',
+    imgSrc: 'img/icon-phone-white.png',
+    imgAlt: 'icon-phone',
+    imgSrcHover: 'img/icon-phone-blue.png'},
+    
+    {imgName: 'icon',
+    imgSrc: 'img/icon-location-blue.png',
+    imgAlt: 'icon-location',
+    imgSrcHover: 'img/icon-location-white.png'},
+    
+    {imgName: 'icon',
+    imgSrc: 'img/icon-ml-blue.png',
+    imgAlt: 'icon-ml',
+    imgSrcHover: 'img/icon-ml-white.png'},
+    
+    {imgName: 'icon',
+    imgSrc: 'img/icon-phone2-blue.png',
+    imgAlt: 'icon-phone',
+    imgSrcHover: 'img/icon-phone2-white.png'},
+    
+    {imgName: 'icon',
+    imgSrc: 'img/icon-location-blue.png',
+    imgAlt: 'icon-location',
+    imgSrcHover: 'img/icon-location-white.png'},
+    
+    {imgName: 'icon',
+    imgSrc: 'img/icon-ml-blue.png',
+    imgAlt: 'icon-ml',
+    imgSrcHover: 'img/icon-ml-white.png'}
+]
+
+iconArray.forEach((elem, ind, array) => {
+    let img = document.createElement('img')
+    img.className = array[ind].imgName
+    img.src = array[ind].imgSrc
+    img.alt = array[ind].imgAlt
+    linkIcons[ind].prepend(img)
+    
+    linkIcons[ind].addEventListener('mouseenter', () => img.src = array[ind].imgSrcHover)
+    linkIcons[ind].addEventListener('mouseleave', () => img.src = array[ind].imgSrc)
+})
+
+/*************************************************************
   Scrolling - eсли координата top секции > половины длины видимой части окна (content+padding):
     (1) автоматически закр-ся моб.меню,
     (2) подсвечиваем пункты меню при прокрутке окна,
@@ -421,10 +490,10 @@ function selectBtn(btn, currentlg) {
 }
 
 /*************************************************************
-  (1) - Определяем высоту секций: 
-            при изменении (resize) размеров окна (window) для каждой секции el:
-            el.height = высоте окна
-            el.minHeight = высоте контента в блоке wrap
+  Определяем высоту секций: 
+    при изменении (resize) размеров окна (window) для каждой секции el:
+    el.height = высоте окна
+    el.minHeight = высоте контента в блоке wrap
 **************************************************************/
 // при scroll пересчитывается реальная высота контента для el-секции (особенно для 1-ой секции после hero), 
 // удаляем scroll, чтобы не было лишних вычислений
@@ -470,6 +539,10 @@ function calculateHeight(elem){
     
     return Math.max(height1, height2)
 }
+
+
+
+    
 
 
 /*
