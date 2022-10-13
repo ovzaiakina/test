@@ -11,7 +11,7 @@ let bars = document.querySelectorAll('.bar') // nav-toggle
 let main = document.querySelector('.main')
 // выбираем id всех article, начинающегося с el
 let articles = document.querySelectorAll('*[id^="el"]')  
-let articless = document.querySelectorAll('*[id^="el"]:not(:first-child)')
+//let articless = document.querySelectorAll('*[id^="el"]:not(:first-child)')
 
 let wraps = document.querySelectorAll('.wrap') // контент секций
 let borderTop = document.querySelectorAll('.borderTop')  
@@ -497,17 +497,24 @@ function selectBtn(btn, currentlg) {
 **************************************************************/
 // при scroll пересчитывается реальная высота контента для el-секции (особенно для 1-ой секции после hero), 
 // удаляем scroll, чтобы не было лишних вычислений
-main.addEventListener('scroll', setHeight(articless, wraps))
+main.addEventListener('scroll', setHeight(articles, wraps))
+//main.addEventListener('scroll', setHeight(articless, wraps))
 main.removeEventListener('scroll', setHeight)
 
 // без function() 'resize' не работает
-window.addEventListener('resize', function() {setHeight(articless, wraps)})
+window.addEventListener('resize', function() {setHeight(articles, wraps)})
+//window.addEventListener('resize', function() {setHeight(articless, wraps)})
 
 function setHeight(section, item) {
     Object.keys(section).forEach(elem => {
-        section[elem].style.height = calculateHeight(item[elem]) + 'px'
-        section[elem].style.minHeight = calculateHeight(item[elem]) + 'px'
-
+        if(elem === '0') {
+            section[elem].style.height = '100vh'
+            section[elem].style.maxHeight = '1080px'
+        } else {
+            section[elem].style.height = calculateHeight(item[elem]) + 'px'
+            section[elem].style.minHeight = calculateHeight(item[elem]) + 'px'
+        }
+        
 //        console.log(`2. ${section[elem].id}, ${item[elem].classList[1]}: ${determineHeight(item[elem])}`) 
     })   
 }
