@@ -6,6 +6,17 @@
         <meta charset="utf-8">  
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
+        <link rel="preload" as="image" href="img/flags-1920.jpg" imagesrcset="img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w" imagesizes="(max-width: 1440px) 1440px, 1920px" media="(min-width: 901px)">    
+        <link rel="preload" as="image" href="img/flags-768.jpg" imagesrcset="img/flags-360.jpg 360w, img/flags-768.jpg 768w" imagesizes="(max-width: 500px) 360px, 768px" media="(max-width: 900px)">
+        
+        <link rel="preload" href="img/icon-germany.png" as="image">
+        <link rel="preload" href="img/icon-ukraine.png" as="image">
+        <link rel="preload" href="img/icon-russia.png" as="image">
+       
+        <link rel="preload" href="font/RedHatText-Regular.otf" as="font" type="font/otf" crossorigin="anonymous">
+        <link rel="preload" href="font/Chivo-ExtraBold.otf" as="font" type="font/otf" crossorigin="anonymous">
+        <link rel="preload" href="font/Chivo-Medium.otf" as="font" type="font/otf" crossorigin="anonymous">
+        
         <link rel="alternate" hreflang="x-default" href="http://127.0.0.1:56225/index.html">
         <link rel="alternate" hreflang="de" href="http://127.0.0.1:56225/index.html">
         <link rel="alternate" hreflang="uk" href="http://127.0.0.1:56225/uk/index.html">
@@ -67,7 +78,6 @@
                     
                     bgImg.onload = function() { 
                         let bgUrl = bgImg.currentSrc;  
-//                        console.log(bgUrl);
                         if(elemVar) {
                             elem.style.setProperty(elemVar, "url("+bgUrl+") top center no-repeat");
                         }
@@ -175,12 +185,23 @@
            <section id="el-31" class="el">  
             <div class="wrap wrap_under wrap_under_background grid grid_2 grid_gap">
                 <div class="boxImg boxImg_flex">
-                    <!--<img class="img img_maxWidth" 
-                      src="img/4-piktogramm-haus-400x300.jpg" 
-                      width="400" height="300"
-                      alt="piktogramm-haus"
-                      title="piktogramm-haus">-->
-                    <img class="img img_maxWidth lazy" 
+                    <!--img class="img" 
+                          src="img/3-ukraine-hilfe-01-1200x900.jpg" 
+                          width="400" height="300"
+                          alt="ukraine-hilfe"
+                          title="ukraine-hilfe">-->
+                    <img class="img lazy" 
+                             data-srcset="img/ukraine-hilfe-262.jpg 262w,
+                                          img/ukraine-hilfe-405.jpg 405w,
+                                          img/ukraine-hilfe-715.jpg 715w"
+                             sizes="(max-width: 600px) 262px,
+                                    (min-width: 901px) 715px,
+                                    405px"
+                             data-src="img/ukraine-hilfe-715.jpg" 
+                             width="715" height="537"
+                             alt="ukraine-hilfe"
+                             title="ukraine-hilfe">
+                    <!--<img class="img img_maxWidth lazy" 
                              data-srcset="img/piktogramm-haus-247.jpg 247w,
                                           img/piktogramm-haus-387.jpg 387w,
                                           img/piktogramm-haus-500.jpg 500w"
@@ -190,7 +211,7 @@
                              data-src="img/piktogramm-haus-500.jpg" 
                              width="500" height="375"
                              alt="piktogramm-haus"
-                             title="piktogramm-haus"> 
+                             title="piktogramm-haus"> -->
                 </div> 
                 <h1 class="h1 el__h">So können Sie helfen</h1>
                 <h2 class="h2 el__h">Etwas abgeben</h2>
