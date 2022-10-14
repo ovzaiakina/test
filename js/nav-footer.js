@@ -109,9 +109,15 @@ btnUk.addEventListener('click', function(){ location.assign(currentprotocol + '/
 btnRu.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/ru/' + 'index.html') })*/
 
 let arrayAriaLabel = [
-    {lg: 'de', ariaL: {de: 'Deutsch', uk: 'Ukrainisch', ru: 'Russisch'} },
-    {lg: 'uk', ariaL: {de: 'Німецька', uk: 'Українська', ru: 'Російська'}},
-    {lg: 'ru', ariaL: {de: 'Немецкий', uk: 'Украинский', ru: 'Русский'}}
+    {lg: 'de', ariaL: {de: 'Deutsch', uk: 'Ukrainisch', ru: 'Russisch'}, 
+               pt: {de: 'index.html', uk: 'uk/index.html', ru: 'ru/html'} 
+    },
+    {lg: 'uk', ariaL: {de: 'Німецька', uk: 'Українська', ru: 'Російська'},
+               pt: {de: '../index.html', uk: 'index.html', ru: '../ru/index.html'}     
+    },
+    {lg: 'ru', ariaL: {de: 'Немецкий', uk: 'Украинский', ru: 'Русский'},
+               pt: {de: '../index.html', uk: '../uk/index.html', ru: 'index.html'}  
+    }
 ]
 
 // в зависимости от языка страниц - изменение цвета и значений атрибутов кнопок 
@@ -128,21 +134,36 @@ else if (currentlang == "ru") {
     path = '../img/'
 }
 
-btnDe.addEventListener('click', function(){ location.assign('/' + 'index.html') })
+/*btnDe.addEventListener('click', function(){ 
+    location.assign('/' + 'index.html')                                       
+})
+btnUk.addEventListener('click', function(){ 
+    location.assign('../uk/' + 'index.html') 
+})
+btnRu.addEventListener('click', function(){ location.assign('../ru/' + 'index.html') })*/
+
+/*btnDe.addEventListener('click', function(){ location.assign('/' + 'index.html') })
 btnUk.addEventListener('click', function(){ location.assign('../uk/' + 'index.html') })
-btnRu.addEventListener('click', function(){ location.assign('../ru/' + 'index.html') })
+btnRu.addEventListener('click', function(){ location.assign('../ru/' + 'index.html') })*/
 
 function selectBtn(btn, currentlg) {
-    btn.disabled = true
+//    btn.disabled = true
     btn.style.outline = 'none'
     btn.style.boxShadow = '0 0 0 4px' + myWhite
-//    btn.style.transform = 'translateZ(-1px) scale(.9)'
-//    btn.style.transform = 'scale(.9)'
-    /*btn.style.zIndex = '-1' */// == btn.style.cursor = 'no-drop'
+
     let arr = arrayAriaLabel.filter(item => item.lg == currentlg)
-    langBtns[0].areaLabel = arr[0].ariaL.de
+    /*langBtns[0].areaLabel = arr[0].ariaL.de
     langBtns[1].areaLabel = arr[0].ariaL.uk
-    langBtns[2].areaLabel = arr[0].ariaL.ru
+    langBtns[2].areaLabel = arr[0].ariaL.ru*/
+    langBtns[0].href = arr[0].pt.de
+    langBtns[1].href = arr[0].pt.uk
+    langBtns[2].href = arr[0].pt.ru
+    
+    
+    
+   /* btn.style.transform = 'translateZ(-1px) scale(.9)'
+    btn.style.transform = 'scale(.9)'*/
+    /*btn.style.zIndex = '-1' */// == btn.style.cursor = 'no-drop'
 }
 
 /*************************************************************

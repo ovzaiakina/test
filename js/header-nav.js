@@ -194,11 +194,12 @@ let langButtons = ['de', 'uk', 'ru']
 //let flags = ['icon-germany.png', 'icon-ukraine.png', 'icon-russia.png'] 
 
 langButtons.forEach((elem, ind) => {
-    let btn = document.createElement('button')
+//    let btn = document.createElement('button')
+    let btn = document.createElement('a')
     langButtonsDiv.append(btn)
     btn.id = elem
     btn.className = 'btn'
-    btn.type = 'button'
+//    btn.type = 'button'
 //    btn.style.background = 'url(../img/' + flags[ind] + ') no-repeat center'
 //    console.log(`buttons: ${btn.style.background}`)
 //    btn.style.backgroundSize = '100% 100%'
