@@ -10,7 +10,7 @@ let myBorderActive = '3px solid' + myWhite
 let myBorder = '1px solid rgba(255,255,255,.6)'
 
 let topLinks = new Array()     
-topLinks[0]='#el-1'
+topLinks[0]='#el-1' 
 topLinks[1]='#el-2'
 topLinks[2]='#' /*submenu*/ 
 topLinks[3]='#el-4'
@@ -26,17 +26,17 @@ topTitles[4]='Desinformation erkennen'
 topTitles[5]='Datakabelmanagement' 
 
 let topTitlesUkr = new Array()
-topTitlesUkr[0]='Україна-Допомога' 
+topTitlesUkr[0]='Ukraine-hilfe' 
 topTitlesUkr[1]='Україна зараз' 
-topTitlesUkr[2]='Як ви можете допомогти'  
+topTitlesUkr[2]='Допомога'  
 topTitlesUkr[3]='Контакт для допомоги'  
 topTitlesUkr[4]='Розпізнавати дезінформацію'  
 topTitlesUkr[5]='Контакти для співпраці' 
 
 let topTitlesRu = new Array()
-topTitlesRu[0]='Украина-Помощь' 
+topTitlesRu[0]='Ukraine-hilfe' 
 topTitlesRu[1]='Украина сейчас'  
-topTitlesRu[2]='Как вы можете помочь'
+topTitlesRu[2]='Помощь'
 topTitlesRu[3]='Контакт для помощи'
 topTitlesRu[4]='Распознавать дезинформацию' 
 topTitlesRu[5]='Контакты для сотрудничества'
@@ -205,15 +205,6 @@ langButtons.forEach((elem, ind) => {
 })
 
 //console.log(`1.btn ${document.querySelectorAll('.btn').length}`);
-
-
-
-
-
-
-
-
-
 
 
 
