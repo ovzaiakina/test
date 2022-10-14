@@ -6,7 +6,8 @@
         <meta charset="utf-8">  
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <link rel="preload" as="image" href="img/flags-1920.jpg" imagesrcset="img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w" imagesizes="(max-width: 1440px) 1440px, 1920px" media="(min-width: 901px)">    
+        <link rel="preload" as="image" href="img/flags-1440.jpg" imagesrcset="img/flags-1024.jpg 1024w, img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w" imagesizes="(max-width: 1150px) 1024px, (min-width: 1600px) 1920px, 1440px" media="(min-width: 901px)">    
+        
         <link rel="preload" as="image" href="img/flags-768.jpg" imagesrcset="img/flags-360.jpg 360w, img/flags-768.jpg 768w" imagesizes="(max-width: 500px) 360px, 768px" media="(max-width: 900px)">
         
         <link rel="preload" href="img/icon-germany.png" as="image">
@@ -39,7 +40,7 @@
        <script src="js/header-nav.js"></script>   
        <main class="main">
            <section id="el-1" class="el hero padding-bottom">
-           <div class="wrap wrap_under wrap_width">
+           <div class="wrap wrap_width">
              <script>
                 let hero = document.querySelector('.hero');
                 let buttons = document.querySelectorAll('.btn');
@@ -60,9 +61,9 @@
                     else {
                         onloadBgimg(
                             hero, 
-                            'img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w',
-                            '(max-width: 1440px) 1440px, 1920px',
-                            'img/flags-1920.jpg',
+                            'img/flags-1024.jpg 1024w, img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w',
+                            '(max-width: 1150px) 1024px, (min-width: 1600px) 1920px, 1440px',
+                            'img/flags-1440.jpg',
                             '--img'
                         );
                     }
@@ -128,13 +129,13 @@
                 
             </script>
              <div class="hero__titles">
-              <h1 class="h1 hero__h1">Ukraine &#45; Hilfe</h1>
-              <h2 class="h2 hero__h2">Achtung! Neue telefon&#45;nummer</h2> 
-              <a class="linkIcon hero__linkIcon" href="tel:0352172806700">
-                <!--<img class="icon hero__icon" src="img/icon-phone2-white.png" alt="icon phone">-->
-                03521&#45;72806&#45;700
-              </a>
-              <p class="hero__txt">Solidarität mit den Opfern des<br>verbrecherischen russischen Angriffskriegs</p> 
+                <h1 class="h1 hero__h1">Ukraine &#45; Hilfe</h1>
+                <h2 class="h2 hero__h2">Achtung! Neue telefon&#45;nummer</h2> 
+                <a class="linkIcon hero__linkIcon" href="tel:0352172806700">
+                   <!--<img class="icon hero__icon" src="img/icon-phone2-white.png" alt="icon phone">-->
+                   03521&#45;72806&#45;700
+                </a>
+                <p class="hero__txt">Solidarität mit den Opfern des<br>verbrecherischen russischen Angriffskriegs</p> 
             </div>  
             </div>
            </section>
