@@ -18,6 +18,7 @@ let borderTop = document.querySelectorAll('.borderTop')
 
 //let navANotSub = document.querySelectorAll('.nav__link:not(.submenu a)')
 let submenyFirstChild = document.querySelectorAll('.nav__link[href="#"')
+let path = '../'
 
 //console.log(navLinksSubmenu.length)
 
@@ -91,6 +92,56 @@ function setBorderColor(item1, item2) {
 }*/
 
 /*************************************************************
+  Multilang
+**************************************************************/
+let currentprotocol = window.location.protocol
+let currenthost = window.location.host
+let currentpath = window.location.pathname
+
+let btnDe = document.getElementById('de')
+let btnUk = document.getElementById('uk')
+let btnRu = document.getElementById('ru')
+
+let langBtns = document.querySelectorAll('.btn')
+
+btnDe.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/' + 'index.html') })
+btnUk.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/uk/' + 'index.html') })
+btnRu.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/ru/' + 'index.html') })
+
+let arrayAriaLabel = [
+    {lg: 'de', ariaL: {de: 'Deutsch', uk: 'Ukrainisch', ru: 'Russisch'} },
+    {lg: 'uk', ariaL: {de: 'Німецька', uk: 'Українська', ru: 'Російська'}},
+    {lg: 'ru', ariaL: {de: 'Немецкий', uk: 'Украинский', ru: 'Русский'}}
+]
+
+// в зависимости от языка страниц - изменение цвета и значений атрибутов кнопок 
+if (currentlang == "de") {
+    selectBtn(btnDe, currentlang)
+    path = 'img/'
+} 
+else if (currentlang == "uk") {
+    selectBtn(btnUk, currentlang)
+    path = '../img/'
+}
+else if (currentlang == "ru") {
+    selectBtn(btnRu, currentlang)
+    path = '../img/'
+}
+
+function selectBtn(btn, currentlg) {
+    btn.disabled = true
+    btn.style.outline = 'none'
+    btn.style.boxShadow = '0 0 0 4px' + myWhite
+//    btn.style.transform = 'translateZ(-1px) scale(.9)'
+//    btn.style.transform = 'scale(.9)'
+    /*btn.style.zIndex = '-1' */// == btn.style.cursor = 'no-drop'
+    let arr = arrayAriaLabel.filter(item => item.lg == currentlg)
+    langBtns[0].areaLabel = arr[0].ariaL.de
+    langBtns[1].areaLabel = arr[0].ariaL.uk
+    langBtns[2].areaLabel = arr[0].ariaL.ru
+}
+
+/*************************************************************
   при наведении мышкой меняем цвет иконок телефона, адреса
     важно, чтобы сначала определили адреса, а затем уже описываем img
 **************************************************************/
@@ -118,34 +169,34 @@ let linkIcons = document.querySelectorAll('.linkIcon')
 
 let iconArray = [
     {imgName: 'icon hero__icon',
-    imgSrc: 'img/icon-phone-white.png',
+    imgSrc: path + 'icon-phone-white.png',
     imgAlt: 'icon-phone',
-    imgSrcHover: 'img/icon-phone-blue.png'},
+    imgSrcHover: path + 'icon-phone-blue.png'},
     
     {imgName: 'icon',
-    imgSrc: 'img/icon-location-blue.png',
+    imgSrc: path + 'icon-location-blue.png',
     imgAlt: 'icon-location',
-    imgSrcHover: 'img/icon-location-white.png'},
+    imgSrcHover: path + 'icon-location-white.png'},
     
     {imgName: 'icon',
-    imgSrc: 'img/icon-ml-blue.png',
+    imgSrc: path + 'icon-ml-blue.png',
     imgAlt: 'icon-ml',
-    imgSrcHover: 'img/icon-ml-white.png'},
+    imgSrcHover: path + 'icon-ml-white.png'},
     
     {imgName: 'icon',
-    imgSrc: 'img/icon-phone2-blue.png',
+    imgSrc: path + 'icon-phone2-blue.png',
     imgAlt: 'icon-phone',
-    imgSrcHover: 'img/icon-phone2-white.png'},
+    imgSrcHover: path + 'icon-phone2-white.png'},
     
     {imgName: 'icon',
-    imgSrc: 'img/icon-location-blue.png',
+    imgSrc: path + 'icon-location-blue.png',
     imgAlt: 'icon-location',
-    imgSrcHover: 'img/icon-location-white.png'},
+    imgSrcHover: path + 'icon-location-white.png'},
     
     {imgName: 'icon',
-    imgSrc: 'img/icon-ml-blue.png',
+    imgSrc: path + 'icon-ml-blue.png',
     imgAlt: 'icon-ml',
-    imgSrcHover: 'img/icon-ml-white.png'}
+    imgSrcHover: path + 'icon-ml-white.png'}
 ]
 
 iconArray.forEach((elem, ind, array) => {
@@ -446,47 +497,6 @@ function closeMobMenu() {
     
 //    console.log(`2. ${document.querySelector('.lang').style.zIndex}`)
 //    document.querySelector('.lang').style.zIndex = '1'
-}
-
-/*************************************************************
-  Multilang
-**************************************************************/
-let currentprotocol = window.location.protocol
-let currenthost = window.location.host
-let currentpath = window.location.pathname
-
-let btnDe = document.getElementById('de')
-let btnUk = document.getElementById('uk')
-let btnRu = document.getElementById('ru')
-
-let langBtns = document.querySelectorAll('.btn')
-
-btnDe.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/' + 'index.html') })
-btnUk.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/uk/' + 'index.html') })
-btnRu.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/ru/' + 'index.html') })
-
-let arrayAriaLabel = [
-    {lg: 'de', ariaL: {de: 'Deutsch', uk: 'Ukrainisch', ru: 'Russisch'} },
-    {lg: 'uk', ariaL: {de: 'Німецька', uk: 'Українська', ru: 'Російська'}},
-    {lg: 'ru', ariaL: {de: 'Немецкий', uk: 'Украинский', ru: 'Русский'}}
-]
-
-// в зависимости от языка страниц - изменение цвета и значений атрибутов кнопок 
-if (currentlang == "de") selectBtn(btnDe, currentlang) 
-else if (currentlang == "uk") selectBtn(btnUk, currentlang)
-else if (currentlang == "ru") selectBtn(btnRu, currentlang)
-
-function selectBtn(btn, currentlg) {
-    btn.disabled = true
-    btn.style.outline = 'none'
-    btn.style.boxShadow = '0 0 0 4px' + myWhite
-//    btn.style.transform = 'translateZ(-1px) scale(.9)'
-//    btn.style.transform = 'scale(.9)'
-    /*btn.style.zIndex = '-1' */// == btn.style.cursor = 'no-drop'
-    let arr = arrayAriaLabel.filter(item => item.lg == currentlg)
-    langBtns[0].areaLabel = arr[0].ariaL.de
-    langBtns[1].areaLabel = arr[0].ariaL.uk
-    langBtns[2].areaLabel = arr[0].ariaL.ru
 }
 
 /*************************************************************
