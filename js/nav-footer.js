@@ -104,9 +104,9 @@ let btnRu = document.getElementById('ru')
 
 let langBtns = document.querySelectorAll('.btn')
 
-btnDe.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/' + 'index.html') })
+/*btnDe.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/' + 'index.html') })
 btnUk.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/uk/' + 'index.html') })
-btnRu.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/ru/' + 'index.html') })
+btnRu.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/ru/' + 'index.html') })*/
 
 let arrayAriaLabel = [
     {lg: 'de', ariaL: {de: 'Deutsch', uk: 'Ukrainisch', ru: 'Russisch'} },
@@ -127,6 +127,10 @@ else if (currentlang == "ru") {
     selectBtn(btnRu, currentlang)
     path = '../img/'
 }
+
+btnDe.addEventListener('click', function(){ location.assign('/' + 'index.html') })
+btnUk.addEventListener('click', function(){ location.assign('../uk/' + 'index.html') })
+btnRu.addEventListener('click', function(){ location.assign('../ru/' + 'index.html') })
 
 function selectBtn(btn, currentlg) {
     btn.disabled = true
