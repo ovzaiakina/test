@@ -110,7 +110,7 @@ btnRu.addEventListener('click', function(){ location.assign(currentprotocol + '/
 
 let arrayAriaLabel = [
     {lg: 'de', ariaL: {de: 'Deutsch', uk: 'Ukrainisch', ru: 'Russisch'}, 
-               pt: {de: 'index.html', uk: 'uk/index.html', ru: 'ru/html'} 
+               pt: {de: 'index.html', uk: 'uk/index.html', ru: 'ru/index.html'} 
     },
     {lg: 'uk', ariaL: {de: 'Німецька', uk: 'Українська', ru: 'Російська'},
                pt: {de: '../index.html', uk: 'index.html', ru: '../ru/index.html'}     
