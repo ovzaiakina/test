@@ -3,35 +3,34 @@ let navLinks = document.querySelectorAll('.nav__link')
 let navLinks1Level = document.querySelectorAll('.nav__link_1level')
 let navLinksSubmenu = document.querySelectorAll('.submenu li .nav__link')
 let topmenus = document.querySelectorAll('.topmenu')
-//let submenus = document.querySelectorAll('.submenu')
-//let submenu = document.querySelector('.submenu')
 let navLiNotSub = document.querySelectorAll('li:not(.topmenu)') 
-let bars = document.querySelectorAll('.bar') // nav-toggle
+let main = document.querySelector('.main') 
+let path = '../'
 
-let main = document.querySelector('.main')
-// выбираем id всех article, начинающегося с el
-let articles = document.querySelectorAll('*[id^="el"]')  
+let articles = document.querySelectorAll('*[id^="el"]') // выбираем id всех article, начинающегося с el
 //let articless = document.querySelectorAll('*[id^="el"]:not(:first-child)')
 
 let wraps = document.querySelectorAll('.wrap') // контент секций
 let borderTop = document.querySelectorAll('.borderTop')  
 
-//let navANotSub = document.querySelectorAll('.nav__link:not(.submenu a)')
 let submenyFirstChild = document.querySelectorAll('.nav__link[href="#"')
-let path = '../'
+//let navANotSub = document.querySelectorAll('.nav__link:not(.submenu a)')
 
 //console.log(navLinksSubmenu.length)
 
-// мобильное меню - открываем/закрываем
-//let nav = document.querySelector('.nav')
-//let navToggle = document.querySelector('.nav-toggle')
+/*************************************************************
+  Мобильное меню - открываем/закрываем
+**************************************************************/
+let bars = document.querySelectorAll('.bar') // nav-toggle
 let direc1 = 'translateX(' //меню открывается по горизонтали
 //let direc1 = 'translateY(' //меню открывается по вертикали
 let direc2 = '-300' // слева / сверху
 //let direc2 = '300' // справа / снизу
 let direc3 = '%)'
 
-// прокрутка вверх 
+/*************************************************************
+  Прокрутка вверх 
+**************************************************************/
 let alertUp = document.createElement('div')
 alertUp.className = 'alert-up'
 let arrowUp = document.createElement('a')
@@ -39,6 +38,7 @@ arrowUp.className = 'arrow arrow_up alert-up__arrow'
 arrowUp.href = '#el-1'
 alertUp.append(arrowUp)
 document.body.append(alertUp)
+alertUp.style.display = 'none' // по умолчанию alertUp не виден, далее видимость регулируется функцией при скроллинге
 
 /*************************************************************
   для tablet устанавливаем светлый borderBottom
@@ -104,23 +104,16 @@ let btnRu = document.getElementById('ru')
 
 let langBtns = document.querySelectorAll('.btn')
 
-/*btnDe.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/' + 'index.html') })
-btnUk.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/uk/' + 'index.html') })
-btnRu.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/ru/' + 'index.html') })*/
-
+// навигация по страницам по линкам <a>
 let arrayAriaLabel = [
-    {lg: 'de', ariaL: {de: 'Deutsch', uk: 'Ukrainisch', ru: 'Russisch'}, 
-               pt: {de: 'index.html', uk: 'uk/index.html', ru: 'ru/index.html'} 
+    {lg: 'de', pt: {de: 'index.html', uk: 'uk/index.html', ru: 'ru/index.html'} 
     },
-    {lg: 'uk', ariaL: {de: 'Німецька', uk: 'Українська', ru: 'Російська'},
-               pt: {de: '../index.html', uk: 'index.html', ru: '../ru/index.html'}     
+    {lg: 'uk', pt: {de: '../index.html', uk: 'index.html', ru: '../ru/index.html'}     
     },
-    {lg: 'ru', ariaL: {de: 'Немецкий', uk: 'Украинский', ru: 'Русский'},
-               pt: {de: '../index.html', uk: '../uk/index.html', ru: 'index.html'}  
+    {lg: 'ru', pt: {de: '../index.html', uk: '../uk/index.html', ru: 'index.html'}  
     }
 ]
 
-// в зависимости от языка страниц - изменение цвета и значений атрибутов кнопок 
 if (currentlang == "de") {
     selectBtn(btnDe, currentlang)
     path = 'img/'
@@ -134,37 +127,49 @@ else if (currentlang == "ru") {
     path = '../img/'
 }
 
-/*btnDe.addEventListener('click', function(){ 
-    location.assign('/' + 'index.html')                                       
-})
-btnUk.addEventListener('click', function(){ 
-    location.assign('../uk/' + 'index.html') 
-})
-btnRu.addEventListener('click', function(){ location.assign('../ru/' + 'index.html') })*/
-
-/*btnDe.addEventListener('click', function(){ location.assign('/' + 'index.html') })
-btnUk.addEventListener('click', function(){ location.assign('../uk/' + 'index.html') })
-btnRu.addEventListener('click', function(){ location.assign('../ru/' + 'index.html') })*/
-
 function selectBtn(btn, currentlg) {
-//    btn.disabled = true
-    btn.style.outline = 'none'
     btn.style.boxShadow = '0 0 0 4px' + myWhite
-
     let arr = arrayAriaLabel.filter(item => item.lg == currentlg)
-    /*langBtns[0].areaLabel = arr[0].ariaL.de
-    langBtns[1].areaLabel = arr[0].ariaL.uk
-    langBtns[2].areaLabel = arr[0].ariaL.ru*/
     langBtns[0].href = arr[0].pt.de
     langBtns[1].href = arr[0].pt.uk
     langBtns[2].href = arr[0].pt.ru
-    
-    
-    
-   /* btn.style.transform = 'translateZ(-1px) scale(.9)'
-    btn.style.transform = 'scale(.9)'*/
-    /*btn.style.zIndex = '-1' */// == btn.style.cursor = 'no-drop'
 }
+
+// навигация по страницам по их адресу в строке браузера и применяя <button>
+/*
+btnDe.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/' + 'index.html') })
+btnUk.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/uk/' + 'index.html') })
+btnRu.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/ru/' + 'index.html') }) 
+
+let arrayAriaLabel = [
+    {lg: 'de', ariaL: {de: 'Deutsch', uk: 'Ukrainisch', ru: 'Russisch'} },
+    {lg: 'uk', ariaL: {de: 'Німецька', uk: 'Українська', ru: 'Російська'}},
+    {lg: 'ru', ariaL: {de: 'Немецкий', uk: 'Украинский', ru: 'Русский'}}
+]
+
+if (currentlang == "de") {
+    selectBtn(btnDe, currentlang)
+    path = 'img/'
+} 
+else if (currentlang == "uk") {
+    selectBtn(btnUk, currentlang)
+    path = '../img/'
+}
+else if (currentlang == "ru") {
+    selectBtn(btnRu, currentlang)
+    path = '../img/'
+}
+
+function selectBtn(btn, currentlg) {
+    btn.disabled = true
+    btn.style.outline = 'none'
+    btn.style.boxShadow = '0 0 0 4px' + myWhite
+    let arr = arrayAriaLabel.filter(item => item.lg == currentlg)
+    langBtns[0].areaLabel = arr[0].ariaL.de
+    langBtns[1].areaLabel = arr[0].ariaL.uk
+    langBtns[2].areaLabel = arr[0].ariaL.ru
+}
+*/
 
 /*************************************************************
   при наведении мышкой меняем цвет иконок телефона, адреса
@@ -239,7 +244,7 @@ iconArray.forEach((elem, ind, array) => {
   Scrolling - eсли координата top секции > половины длины видимой части окна (content+padding):
     (1) автоматически закр-ся моб.меню,
     (2) подсвечиваем пункты меню при прокрутке окна,
-    (3) прокрутка вверх 
+    (3) прокрутка вверх - показывать, когда видна 2-ая страница 
     (4) при скроллинге добавляем background-color для header и для laptop меняем цвет меню на темно-синий
 **************************************************************/
 activeNav(navLinks[0]) // по умолчанию - подчеркиваем 1-ый линк меню, как активный
@@ -274,9 +279,6 @@ function showVisible() {
         
         // к header добавляем класс filter_background
         header.classList.add('filter_background')
-        
-        //        console.log(`1. ${document.querySelector('.lang').className}: ${document.querySelector('.lang').style.zIndex}`)
-//        document.querySelector('.lang').style.zIndex = '-1'
         
         // laptop - пункты меню 1-го уровня: color - blue
         Object.keys(navLinks1Level).forEach(elem => navLinks1Level[elem].classList.add('nav__link_scroll'))
@@ -582,51 +584,10 @@ function calculateHeight(elem){
     return Math.max(height1, height2)
 }
 
-
-
-    
-
-
-/*
-let arrayAriaLabel = [
-    {lg:    'de', 
-     ariaL: {de: 'Deutsch', uk: 'Ukrainisch', ru: 'Russisch'},
-     txt:   {de: 'de', uk: 'uk', ru: 'ru'}},
-    {lg:    'uk', 
-     ariaL: {de: 'Німецька', uk: 'Українська', ru: 'Російська'},
-     txt:   {de: 'нім', uk: 'укр', ru: 'рос'}},
-    {lg:    'ru', 
-     ariaL: {de: 'Немецкий', uk: 'Украинский', ru: 'Русский'},
-     txt:   {de: 'нем', uk: 'укр', ru: 'рус'}}
-]
-
-// изменение цвета и значений атрибутов кнопок в зависимости от языка страниц
-if (currentlang == "de") selectBtn(btnDe, currentlang) 
-else if (currentlang == "uk") selectBtn(btnUk, currentlang)
-else if (currentlang == "ru") selectBtn(btnRu, currentlang)
-
-function selectBtn(btn, currentlg) {
-    btn.style.color = "#FA4F05"
-    btn.style.background = '#fff'
-    btn.disabled = true
-    
-    // меняем значения атрибутов у кнопок в зависимости от языка
-    let arr = arrayAriaLabel.filter(item => item.lg == currentlg)
-    langBtns[0].areaLabel = arr[0].ariaL.de
-    langBtns[0].innerHTML = arr[0].txt.de
-    
-    langBtns[1].areaLabel = arr[0].ariaL.uk
-    langBtns[1].innerHTML = arr[0].txt.uk
-    
-    langBtns[2].areaLabel = arr[0].ariaL.ru
-    langBtns[2].innerHTML = arr[0].txt.ru
-}
-
-*/
-
 /*************************************************************
   переход по пунктам меню: 
   запрещаем переход по дефолту линка <a> и переходим по событию клик
+  scrollBy - подвинуть страницу после клика на высоту header
 **************************************************************/
 /*let currentSectionIndex = 0
 
@@ -649,6 +610,7 @@ Object.keys(navLinks).forEach(elem => {
     })
 })*/
 
+// scrollBy - подвинуть страницу после клика на высоту header
 /*
 Object.keys(navLinks).forEach(elem => {
     navLinks[elem].addEventListener('click', function(event) {
@@ -672,28 +634,6 @@ function moveMain() {
 }
 */
 
-/*for (let i = 0; i < navLinks.length; i++) {
-    navLinks[0].classList.add('active'); // определяем цветом 1-ую секцию активной
-    navLinks[i].addEventListener('click', function(event) { 
-        event.preventDefault(); 
-        currentSectionIndex = i;
-        
-        let navHref = navLinks[i].getAttribute('href');
-        let toSection = document.querySelector(navHref); 
-        
-        console.log('1.1 navHref: ' + navHref);
-        console.log('1.2 sectionId: ' + toSection); 
-        console.log('1.4 currentSectionIndex: ' + currentSectionIndex); 
-        
-        if (toSection) {
-            toSection.scrollIntoView({ behavior: 'smooth' });
-        }    
-    })
-}*/
-
-
-
-/* --------------------------------------------------------------------- */
 /*
 moveSection()
 function moveSection() {
@@ -739,6 +679,4 @@ function moveSection() {
         main.scrollBy(0, 515) 
     })
 })*/
-
-// -------------------------------------
 
