@@ -6,6 +6,10 @@
         <meta charset="utf-8">  
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
+        <link rel="preload" href="font/RedHatText-Regular.otf" as="font" type="font/otf" crossorigin="anonymous">
+        <link rel="preload" href="font/Chivo-ExtraBold.otf" as="font" type="font/otf" crossorigin="anonymous">
+        <link rel="preload" href="font/Chivo-Medium.otf" as="font" type="font/otf" crossorigin="anonymous">
+        
         <link rel="preload" as="image" href="img/flags-1440.jpg" imagesrcset="img/flags-1024.jpg 1024w, img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w" imagesizes="(max-width: 1150px) 1024px, (min-width: 1600px) 1920px, 1440px" media="(min-width: 901px)">    
         
         <link rel="preload" as="image" href="img/flags-768.jpg" imagesrcset="img/flags-360.jpg 360w, img/flags-768.jpg 768w" imagesizes="(max-width: 500px) 360px, 768px" media="(max-width: 900px)">
@@ -13,10 +17,8 @@
         <link rel="preload" href="img/icon-germany.png" as="image">
         <link rel="preload" href="img/icon-ukraine.png" as="image">
         <link rel="preload" href="img/icon-russia.png" as="image">
-       
-        <link rel="preload" href="font/RedHatText-Regular.otf" as="font" type="font/otf" crossorigin="anonymous">
-        <link rel="preload" href="font/Chivo-ExtraBold.otf" as="font" type="font/otf" crossorigin="anonymous">
-        <link rel="preload" href="font/Chivo-Medium.otf" as="font" type="font/otf" crossorigin="anonymous">
+        
+        <link rel="preload" as="image" href="img/icon-phone-white-48.png" imagesrcset="img/icon-phone-white-48.png 48w, img/icon-phone-white-64.png 64w" imagesizes="(max-width: 800px) 48px, 64px">
         
         <!--<link rel="alternate" hreflang="x-default" href="http://127.0.0.1:56225/index.html">
         <link rel="alternate" hreflang="de" href="http://127.0.0.1:56225/index.html">
@@ -24,10 +26,18 @@
         <link rel="alternate" hreflang="ru" href="http://127.0.0.1:56225/ru/index.html">-->
         
         <link href="css/style.css" rel="stylesheet">
-        <link href="css/style-header.css" rel="stylesheet">
-        <link href="css/style-max900.css" rel="stylesheet" media="(max-width: 900px)">
         <link href="css/style-min901.css" rel="stylesheet" media="(min-width: 901px)">
-        <link href="css/style-visual.css" rel="stylesheet">
+        <link href="css/style-max900.css" rel="stylesheet" media="(max-width: 900px)">
+        
+<!--        <link href="css/style2.css" rel="stylesheet">-->
+<!--        <link href="css/style2-min901.css" rel="stylesheet" media="(min-width: 901px)">-->
+<!--        <link href="css/style2-max900.css" rel="stylesheet" media="(max-width: 900px)">-->
+        
+        <noscript>
+            <link href="css/style2.css" rel="stylesheet">
+            <link href="css/style2-min901.css" rel="stylesheet" media="(min-width: 901px)">
+            <link href="css/style2-max900.css" rel="stylesheet" media="(max-width: 900px)">
+        </noscript>
         
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="HandheldFriendly" content="true">
@@ -40,7 +50,7 @@
        <script src="js/header-nav.js"></script>   
        <main class="main">
            <section id="el-1" class="el hero padding-bottom">
-           <div class="wrap wrap_width">
+             <div class="wrap wrap_width">
              <script>
                 let hero = document.querySelector('.hero');
                 let buttons = document.querySelectorAll('.btn');
@@ -129,18 +139,22 @@
                 
             </script>
              <div class="hero__titles">
-                <h1 class="h1 hero__h1">Ukraine &#45; Hilfe</h1>
-                <h2 class="h2 hero__h2">Achtung! Neue telefon&#45;nummer</h2> 
+                <h1 class="hero__h1">Ukraine &#45; Hilfe</h1>
+                <h2 class="hero__h2">Achtung! Neue telefon&#45;nummer</h2> 
+<!--                <a class="linkIcon hero__linkIcon" href="tel:0352172806700">-->
                 <a class="linkIcon hero__linkIcon" href="tel:0352172806700">
-                   <!--<img class="icon hero__icon" src="img/icon-phone2-white.png" alt="icon phone">-->
+                   <!--<img class="icon hero__icon" src="img/icon-phone-white.png" alt="icon phone">-->
+                    <img class="icon hero__icon" 
+                        srcset="img/icon-phone-white-48.png 48w, img/icon-phone-white-64.png 64w"
+                        sizes="(max-width: 800px) 48px, 64px"
+                        src="img/icon-phone-white-48.png" 
+                        alt="icon phone">
                    03521&#45;72806&#45;700
                 </a>
                 <p class="hero__txt">Solidarität mit den Opfern des<br>verbrecherischen russischen Angriffskriegs</p> 
             </div>  
             </div>
            </section>
-           <!-- Солидарность с жертвами - преступная российская агрессивная война -->
-           <!-- Солідарність із постраждалими - злочинна російсько-загарбницька війна -->
            
            <article id="el-2" class="el el_above_background">
             <div class="wrap wrap_above grid grid_1 grid_gap">
@@ -466,8 +480,37 @@
                </div>
             </div>
            </section>
-           <script src="js/nav-footer.js"></script>
         </main>   
       </div>
+<!--      <script src="js/nav-footer.js"></script>-->
+       <script>
+        asyncCSS('css/style2.css');
+        asyncCSS('css/style2-min901.css', '(min-width: 901px)');
+        asyncCSS('css/style2-max900.css', '(max-width: 900px)');
+        function asyncCSS(href, media = '') {
+            let css = document.createElement('link');
+            css.rel = 'stylesheet';
+            css.href = href;
+            css.media = media;
+            document.head.appendChild(css); 
+        }
+             
+        loadScript('js/nav-footer.js');
+        function loadScript(src) {
+            let script = document.createElement('script');
+            script.src = src;
+            document.body.append(script);
+        }
+        
+        /*loadScript('js/nav-footer-func.js'); 
+        loadScript('js/nav-footer-min901.js'); 
+        loadScript('js/nav-footer-max900.js'); 
+        mqFunctionLoadScript(mql); // mql=900px 
+        mql.addListener(mqFunctionLoadScript); 
+        function mqFunctionLoadScript(mql) {
+            if(mql.matches) { loadScript('js/nav-footer-max900.js')}
+            else {loadScript('js/nav-footer-min901.js')};
+        }*/
+      </script>
     </body>
 </html>
