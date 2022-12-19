@@ -1,14 +1,8 @@
-'use strict'      
- 
-//const pathImg = 'img/' 
+'use strict'     
+
 let mql = window.matchMedia('(max-width: 900px)') 
-let currentlang = (document.querySelector('html')).getAttribute('lang');
-
-let myWhite = '#fafafa'
-let myWhiteOpacity = 'rgba(255,255,255,.6)' 
-let myBorderActive = '3px solid' + myWhite
-let myBorder = '1px solid rgba(255,255,255,.6)'
-
+let currentlang = (document.querySelector('html')).getAttribute('lang')
+ 
 let topLinks = new Array()     
 topLinks[0]='#el-1' 
 topLinks[1]='#el-2'
@@ -85,7 +79,7 @@ function createElem(elemE, classN, innerH, hrefE, srcE, altE, srcsetE, sizesE) {
 }
 
 /*************************************************************
-  NAV
+  HEADER - NAV
 **************************************************************/
 let header = document.querySelector('.header') 
 
@@ -102,7 +96,7 @@ header.append(nav)
 let navUl = createElem('ul', 'nav__ul')
 nav.append(navUl)
 
-let menuLevel // для класса navLink: 'nav__link nav__link_anim'/'nav__link'
+let menuLevel 
 
 if (currentlang === 'de') navUl.append(...getMenu(topLinks, topTitles))
 else if (currentlang === 'uk') navUl.append(...getMenu(topLinks, topTitlesUkr))
@@ -200,7 +194,8 @@ langButtons.forEach((elem, ind) => {
     btn.className = 'btn' 
 })
 
-// навигация по страницам по их адресу в строке браузера и применяя <button>
+// навигация по страницам по их адресу в строке браузера и используя <button> 
+// !!! также добавить стили для <button> 
 /*
 langButtons.forEach((elem, ind) => {    
     let btn = document.createElement('button')
