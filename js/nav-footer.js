@@ -1,5 +1,22 @@
-let white = '#fafafa'  
-let myBorderActive = '3px solid' + white
+/*************************************************************
+  CSS - асинхронная загрузка стилей
+**************************************************************/
+/*let pathCss = setValues('css/', '../css/', '../css/')  
+
+asyncCSS(pathCss + 'style2.css')
+asyncCSS(pathCss + 'style2-min901.css', '(min-width: 901px)')
+asyncCSS(pathCss + 'style2-max900.css', '(max-width: 900px)')
+
+function asyncCSS(href, media = '') {
+    let css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = href;
+    css.media = media;
+    document.head.appendChild(css); 
+}*/
+
+// --------------------------------
+let myBorderActive = '3px solid' + white 
 let myBorder = '1px solid rgba(255,255,255,.6)'
 
 let navLi = document.querySelectorAll('nav li')    
@@ -8,8 +25,8 @@ let navLinks1Level = document.querySelectorAll('.nav__link_1level')
 let navLinksSubmenu = document.querySelectorAll('.submenu li .nav__link')
 let topmenus = document.querySelectorAll('.topmenu')
 let navLiNotSub = document.querySelectorAll('li:not(.topmenu)') 
-let main = document.querySelector('.main') 
-let path = '../'
+//let main = document.querySelector('.main') 
+//let path = '../'
 
 let articles = document.querySelectorAll('*[id^="el"]') // выбираем id всех article, начинающегося с el
 //let articless = document.querySelectorAll('*[id^="el"]:not(:first-child)')
@@ -47,110 +64,7 @@ function setBorder(item, style) {
 }
 
 /*************************************************************
-  HEADER - Multilang
-**************************************************************/
-let btnDe = document.getElementById('de')
-let btnUk = document.getElementById('uk')
-let btnRu = document.getElementById('ru')
-
-let langBtns = document.querySelectorAll('.btn')
-
-// навигация по страницам по линкам <a>
-let arrayByLang = [
-    {lg: 'de', 
-     pt: {de: 'index.html', uk: 'uk/index.html', ru: 'ru/index.html'},
-     lb: {de: 'Deutsch', uk: 'Ukrainisch', ru: 'Russisch'}
-    },
-    {lg: 'uk', 
-     pt: {de: '../index.html', uk: 'index.html', ru: '../ru/index.html'},
-     lb: {de: 'німецька', uk: 'українська', ru: 'російська'}
-    },
-    {lg: 'ru', 
-     pt: {de: '../index.html', uk: '../uk/index.html', ru: 'index.html'},
-     lb: {de: 'немецкий', uk: 'украинский', ru: 'русский'}  
-    }
-]
-
-if (currentlang == "de") {
-    selectBtn(btnDe, currentlang)
-    path = 'img/'
-} 
-else if (currentlang == "uk") {
-    selectBtn(btnUk, currentlang)
-    path = '../img/'
-}
-else if (currentlang == "ru") {
-    selectBtn(btnRu, currentlang)
-    path = '../img/'
-}
-
-function selectBtn(btn, currentlg) {
-    btn.style.boxShadow = '0 0 0 4px' + white
-    let arr = arrayByLang.filter(item => item.lg == currentlg)
-    
-    // arr[0] - потому что в массиве arr всегда одна запись для текущей страницы по условию currentlg
-    langBtns[0].href = arr[0].pt.de
-    langBtns[1].href = arr[0].pt.uk
-    langBtns[2].href = arr[0].pt.ru
-    langBtns[0].ariaLabel = arr[0].lb.de
-    langBtns[1].ariaLabel = arr[0].lb.uk
-    langBtns[2].ariaLabel = arr[0].lb.ru
-    
-//    console.log(langBtns[2].ariaLabel)
-}
-
-
-
-// навигация по страницам по их адресу в строке браузера и применяя <button>
-/*
-let currentprotocol = window.location.protocol
-let currenthost = window.location.host
-let currentpath = window.location.pathname
-
-btnDe.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/' + 'index.html') })
-btnUk.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/uk/' + 'index.html') })
-btnRu.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/ru/' + 'index.html') }) 
-
-let arrayByLang = [
-    {lg: 'de', 
-     lb: {de: 'Deutsch', uk: 'Ukrainisch', ru: 'Russisch'}
-    },
-    {lg: 'uk', 
-     lb: {de: 'німецька', uk: 'українська', ru: 'російська'}
-    },
-    {lg: 'ru', 
-     lb: {de: 'немецкий', uk: 'украинский', ru: 'русский'}  
-    }
-]
-
-if (currentlang == "de") {
-    selectBtn(btnDe, currentlang)
-    path = 'img/'
-} 
-else if (currentlang == "uk") {
-    selectBtn(btnUk, currentlang)
-    path = '../img/'
-}
-else if (currentlang == "ru") {
-    selectBtn(btnRu, currentlang)
-    path = '../img/'
-}
-
-function selectBtn(btn, currentlg) {
-    btn.disabled = true
-    btn.style.outline = 'none'
-    btn.style.boxShadow = '0 0 0 4px' + white
-    let arr = arrayByLang.filter(item => item.lg == currentlg)
-    langBtns[0].areaLabel = arr[0].ariaL.de
-    langBtns[1].areaLabel = arr[0].ariaL.uk
-    langBtns[2].areaLabel = arr[0].ariaL.ru
-}
-*/
-
-/*************************************************************
-  ICONS - HERO, EL
-  при наведении мышкой меняем цвет иконок телефона, адреса
-    важно, чтобы сначала определили адреса, а затем уже описываем img
+    !!! адреса before icons
 **************************************************************/
 let one11 = ['ukr', 'hil', 'nfo', 'ma',  'ne-', 'lwp', 'ilto:', 'fe@','ai',  '.i']
 let one22 = ['in', 'tes', 'mai', 'n.de', 'lto:', 'bun', 'isse', '-me', 'fo@']
@@ -172,14 +86,18 @@ lmArray1.forEach((elem, ind, array) => {
     lm[ind].textContent = lmArray2[ind]
 })
 
-// ---------------
+/*************************************************************
+  ICONS - HERO, EL
+  при наведении мышкой меняем цвет иконок телефона, адреса
+    важно, чтобы сначала определили адреса, а затем уже описываем img
+**************************************************************/// ---------------
 // иконка на hiro имеет два размера в зависимости от размеров экрана, поэтому при :hover выбираем соответствующую иконку - если загружена (currentSrc) иконка, у которой в конце (endsWith) имени '32.png', то и показываем соотв-щую икнку
 let herolinkIcon = document.querySelector('.linkIcon') 
 let heroIcon = document.querySelector('.hero__icon')
 //heroIcon.currentSrc.endsWith("32.png") ? console.log(heroIcon.currentSrc) : console.log(heroIcon.className)
 
-herolinkIcon.addEventListener('mouseenter', () => setMediaImg(heroIcon, '48.png', path+'icon-phone-blue-48.png', path+'icon-phone-blue-64.png'))
-herolinkIcon.addEventListener('mouseleave', () => setMediaImg(heroIcon, '48.png', path+'icon-phone-white-48.png', path+'icon-phone-white-64.png'))
+herolinkIcon.addEventListener('mouseenter', () => setMediaImg(heroIcon, '48.png', pathImg + 'icon-phone-blue-48.png', pathImg + 'icon-phone-blue-64.png'))
+herolinkIcon.addEventListener('mouseleave', () => setMediaImg(heroIcon, '48.png', pathImg + 'icon-phone-white-48.png', pathImg + 'icon-phone-white-64.png'))
 
 function setMediaImg(elem, nameEnd, srcset1, srcset2) {
     elem.currentSrc.endsWith(nameEnd) ? elem.srcset = srcset1 : elem.srcset = srcset2
@@ -217,29 +135,29 @@ let iconArray = [
     imgSrcHover: path + 'icon-phone-blue.png'},*/
     
     {imgName: 'icon',
-    imgSrc: path + 'icon-location-blue.png',
+    imgSrc: pathImg + 'icon-location-blue.png',
     imgAlt: 'icon-location',
-    imgSrcHover: path + 'icon-location-white.png'},
+    imgSrcHover: pathImg + 'icon-location-white.png'},
     
     {imgName: 'icon',
-    imgSrc: path + 'icon-ml-blue.png',
+    imgSrc: pathImg + 'icon-ml-blue.png',
     imgAlt: 'icon-ml',
-    imgSrcHover: path + 'icon-ml-white.png'},
+    imgSrcHover: pathImg + 'icon-ml-white.png'},
     
     {imgName: 'icon',
-    imgSrc: path + 'icon-phone2-blue.png',
+    imgSrc: pathImg + 'icon-phone2-blue.png',
     imgAlt: 'icon-phone',
-    imgSrcHover: path + 'icon-phone2-white.png'},
+    imgSrcHover: pathImg + 'icon-phone2-white.png'},
     
     {imgName: 'icon',
-    imgSrc: path + 'icon-location-blue.png',
+    imgSrc: pathImg + 'icon-location-blue.png',
     imgAlt: 'icon-location',
-    imgSrcHover: path + 'icon-location-white.png'}, 
+    imgSrcHover: pathImg + 'icon-location-white.png'}, 
     
     {imgName: 'icon',
-    imgSrc: path + 'icon-ml-blue.png',
+    imgSrc: pathImg + 'icon-ml-blue.png',
     imgAlt: 'icon-ml',
-    imgSrcHover: path + 'icon-ml-white.png'}
+    imgSrcHover: pathImg + 'icon-ml-white.png'}
 ]
 
 iconArray.forEach((elem, ind, array) => {
@@ -575,11 +493,16 @@ function setHeight(section, item) {
             section[elem].style.minHeight = calculateHeight(item[elem]) + 'px'
         }
         
-//        console.log(`2. ${section[elem].id}, ${item[elem].classList[1]}: ${determineHeight(item[elem])}`) 
+//        console.log(`2. ${section[elem].id}, ${item[elem].classList[1]}: ${calculateHeight(item[elem])}`)
+        
+        /*let sss = item[elem].children
+        Object.keys(sss).forEach(ch => {
+            console.log(`2. ${section[elem].id}: ${calculateHeight(item[elem])}, ${sss[ch].className}: ${calculateHeight(sss[ch])}`)
+        })*/
     })   
 }
 
-/*function determineHeight(elem) {
+/*function calculateHeight(elem) {
     return Math.max(
         elem.scrollHeight,  // content+padding - невидимая часть
         elem.offsetHeight,  // content+padding+border+scrollbar - видимая часть

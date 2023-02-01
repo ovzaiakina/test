@@ -6,19 +6,19 @@
         <meta charset="utf-8">  
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <link rel="preload" href="../font/RedHatText-Regular.otf" as="font" type="font/otf" crossorigin="anonymous">
-        <link rel="preload" href="../font/Chivo-ExtraBold.otf" as="font" type="font/otf" crossorigin="anonymous">
-        <link rel="preload" href="../font/Chivo-Medium.otf" as="font" type="font/otf" crossorigin="anonymous">
-        
         <link rel="preload" as="image" href="../img/flags-1440.jpg" imagesrcset="../img/flags-1024.jpg 1024w, ../img/flags-1440.jpg 1440w, ../img/flags-1920.jpg 1920w" imagesizes="(max-width: 1150px) 1024px, (min-width: 1600px) 1920px, 1440px" media="(min-width: 901px)">    
         
         <link rel="preload" as="image" href="../img/flags-768.jpg" imagesrcset="../img/flags-360.jpg 360w, ../img/flags-768.jpg 768w" imagesizes="(max-width: 500px) 360px, 768px" media="(max-width: 900px)">
+         
+        <link rel="preload" as="image" href="../img/icon-germany.png">
+        <link rel="preload" as="image" href="../img/icon-ukraine.png" >
+        <link rel="preload" as="image" href="../img/icon-russia.png"> 
         
-        <link rel="preload" href="../img/icon-germany.png" as="image">
-        <link rel="preload" href="../img/icon-ukraine.png" as="image">
-        <link rel="preload" href="../img/icon-russia.png" as="image">
-       
         <link rel="preload" as="image" href="../img/icon-phone-white-48.png" imagesrcset="../img/icon-phone-white-48.png 48w, ../img/icon-phone-white-64.png 64w" imagesizes="(max-width: 800px) 48px, 64px">
+        
+        <link rel="preload" as="font" href="../font/Chivo-ExtraBold.otf" type="font/otf" crossorigin="anonymous">
+        <link rel="preload" as="font" href="../font/RedHatText-Regular.otf" type="font/otf" crossorigin="anonymous">    
+        <link rel="preload" as="font" href="../font/Chivo-Medium.otf" type="font/otf" crossorigin="anonymous">
         
         <!--<link rel="alternate" hreflang="x-default" href="http://127.0.0.1:56225/index.html">
         <link rel="alternate" hreflang="de" href="http://127.0.0.1:56225/index.html">
@@ -29,10 +29,9 @@
         <link href="../css/style-min901.css" rel="stylesheet" media="(min-width: 901px)">
         <link href="../css/style-max900.css" rel="stylesheet" media="(max-width: 900px)">
         
-<!--        <link href="../css/style2.css" rel="stylesheet">-->
-<!--        <link href="../css/style2-min901.css" rel="stylesheet" media="(min-width: 901px)">-->
-<!--        <link href="../css/style2-max900.css" rel="stylesheet" media="(max-width: 900px)">-->
-        
+        <!--<link href="../css/style2.css" rel="stylesheet">
+        <link href="../css/style2-min901.css" rel="stylesheet" media="(min-width: 901px)">
+        <link href="../css/style2-max900.css" rel="stylesheet" media="(max-width: 900px)">-->
         <noscript>
             <link href="../css/style2.css" rel="stylesheet">
             <link href="../css/style2-min901.css" rel="stylesheet" media="(min-width: 901px)">
@@ -42,66 +41,76 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="HandheldFriendly" content="true">
         <title>Ukraine-hilfe</title>
-        <meta name="description" content="Ukraine-Hilfe ACHTUNG! | Neue Telefon-Nummer: 03521-72806-700">
+        <meta name="description" content="Україна - Допомога. Увага! Новий номер телефону: 03521-72806-700">
     </head>
     <body>
       <div class="wrapper">  
-       <header class="header"></header>
-       <script src="../js/header-nav.js"></script>   
+       <!--<header class="header"></header>--> 
        <main class="main">
-           <section id="el-1" class="el hero padding-bottom">
-           <div class="wrap wrap_width">
-             <script>
-                let hero = document.querySelector('.hero');
-                let buttons = document.querySelectorAll('.btn');
-                let flags = ['../img/icon-germany.png', '../img/icon-ukraine.png', '../img/icon-russia.png'];
-                
-                mqFunctionHero(mql) 
-                mql.addListener(mqFunctionHero) 
-                function mqFunctionHero(mql) { 
-                    if (mql.matches) {
-                        onloadBgimg(
-                            hero, 
-                            '../img/flags-360.jpg 360w, ../img/flags-768.jpg 768w',
-                            '(max-width: 500px) 360px, 768px',
-                            '../img/flags-768.jpg',
-                            '--img'
-                        );
-                    } 
-                    else {
-                        onloadBgimg(
-                            hero, 
-                            '../img/flags-1024.jpg 1024w, ../img/flags-1440.jpg 1440w, ../img/flags-1920.jpg 1920w',
-                            '(max-width: 1150px) 1024px, (min-width: 1600px) 1920px, 1440px',
-                            '../img/flags-1440.jpg',
-                            '--img'
-                        );
-                    }
-                } 
-                
-                Object.keys(buttons).forEach(elem => onloadBgimg(buttons[elem], '', '', flags[elem]));
-                
-                function onloadBgimg(elem, srcsetN, sizesN, srcN, elemVar) {
-                    let bgImg = document.createElement('img'); 
-                    if(srcsetN) bgImg.srcset = srcsetN;
-                    if(sizesN) bgImg.sizes = sizesN;
-                    if(srcN) bgImg.src = srcN;
+            <section id="el-1" class="el hero padding-bottom">
+             <div class="wrap wrap_width">     
+               <script>
+                let currentlang = (document.querySelector('html')).getAttribute('lang')  
+                    let mql = window.matchMedia('(max-width: 900px)');
+                    let hero = document.querySelector('.hero');
+                    let pathImg = setValues('img/', '../img/', '../img/'); 
+                    let pathCss = setValues('css/', '../css/', '../css/') 
+                    let pathJs = setValues('js/', '../js/', '../js/')   
                     
-                    bgImg.onload = function() { 
-                        let bgUrl = bgImg.currentSrc;  
-                        if(elemVar) {
-                            elem.style.setProperty(elemVar, "url("+bgUrl+") top center no-repeat");
-                        }
+                    function setValues(valueDe, valueUkr, valueRu) {
+                        let item 
+                        if (currentlang == "de") item = valueDe
+                        else if (currentlang == "uk") item = valueUkr
+                        else if (currentlang == "ru") item = valueRu
+                        return item
+                    }  
+                    
+                    mqFunctionHero(mql) 
+                    mql.addListener(mqFunctionHero) 
+                      
+                    function mqFunctionHero(mql) { 
+                        if (mql.matches) {
+                            onloadBgimg(
+                                hero, 
+                                pathImg + 'flags-360.jpg 360w,' +  pathImg +'flags-768.jpg 768w',
+                                '(max-width: 500px) 360px, 768px',
+                                pathImg + 'flags-768.jpg',
+                                '--img'
+                            );
+                        } 
                         else {
-                            elem.style.background = "url("+bgUrl+") no-repeat center";
-                            elem.style.backgroundSize = '100% 100%'
+                            onloadBgimg(
+                                hero, 
+                                pathImg + 'flags-1024.jpg 1024w,' + pathImg + 'flags-1440.jpg 1440w,' + pathImg + 'flags-1920.jpg 1920w',
+                                '(max-width: 1150px) 1024px, (min-width: 1600px) 1920px, 1440px',
+                                pathImg + 'flags-1440.jpg',
+                                '--img'
+                            );
+                        }
+                    } 
+
+                    function onloadBgimg(elem, srcsetN, sizesN, srcN, elemVar) {
+                        let bgImg = document.createElement('img'); 
+                        if(srcsetN) bgImg.srcset = srcsetN;
+                        if(sizesN) bgImg.sizes = sizesN;
+                        if(srcN) bgImg.src = srcN;
+
+                        bgImg.onload = function() { 
+                            let bgUrl = bgImg.currentSrc;  
+                            // elemVar: background: var(--img, auto); // для ::before в JS
+                            if(elemVar) {
+                                elem.style.setProperty(elemVar, "url("+bgUrl+") top center no-repeat");
+                            }
+                            else {
+                                elem.style.background = "url("+bgUrl+") no-repeat center";
+                                elem.style.backgroundSize = '100% 100%'
+                            }
                         }
                     }
-                }
-            </script>
-             <div class="hero__titles">
+            </script>     
+               <!--<div class="hero__titles">
                 <h1 class="h1 hero__h1">Ukraine &#45; Hilfe</h1>
-                <h2 class="h2 hero__h2">Увага! Новий номер телефону</h2> 
+                <h2 class="h2 hero__h2">Увага! Новий номер телефону</h2>  
                 <a class="linkIcon hero__linkIcon" href="tel:0352172806700">
                     <img class="icon hero__icon" 
                         srcset="../img/icon-phone-white-48.png 48w, ../img/icon-phone-white-64.png 64w"
@@ -110,11 +119,18 @@
                         alt="icon phone">
                     03521&#45;72806&#45;700
                 </a>
-                <p class="hero__txt">Солідарність із постраждалими<br> злочинна російсько-загарбницька війна</p> 
-            </div>  
+                <p class="hero__txt">Солідарність із постраждалими<br> злочинна російсько-загарбницька війна</p>  
+              </div> -->
             </div>
            </section>
-           <!-- Солидарность с жертвами - преступная российская агрессивная война -->
+           <script>
+                loadScript(pathJs + 'header-nav.js');
+                function loadScript(src) {
+                    let script = document.createElement('script');
+                    script.src = src;
+                    document.body.append(script);
+                }
+           </script>  
            
            <article id="el-2" class="el el_above_background">
             <div class="wrap wrap_above grid grid_1 grid_gap">
@@ -388,27 +404,24 @@
                </div>
             </div>
            </section>
-<!--           <script src="../js/nav-footer.js"></script>-->
+        
         </main>   
       </div>
-      <script>
-        asyncCSS('../css/style2.css');
-        asyncCSS('../css/style2-min901.css', '(min-width: 901px)');
-        asyncCSS('../css/style2-max900.css', '(max-width: 900px)');
-        function asyncCSS(href, media = '') {
-            let css = document.createElement('link');
-            css.rel = 'stylesheet';
-            css.href = href;
-            css.media = media;
-            document.head.appendChild(css); 
-        }
-             
-        loadScript('../js/nav-footer.js');
-        function loadScript(src) {
-            let script = document.createElement('script');
-            script.src = src;
-            document.body.append(script);
-        }
-      </script>
+        <script>  
+            asyncCSS(pathCss + 'style2.css')
+            asyncCSS(pathCss + 'style2-min901.css', '(min-width: 901px)')
+            asyncCSS(pathCss + 'style2-max900.css', '(max-width: 900px)')
+            
+            function asyncCSS(href, media = '') {
+                let css = document.createElement('link');
+                css.rel = 'stylesheet';
+                css.href = href;
+                css.media = media;
+                document.head.appendChild(css); 
+            }
+            
+            // important that nav-footer.js loaded after css here!!!, for determining the height of a section
+            loadScript(pathJs + 'nav-footer.js');
+      </script>  
     </body>
 </html>

@@ -57,6 +57,11 @@ ul {
 	display: none;
 }
 
+.img,
+.icon {
+    aspect-ratio: attr(width) / attr(height);
+} 
+
 /*************************************************************
   Wrapper > heder + main 
 **************************************************************/
@@ -135,6 +140,7 @@ ul {
 /*************************************************************
   Wrap
 **************************************************************/
+/*.wrap {border: 3px solid blue}*/
 .wrap {
     position: absolute;
     top: 50%;
@@ -153,6 +159,12 @@ ul {
 /*************************************************************
   Hero
 **************************************************************/
+/*.hero__titles {border: 3px solid blue}
+.hero__h1 {border: 3px solid white}
+.hero__h2 {border: 3px solid lightgreen}
+.hero__linkIcon {border: 3px solid lightyellow}
+.hero__txt {border: 3px solid lightblue}*/
+
 .hero::before {
     content: '';
     position: absolute;
@@ -210,7 +222,8 @@ ul {
 }*/
 
 .icon {
-    aspect-ratio: 1 / 1;  
+/*    aspect-ratio: 1 / 1;   */
+/*    aspect-ratio: attr(width) / attr(height);*/
     margin-right: 5px;
 }
 
@@ -233,7 +246,7 @@ ul {
     --white: #fafafa;  
     --white-opacity: rgba(250, 250, 250, .9); 
     --trans: .3s linear;
-}
+} 
 
 html {
     line-height: 1.30;
@@ -249,6 +262,44 @@ body {
 .icon {
     width: calc(0.9rem + 1.6vmax);
 }
+
+/*************************************************************
+  Hero
+**************************************************************/
+.hero {
+    color: var(--white);
+}
+
+.hero__h1 {
+    font-family: var(--title-font-bold);
+    font-size: calc(0.5rem + 6vmax);
+}
+
+.hero__h2 {
+    font-family: var(--title-font-medium);
+}
+
+.hero__h1, 
+.hero__h2 {
+    text-align: center;
+}
+
+.hero__h2,
+.hero__icon {
+    font-size: calc(0.1rem + 3vmax);
+}
+
+.hero__txt {
+    text-shadow: 1.5px 1.5px 2px var(--black);
+}
+
+.hero__linkIcon {
+    font-size: calc(0.1rem + 3vmax);
+    font-family: var(--title-font-medium);
+    color: var(--white);
+    transition: var(--trans);
+}
+
 
 /*************************************************************
   Nav
@@ -319,7 +370,7 @@ body {
     transition: all var(--trans); 
 }
 
-/* когда при навигации по страницам используем <button> */ 
+/* когда при навигации по страницам используем <button> */  
 /*.btn {
      сбросить стандартные стили кнопки 
     -webkit-appearance: none;
@@ -331,42 +382,6 @@ body {
     transition: all var(--trans); 
 }*/
 
-/*************************************************************
-  Hero
-**************************************************************/
-.hero {
-    color: var(--white);
-}
-
-.hero__h1 {
-    font-family: var(--title-font-bold);
-    font-size: calc(0.5rem + 6vmax);
-}
-
-.hero__h2 {
-    font-family: var(--title-font-medium);
-}
-
-.hero__h1, 
-.hero__h2 {
-    text-align: center;
-}
-
-.hero__h2,
-.hero__icon {
-    font-size: calc(0.1rem + 3vmax);
-}
-
-.hero__txt {
-    text-shadow: 1.5px 1.5px 2px var(--black);
-}
-
-.hero__linkIcon {
-    font-size: calc(0.1rem + 3vmax);
-    font-family: var(--title-font-medium);
-    color: var(--white);
-    transition: var(--trans);
-}
 
 
 
