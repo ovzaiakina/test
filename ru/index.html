@@ -124,14 +124,15 @@
 -->
              </div>    
            </section>
-           <script>
+           <!--<script>
                 loadScript(pathJs + 'header-nav.js');
                 function loadScript(src) {
                     let script = document.createElement('script');
                     script.src = src;
                     document.body.append(script);
                 }
-           </script>  
+           </script>-->  
+           <script src="../js/header-nav.js"></script> 
            
            <article id="el-2" class="el el_above_background">
             <div class="wrap wrap_above grid grid_1 grid_gap">
@@ -407,10 +408,10 @@
            
         </main>   
       </div>
-        <script>  
-            /*asyncCSS(pathCss + 'style2.css')
+        <!--<script>  
+            asyncCSS(pathCss + 'style2.css')
             asyncCSS(pathCss + 'style2-min901.css', '(min-width: 901px)')
-            asyncCSS(pathCss + 'style2-max900.css', '(max-width: 900px)')*/
+            asyncCSS(pathCss + 'style2-max900.css', '(max-width: 900px)')
             
             function asyncCSS(href, media = '') {
                 let css = document.createElement('link');
@@ -420,8 +421,9 @@
                 document.head.appendChild(css); 
             }
             
-            // important that nav-footer.js loaded after css here!!!, for determining the height of a section
+//             important that nav-footer.js loaded after css here!!!, for determining the height of a section
             loadScript(pathJs + 'nav-footer.js');
-      </script>   
+      </script>   -->
+      <script src="../js/nav-footer.js"></script> 
     </body>
 </html>
