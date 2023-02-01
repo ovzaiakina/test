@@ -164,15 +164,15 @@
                 </div> --> 
              </div> 
            </section> 
-           <script src="js/header-nav.js"></script>
-           <!--<script>
+<!--           <script src="js/header-nav.js"></script>-->
+           <script>
                 loadScript(pathJs + 'header-nav.js');
                 function loadScript(src) {
                     let script = document.createElement('script');
                     script.src = src;
                     document.body.append(script);
                 }
-           </script>-->
+           </script>
            
            <article id="el-2" class="el el_above_background">
             <div class="wrap wrap_above grid grid_1 grid_gap">
@@ -515,8 +515,8 @@
             }
             
             // important that nav-footer.js loaded after css here!!!, for determining the height of a section
-//            loadScript(pathJs + 'nav-footer.js');
+            loadScript(pathJs + 'nav-footer.js');
       </script> 
-      <script src="js/nav-footer.js"></script> 
+<!--      <script src="js/nav-footer.js"></script> -->
     </body>
 </html>
