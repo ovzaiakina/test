@@ -8,12 +8,7 @@
 /*************************************************************
   Img
 **************************************************************/
-img { 
-	display: block;
-	width: 100%;
-	max-width: 100%;
-    border-style: none;  /*Remove the border on images inside links in IE 10 */
-}
+
 
 .img {
     /* width/height - соотношение у всех img на сайте одинаковое */
