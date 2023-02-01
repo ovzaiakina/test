@@ -1,133 +1,14 @@
-'use strict'     
-
-let white = '#fafafa'
-//let pathImg = setValues('img/', '../img/', '../img/')  
-let main = document.querySelector('.main') 
-
-// -----------------------------------------------------
-function createElem(elemE, classN, innerH, hrefE, srcE, altE, srcsetE, sizesE) { 
-    let elem = document.createElement(elemE)
-    
-    if(classN) elem.className = classN 
-    if(innerH) elem.innerHTML = innerH
-    if(hrefE)  elem.href = hrefE
-    if(srcE) {
-        elem.src = srcE
-        elem.alt = altE
-    }
-    if(srcsetE) {
-        elem.srcset = srcsetE
-        elem.sizes = sizesE
-    }
-    
-    return elem
-}
-
-/*function setValues(valueDe, valueUkr, valueRu) {
-    let item 
-    if (currentlang == "de") item = valueDe
-    else if (currentlang == "uk") item = valueUkr
-    else if (currentlang == "ru") item = valueRu
-    return item
-}*/
-
-/*************************************************************
-  HERO - load async - загрузить aсинхронно иображение, 
-  картинка уже загружена, она возьмется из кэша и повторного запроса не будет
-**************************************************************/
-/* 
+'use strict'      
+ 
+//const pathImg = 'img/' 
 let mql = window.matchMedia('(max-width: 900px)') 
-let sectionHero = createElem('section', 'el hero padding-bottom')
-sectionHero.id = 'el-1'
-main.prepend(sectionHero)
-    
-mqFunctionHero(mql) 
-mql.addListener(mqFunctionHero) 
-function mqFunctionHero(mql) { 
-    if (mql.matches) {
-        onloadBgimg(
-            sectionHero, 
-            pathImg + 'flags-360.jpg 360w, ' + pathImg + 'flags-768.jpg 768w',
-            '(max-width: 500px) 360px, 768px',
-            pathImg + 'flags-768.jpg',
-            '--img'
-        )
-    } 
-    else {
-        onloadBgimg(
-            sectionHero, 
-            pathImg + 'flags-1024.jpg 1024w, ' + pathImg + 'flags-1440.jpg 1440w, ' + pathImg + 'flags-1920.jpg 1920w',
-            '(max-width: 1150px) 1024px, (min-width: 1600px) 1920px, 1440px',
-            pathImg + 'flags-1440.jpg',
-            '--img'
-        )
-    }
-} */
-                
-/*function onloadBgimg(elem, srcsetN, sizesN, srcN, elemVar) {
-    let bgImg = document.createElement('img'); 
-    if(srcsetN) bgImg.srcset = srcsetN;
-    if(sizesN) bgImg.sizes = sizesN;
-    if(srcN) bgImg.src = srcN;
+let currentlang = (document.querySelector('html')).getAttribute('lang');
 
-    bgImg.onload = function() { 
-        let bgUrl = bgImg.currentSrc;  
-        // elemVar: background: var(--img, auto); // для ::before в JS 
-        if(elemVar) {
-            elem.style.setProperty(elemVar, "url("+bgUrl+") top center no-repeat");
-        }
-        else {
-            elem.style.background = "url("+bgUrl+") no-repeat center";
-            elem.style.backgroundSize = '100% 100%'
-        }
-    }
-}*/
+let myWhite = '#fafafa'
+let myWhiteOpacity = 'rgba(255,255,255,.6)' 
+let myBorderActive = '3px solid' + myWhite
+let myBorder = '1px solid rgba(255,255,255,.6)'
 
-let sectionHero = document.querySelector('.hero') 
-let wrapHero = document.querySelector('.wrap') 
-
-let titlesHero = createElem('div', 'hero__titles')
-wrapHero.append(titlesHero)
-
-let heroTitlesArray = [ 
-    {tag: 'h1', name: 'hero__h1', txt: 'Ukraine &#45; Hilfe'},
-    {tag: 'h2', name: 'hero__h2', txt: '', href: '', img: '',
-        lang: {de: 'Achtung! Neue telefon&#45;nummer', 
-               ukr: 'Увага! Новий номер телефону', 
-               ru: 'Внимание! Новий номер телефона'}
-    },
-    {tag: 'a', name: 'linkIcon hero__linkIcon', txt: '03521&#45;72806&#45;700', href: 'tel:0352172806700',
-        img: {tag: 'img', name: 'icon hero__icon', 
-              srcset: pathImg + 'icon-phone-white-48.png 48w, ' + pathImg + 'icon-phone-white-64.png 64w',
-              sizes: '(max-width: 800px) 48px, 64px',
-              src: pathImg + 'icon-phone-white-48.png',
-              alt: 'icon phone'
-             }
-    },
-    {tag: 'p', name: 'hero__txt', txt: '', href: '', img: '',
-        lang: {de: 'Solidarität mit den Opfern des<br>verbrecherischen russischen Angriffskriegs', 
-               ukr: 'Солідарність із постраждалими<br> злочинна російсько-загарбницька війна', 
-               ru: 'Солидарность с жертвами<br> преступная российская агрессивная война'}
-    }
-]
-
-titlesHero.append(...getHeroTitlesArray(heroTitlesArray))
-
-function getHeroTitlesArray(array) {
-    let result = []
-    array.forEach(elem => {
-        let item = createElem(elem.tag, elem.name, elem.txt, elem.href)
-        if(elem.img) {
-            let img = createElem(elem.img.tag, elem.img.name, '', '', elem.img.src, elem.img.alt, elem.img.srcset, elem.img.sizes)
-            item.prepend(img)
-        }
-        if(elem.lang) item.innerHTML = setValues(elem.lang.de, elem.lang.ukr, elem.lang.ru)
-        result.push(item)
-    })
-    return result
-} 
-
-// ---------------------------------- 
 let topLinks = new Array()     
 topLinks[0]='#el-1' 
 topLinks[1]='#el-2'
@@ -184,12 +65,29 @@ subTitles1Ru[1]='Транспортная помощь'
 subTitles1Ru[2]='Жилье'   
 subTitles1Ru[3]='Забота об украинских гостях'
 
+// -----------------------------------------------------
+function createElem(elemE, classN, innerH, hrefE, srcE, altE, srcsetE, sizesE) { 
+    let elem = document.createElement(elemE)
+    
+    if(classN) elem.className = classN 
+    if(innerH) elem.innerHTML = innerH
+    if(hrefE)  elem.href = hrefE
+    if(srcE) {
+        elem.src = srcE
+        elem.alt = altE
+    }
+    if(srcsetE) {
+        elem.srcset = srcsetE
+        elem.sizes = sizesE
+    }
+    
+    return elem
+}
+
 /*************************************************************
-  HEADER - NAV
+  NAV
 **************************************************************/
-let wrapper = document.querySelector('.wrapper')
-let header = createElem('header', 'header')
-wrapper.prepend(header)
+let header = document.querySelector('.header') 
 
 let navToggle = createElem('div', 'nav-toggle') 
 header.append(navToggle)
@@ -201,14 +99,14 @@ barsToggle.forEach(elem => {
 
 let nav = createElem('nav', 'nav close')
 header.append(nav)
-//header.prepend(nav)
 let navUl = createElem('ul', 'nav__ul')
 nav.append(navUl)
 
-let menuLevel 
+let menuLevel // для класса navLink: 'nav__link nav__link_anim'/'nav__link'
 
-// устанавливаем меню на разных языках для разных страниц 
-navUl.append(...getMenu(topLinks, setValues(topTitles, topTitlesUkr, topTitlesRu)))
+if (currentlang === 'de') navUl.append(...getMenu(topLinks, topTitles))
+else if (currentlang === 'uk') navUl.append(...getMenu(topLinks, topTitlesUkr))
+else if (currentlang === 'ru') navUl.append(...getMenu(topLinks, topTitlesRu))
 
 // меню 1-го уровня
 function getMenu(arrayLinks, arrayTitles) {
@@ -228,8 +126,12 @@ function getMenu(arrayLinks, arrayTitles) {
             subUl.className = 'submenu filter_background'
             li.append(subUl)
             menuLevel = 2
-            if (i === 2) subUl.append(...getSubMenu(subLinks1, setValues(subTitles1, subTitles1Ukr, subTitles1Ru), subUl, menuLevel))
-//          else if (i === 4) subUl.append(...getSubMenu(subLinks4, subTitles4, subUl, menuLevel))
+            if (i === 2) {
+                if (currentlang === 'de') subUl.append(...getSubMenu(subLinks1, subTitles1, subUl, menuLevel))
+                else if (currentlang === 'uk') subUl.append(...getSubMenu(subLinks1, subTitles1Ukr, subUl, menuLevel))
+                else if (currentlang === 'ru') subUl.append(...getSubMenu(subLinks1, subTitles1Ru, subUl, menuLevel))
+            }
+//            else if (i === 4) subUl.append(...getSubMenu(subLinks4, subTitles4, subUl, menuLevel))
         }
         result.push(li) 
     }
@@ -284,148 +186,35 @@ function getNavLinks(arrayLinks, arrayTitles, i) {
 }
 
 /*************************************************************
-  HEADER - Multilang - buttons
+  Lang buttons
 **************************************************************/
 let langButtonsDiv = createElem('div', 'lang') 
 header.append(langButtonsDiv)
-
-// создаем языковые кнопки
 let langButtons = ['de', 'uk', 'ru']
-// навигация по страницам, используя <a>
-langButtons.forEach(elem => {
-    let btn = createElem('a', 'btn')
-    btn.id = elem
+
+// навигация по страницам по линкам <a>
+langButtons.forEach((elem, ind) => {
+    let btn = document.createElement('a')
     langButtonsDiv.append(btn)
+    btn.id = elem
+    btn.className = 'btn' 
 })
 
-// навигация по страницам, используя <button> и адрес страниц в строке браузера
-// !!! также добавить стили для <button> 
+// навигация по страницам по их адресу в строке браузера и применяя <button>
 /*
-langButtons.forEach(elem => {   
-    let btn = createElem('button', 'btn')
+langButtons.forEach((elem, ind) => {    
+    let btn = document.createElement('button')
+    langButtonsDiv.append(btn)
     btn.id = elem
+    btn.className = 'btn'
     btn.type = 'button'
-    langButtonsDiv.append(btn) 
+    
 //    btn.style.background = 'url(../img/' + flags[ind] + ') no-repeat center'
 //    btn.style.backgroundSize = '100% 100%'
 })
 */
 
-// устаналиваембэкграунд - картинку флага 
-/*let buttons = document.querySelectorAll('.btn')
-let flags = ['img/icon-germany.png', 'img/icon-ukraine.png', 'img/icon-russia.png'] 
-Object.keys(buttons).forEach(elem => onloadBgimg(buttons[elem], '', '', flags[elem]))*/
 
-
-let btnDe = document.getElementById('de')
-let btnUk = document.getElementById('uk')
-let btnRu = document.getElementById('ru')
-
-//console.log(document.getElementById('de'))
-
-// навигация по страницам по линкам <a>
-let arrayByLang = [
-    {lg: 'de', 
-     pt: {de: 'index.html', uk: 'uk/index.html', ru: 'ru/index.html'},
-     lb: {de: 'Deutsch', uk: 'Ukrainisch', ru: 'Russisch'},
-     fl: pathImg + 'icon-germany.png'
-    },
-    {lg: 'uk', 
-     pt: {de: '../index.html', uk: 'index.html', ru: '../ru/index.html'},
-     lb: {de: 'німецька', uk: 'українська', ru: 'російська'},
-     fl: pathImg + 'icon-ukraine.png'
-    },
-    {lg: 'ru', 
-     pt: {de: '../index.html', uk: '../uk/index.html', ru: 'index.html'},
-     lb: {de: 'немецкий', uk: 'украинский', ru: 'русский'},
-     fl: pathImg + 'icon-russia.png'
-    }
-]
-
-let langBtns = document.querySelectorAll('.btn')
-
-// устанавливаем параметры для кнопок в зависимости от языка
-selectBtn(setValues(btnDe, btnUk, btnRu), currentlang)
-
-Object.keys(langBtns).forEach(elem => onloadBgimg(langBtns[elem], '', '', arrayByLang[elem].fl))
-
-function selectBtn(btn, currentlg) {    
-    btn.style.boxShadow = '0 0 0 4px' + white
-    let arr = arrayByLang.filter(item => item.lg == currentlg)
-    
-    langBtns[0].href = arr[0].pt.de 
-    langBtns[1].href = arr[0].pt.uk
-    langBtns[2].href = arr[0].pt.ru
-    langBtns[0].ariaLabel = arr[0].lb.de
-    langBtns[1].ariaLabel = arr[0].lb.uk
-    langBtns[2].ariaLabel = arr[0].lb.ru
-    // arr[0] - потому что в массиве arr всегда одна запись для текущей страницы по условию currentlg
-
-//    console.log(langBtns[2].ariaLabel)
-}
-
-// навигация по страницам по их адресу в строке браузера и применяя <button>
-/*
-let currentprotocol = window.location.protocol
-let currenthost = window.location.host
-let currentpath = window.location.pathname
-
-btnDe.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/' + 'index.html') })
-btnUk.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/uk/' + 'index.html') })
-btnRu.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/ru/' + 'index.html') }) 
-
-let arrayByLang = [
-    {lg: 'de', 
-     lb: {de: 'Deutsch', uk: 'Ukrainisch', ru: 'Russisch'}
-    },
-    {lg: 'uk', 
-     lb: {de: 'німецька', uk: 'українська', ru: 'російська'}
-    },
-    {lg: 'ru', 
-     lb: {de: 'немецкий', uk: 'украинский', ru: 'русский'}  
-    }
-]
-
-if (currentlang == "de") {
-    selectBtn(btnDe, currentlang)
-    path = 'img/'
-} 
-else if (currentlang == "uk") {
-    selectBtn(btnUk, currentlang)
-    path = '../img/'
-}
-else if (currentlang == "ru") {
-    selectBtn(btnRu, currentlang)
-    path = '../img/'
-}
-
-function selectBtn(btn, currentlg) {
-    btn.disabled = true
-    btn.style.outline = 'none'
-    btn.style.boxShadow = '0 0 0 4px' + white
-    let arr = arrayByLang.filter(item => item.lg == currentlg)
-    langBtns[0].areaLabel = arr[0].ariaL.de
-    langBtns[1].areaLabel = arr[0].ariaL.uk
-    langBtns[2].areaLabel = arr[0].ariaL.ru
-}
-*/
-
-/*************************************************************
-  CSS - асинхронная загрузка стилей
-**************************************************************/
-/*let pathCss = setValues('css/', '../css/', '../css/') 
-
-asyncCSS(pathCss + 'style2.css')
-asyncCSS(pathCss + 'style2-min901.css', '(min-width: 901px)')
-asyncCSS(pathCss + 'style2-max900.css', '(max-width: 900px)')
-
-function asyncCSS(href, media = '') {
-    let css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = href;
-    css.media = media;
-    document.head.appendChild(css); 
-}*/
 
 
 
