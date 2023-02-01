@@ -1,21 +1,47 @@
+@font-face {   
+    font-family: Chivo-ExtraBold;
+    font-display: swap;
+    src: url(../font/Chivo-ExtraBold.otf);
+}
+ 
+@font-face { 
+    font-family: Chivo-Medium;
+    font-display: swap;
+    src: url(../font/Chivo-Medium.otf);
+}
+
+@font-face { 
+    font-family: RedHatText-Regular;
+    font-display: swap;
+    src: url(../font/RedHatText-Regular.otf);
+}
+
 *, 
-::before,   
+::before,  
 ::after { 
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 } 
 
+:root {   
+    --minGap: 10px; 
+    --maxGap: 15px;     
+    --widthPage: 100%;
+    --maxWidthPage: 1600px;
+    --heightPage: 100vh;
+}  
+
 html, body {
-    width: 100%; 
-    max-width: 100%;  
+    width: var(--widthPage); 
+    max-width: var(--widthPage); 
 }
 
 body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    min-height: 100vh;
+    min-height: var(--heightPage);
 }
 
 a {
@@ -27,51 +53,47 @@ ul {
     list-style-type: none; 
 }
 
-::-webkit-scrollbar {
+::-webkit-scrollbar { 
 	display: none;
 }
 
-img { 
-	display: block;
-	width: 100%;
-	max-width: 100%;
-    border-style: none;  /*Remove the border on images inside links in IE 10 */
-}
+.img,
+.icon {
+    aspect-ratio: attr(width) / attr(height);
+} 
 
 /*************************************************************
-  Wrapper > main 
+  Wrapper > heder + main 
 **************************************************************/
-/*body {background-color: lightblue}*/
-/*.wrapper {border: 5px solid blue}*/
-/*header {border: 3px solid green}*/
-/*.wrap {border: 5px solid red}*/
-/*.hero::before {border: 5px solid red}*/
-/*.hero {border: 5px solid green}*/
-/*.el:not(:last-child) {border: 3px solid blue}*/
-/*.el {border: 2px solid blue}*/
-/*.wrap_above {border: 3px solid red}*/
-/*.wrap_under {border: 3px solid blue}*/
-/*.hero__titles > * {border: 3px solid red}*/
-
-:root {   
-    --minGap: 10px; 
-    --maxGap: 15px;       
-    --maxWidthPage: 1600px;
-}  
-
 .wrapper {
     /* parallax */
     overflow: hidden;
-    width: 100%;
+    width: var(--widthPage);
     max-width: var(--maxWidthPage);
-    height: 100vh;
-    /*max-height: 1050px;*/ /* если больше, header без background при запуске сайта */
+    height: var(--heightPage);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    max-width: var(--maxWidthPage);
+    z-index: 1;
+    
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    
+    padding: var(--maxGap) var(--minGap);
 }
 
 .main {
     /* длина страницы */
-    height: 100%; 
-    width: 100%;
+    width: var(--width);
+    height: var(--heightPage);
     
     position: relative;
     overflow-x: hidden;
@@ -82,27 +104,43 @@ img {
     /* parallax */
     perspective: 1px;
     transform-style: preserve-3d;
-    /* Указывает, что дочерние элементы элемента должны располагаться в 3D-пространстве.Указывает, что дочерние элементы элемента должны располагаться в 3D-пространстве. */
+    /* Указывает, что дочерние элементы элемента должны располагаться в 3D-пространстве */
 }
 
-@media all and (min-width: 1360px) { .main {scroll-padding-top: 10%} }
-@media all and (max-width: 1359px) { .main {scroll-padding-top: 13%} }
-@media all and (max-width: 900px) { .main {scroll-padding-top: 21%} }
+/*************************************************************
+  NAV
+**************************************************************/
+.nav__link {
+    display: flex;
+    align-items: center;
+}
+
+.submenu { 
+    position: absolute;
+    top: 100%;
+    transform-origin: 0% 0%;
+    transform: rotateX(-90deg);  
+}
+
+.lang {
+    display: flex;
+    flex-wrap: nowrap;
+}
 
 /*************************************************************
   El
 **************************************************************/
 .el {
     position: relative;
-    width: 100%;
+    width: var(--width);
     max-width: var(--maxWidthPage);
-/*    min-height: 100vh;*/
     transform-style: inherit; 
 }
 
 /*************************************************************
   Wrap
 **************************************************************/
+/*.wrap {border: 3px solid blue}*/
 .wrap {
     position: absolute;
     top: 50%;
@@ -110,35 +148,30 @@ img {
     transform: translateZ(-1px) scale(2) translate(-25%, -25%);
 }
 
-/* wrap появляется над el, всегда в центре блока */  
 .wrap_above {
     transform: translate(-50%, -50%);
-    /* координата Y - чем меньше значение, тем ниже блок и не залезает на предыдущие блоки */
 }
 
 .wrap_under {
     transform: translateZ(-.3px) scale(1.3) translate(-38.5%, -39%);
-    /* translateZ, scale - увеличивает/уменьшает блок 
-       translate  - влево/вправо, поднимает/опускает блок */
 }
 
 /*************************************************************
   Hero
 **************************************************************/
-/*.hero__titles {border: 4px solid white}*/
-/*.wrap_above {border: 3px solid red}*/
-/*.wrap_under {border: 3px solid blue}*/
-/*.hero__titles > * {border: 3px solid lightgreen}*/
+/*.hero__titles {border: 3px solid blue}
+.hero__h1 {border: 3px solid white}
+.hero__h2 {border: 3px solid lightgreen}
+.hero__linkIcon {border: 3px solid lightyellow}
+.hero__txt {border: 3px solid lightblue}*/
 
 .hero::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     display: block;
-    height: 100vh;
-    
-/*     для ::before в JS */
-    background: var(--img, auto);
+    height: var(--height);
+    background: var(--img, auto); /*для ::before в JS*/
     background-size: 100% 100%;
     
     /* parallax */
@@ -146,7 +179,7 @@ img {
 }
 
 .wrap_width {
-    width: 100%;
+    width: var(--widthPage);
 }
 
 .hero__titles {
@@ -155,13 +188,11 @@ img {
     flex-direction: column;
 }
 
-@media all and (min-width: 901px) {
-    .hero__txt {
-        padding-top: 12%;
-    }
+.hero__txt {
+    text-align: right;
 }
 
-@media all and (max-width: 900px) {
+@media all and (max-width: 1000px) and (orientation: portrait) {
     .hero__txt {
         padding-top: 20%;
     }
@@ -176,10 +207,6 @@ img {
 /*************************************************************
   Icons
 **************************************************************/
-/*.linkIcon {border: 1px solid blue}*/
-/*.tel__icon {border: 1px solid blue}*/
-/*.hero__titles > * {border: 1px solid white}*/
-
 .linkIcon {
     align-self: center;
     display: inline-flex;
@@ -189,134 +216,172 @@ img {
     padding-right: 5px;
 }
 
-.hero__linkIcon {
+/*.hero__linkIcon {
     white-space: nowrap;
-    font-size: calc(0.1rem + 3vmax);
-    font-family: var(--title-font-medium);
     text-align: center;
-    color: var(--myWhite);
-    transition: var(--trans);
-    /*color: #fafafa;
-    -webkit-text-fill-color: #fafafa;*/
-}
-
-.hero__linkIcon:hover {
-    color: var(--blue);
-    background-color: var(--myWhite-opacity);
-}
-
-.el__linkIcon {
-    font-family: var(--title-font-medium);
-    font-size: calc(0.3rem + 1.2vmax);
-    color: var(--black);
-    padding-top: 5px;
-    padding-bottom: 5px;
-    color: var(--black);
-    transition: var(--trans);
-}
-
-.el__linkIcon:hover {
-    color: var(--myWhite);
-    background-color: var(--blue);
-}
+}*/
 
 .icon {
-    width: calc(0.9rem + 1.6vmax);
+/*    aspect-ratio: 1 / 1;   */
+/*    aspect-ratio: attr(width) / attr(height);*/
     margin-right: 5px;
 }
 
 .hero__icon {
-    width: calc(0.1rem + 3vmax);
+    display: block;
     margin-right: var(--maxGap);
 }
 
 /*************************************************************
-  Img
+  TYPOGRAPHY - VISUALIZATION
 **************************************************************/
-/*.boxImg {border: 2px solid green}*/
-/*.wrap > * {border: 2px solid blue}*/
-/*.content3 {border: 3px solid green}*/
-/*p {border: 1px solid red}*/
-/*figure {border: 3px solid green}*/
-/*figcaption {border: 1px solid red}*/
+:root {
+    --title-font-bold: 'Chivo-ExtraBold', 'Arial', 'Helvetica', sans-serif;
+    --title-font-medium: 'Chivo-Medium', 'Arial', 'Helvetica', sans-serif;
+    --primary-font: 'RedHatText-Regular', 'Arial', 'Helvetica', sans-serif;
+    
+    --black: #00141E;
+    --blue: #064491; 
+    --filter: rgba(6, 68, 145, .9);  
+    --white: #fafafa;  
+    --white-opacity: rgba(250, 250, 250, .9); 
+    --trans: .3s linear;
+} 
 
-.boxImg_flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+html {
+    line-height: 1.30;
+	-webkit-text-size-adjust: 100%; 
+    color: var(--black);
 }
 
-.img {
-    /* width/height - соотношение у всех img на сайте одинаковое */
-    aspect-ratio: 1.3 / 1; 
-    height: 100%; 
-    object-fit: cover;
+body {
+    font-family: var(--primary-font);
+    font-size: calc(0.5rem + .81vmax);
 }
 
-.img_maxWidth {
-    max-width: 500px;
-    max-height: 375px;
-}
-
-figure {
-    display: flex;
-    flex-direction: column;
-}
-
-figcaption {
-    padding: 5px;
-    text-align: center;
+.icon {
+    width: calc(0.9rem + 1.6vmax);
 }
 
 /*************************************************************
-  Wrap_grid
+  Hero
 **************************************************************/
+.hero {
+    color: var(--white);
+}
+
+.hero__h1 {
+    font-family: var(--title-font-bold);
+    font-size: calc(0.5rem + 6vmax);
+}
+
+.hero__h2 {
+    font-family: var(--title-font-medium);
+}
+
+.hero__h1, 
+.hero__h2 {
+    text-align: center;
+}
+
+.hero__h2,
+.hero__icon {
+    font-size: calc(0.1rem + 3vmax);
+}
+
+.hero__txt {
+    text-shadow: 1.5px 1.5px 2px var(--black);
+}
+
+.hero__linkIcon {
+    font-size: calc(0.1rem + 3vmax);
+    font-family: var(--title-font-medium);
+    color: var(--white);
+    transition: var(--trans);
+}
+
+
+/*************************************************************
+  Nav
+**************************************************************/
+.submenu,
+.nav__link {
+    transition: all var(--trans); 
+}
+
+.nav__link[href="#"] {
+    cursor: default;
+}
+
+.nav__link {
+    white-space: nowrap;
+}
+
+/*************************************************************
+  Аctive Nav/Topmenu - должен быть после всех стилей nav__link
+**************************************************************/
+.activeNav,
+.activeTopmenu {
+    cursor: no-drop;
+}
+
+/*************************************************************
+  arrow
+**************************************************************/
+:root {      
+    --arrowNavSize: calc(0.3rem + .65vmax);
+}
+
+.arrow {  
+    cursor: pointer;
+    z-index: 1;
+    transition: var(--trans);
+}
+
 /*
-el-2:   img h1 content1 content2
-el-31:  img h1 h2 content1 
-el-32:  img h2 content1       
-el-33:  img h2 content1      
-el-34:  img h2 content1        
-el-4:   img content1 content2 content3 (kontakt) 
-el-5:   img h1 content1 content2 
-el-6:   img h1 content1 
------------------------------
-el-2, el-5
-el-31
-el-32, el-34
-el-33, el-6
-el-4
-el-6
-*/
+ STYLE2.CSS
+.arrow_up {
+    transform: rotate(-45deg);
+    border-top: 3px solid var(--blue);
+    border-right: 3px solid var(--blue);
+}*/
 
-.grid {
-    display: grid;
-    grid-template-rows: auto;
+.arrow_down {
+    transform: rotate(135deg); 
+    border-top: 3px solid var(--white);
+    border-right: 3px solid var(--white);
+}
+/*.arrow_right {transform: rotate(45deg)}*/
+/*.arrow_left {transform: rotate(-135deg)}*/
+
+.nav__arrow {
+    position: absolute;
+    width: var(--arrowNavSize);
+    height: var(--arrowNavSize);
 }
 
-/* (el-2, el-5) (el-32, el-34) */
-.grid_1,
-.grid_3 {
-    width: 100%;
+/*************************************************************
+  lang
+**************************************************************/
+/* когда при навигации по страницам используем <a> */
+.btn {
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all var(--trans); 
 }
 
-/* (el-31) (el-33, el-6) (el-4)  */
-.grid_2,
-.grid_4,
-.grid_5 {
-    width: 95%;
-}
+/* когда при навигации по страницам используем <button> */  
+/*.btn {
+     сбросить стандартные стили кнопки 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;  
+    border: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all var(--trans); 
+}*/
 
-.boxImg {grid-area: img}
-.h1 {grid-area: h1}
-.h2 {grid-area: h2}
-.content1 {grid-area: content1}
-.content2 {grid-area: content2}
-.content3 {grid-area: content3}
 
-.grid_4 .content1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+
+

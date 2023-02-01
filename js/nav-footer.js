@@ -1,11 +1,32 @@
+/*************************************************************
+  CSS - асинхронная загрузка стилей
+**************************************************************/
+/*let pathCss = setValues('css/', '../css/', '../css/')  
+
+asyncCSS(pathCss + 'style2.css')
+asyncCSS(pathCss + 'style2-min901.css', '(min-width: 901px)')
+asyncCSS(pathCss + 'style2-max900.css', '(max-width: 900px)')
+
+function asyncCSS(href, media = '') {
+    let css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = href;
+    css.media = media;
+    document.head.appendChild(css); 
+}*/
+
+// --------------------------------
+let myBorderActive = '3px solid' + white 
+let myBorder = '1px solid rgba(255,255,255,.6)'
+
 let navLi = document.querySelectorAll('nav li')    
 let navLinks = document.querySelectorAll('.nav__link')
 let navLinks1Level = document.querySelectorAll('.nav__link_1level')
 let navLinksSubmenu = document.querySelectorAll('.submenu li .nav__link')
 let topmenus = document.querySelectorAll('.topmenu')
 let navLiNotSub = document.querySelectorAll('li:not(.topmenu)') 
-let main = document.querySelector('.main') 
-let path = '../'
+//let main = document.querySelector('.main') 
+//let path = '../'
 
 let articles = document.querySelectorAll('*[id^="el"]') // выбираем id всех article, начинающегося с el
 //let articless = document.querySelectorAll('*[id^="el"]:not(:first-child)')
@@ -19,161 +40,31 @@ let submenyFirstChild = document.querySelectorAll('.nav__link[href="#"')
 //console.log(navLinksSubmenu.length)
 
 /*************************************************************
-  Мобильное меню - открываем/закрываем
+  HEADER - NAV:
+    при mql=900px для всех '.nav__link'(nav__ul, .submenu) устанавливаем светлый borderBottom,
+    иначе - только для для '.nav__link' из '.submenu' светлый borderBottom 
 **************************************************************/
-let bars = document.querySelectorAll('.bar') // nav-toggle
-let direc1 = 'translateX(' //меню открывается по горизонтали
-//let direc1 = 'translateY(' //меню открывается по вертикали
-let direc2 = '-300' // слева / сверху
-//let direc2 = '300' // справа / снизу
-let direc3 = '%)'
+mqFunctionMobMenuBorder(mql) // mql=900px 
+mql.addListener(mqFunctionMobMenuBorder) 
 
-/*************************************************************
-  Прокрутка вверх 
-**************************************************************/
-let alertUp = document.createElement('div')
-alertUp.className = 'alert-up'
-let arrowUp = document.createElement('a')
-arrowUp.className = 'arrow arrow_up alert-up__arrow'
-arrowUp.href = '#el-1'
-alertUp.append(arrowUp)
-document.body.append(alertUp)
-alertUp.style.display = 'none' // по умолчанию alertUp не виден, далее видимость регулируется функцией при скроллинге
+function mqFunctionMobMenuBorder(mql) {
+    if (mql.matches) setBorder(navLinks, myBorder)
+    else {
+        setBorder(navLinks, 'none')
+        setBorder(navLinksSubmenu, myBorder)
+    }
+}
 
-/*************************************************************
-  для tablet устанавливаем светлый borderBottom
-**************************************************************/
-setBorderColor(navLinks, navLinksSubmenu)
-function setBorderColor(item1, item2) {
-    
-    mqFunctionMobMenuBorder(mql) // mql=1024px 
-    mql.addListener(mqFunctionMobMenuBorder) 
-    
-    function mqFunctionMobMenuBorder(mql) {
-        if (mql.matches) {
-            Object.keys(item1).forEach(elem =>{
-                if(elem < item1.length-1) {
-                   item1[elem].style.borderBottom = myBorder
-                }
-            })
-        } else {
-            Object.keys(item1).forEach(elem =>{
-                if(elem < item1.length-1) {
-                   item1[elem].style.borderBottom = 'none'
-                }
-            })
-            Object.keys(item2).forEach(elem =>{
-                if(elem < item2.length-1) {
-                   item2[elem].style.borderBottom = myBorder
-                }
-            })
+function setBorder(item, style) {
+    Object.keys(item).forEach(elem =>{
+        if(elem < item.length-1) {
+           item[elem].style.borderBottom = style
         }
-    }
+    })
 }
-
-/*function setBorderColor(item) {
-    mqFunctionMobMenuBorder(mql) // mql=1024px 
-    mql.addListener(mqFunctionMobMenuBorder) 
-    function mqFunctionMobMenuBorder(mql) {
-        if (mql.matches) {
-            Object.keys(item).forEach(elem =>{
-                if(elem < item.length-1) {
-                   item[elem].style.borderBottom = myBorder
-                }
-            })
-        } else {
-            Object.keys(item).forEach(elem =>{
-                if(elem < item.length-1) {
-                   item[elem].style.borderBottom = 'none'
-                }
-            })
-        }
-    }
-}*/
 
 /*************************************************************
-  Multilang
-**************************************************************/
-let currentprotocol = window.location.protocol
-let currenthost = window.location.host
-let currentpath = window.location.pathname
-
-let btnDe = document.getElementById('de')
-let btnUk = document.getElementById('uk')
-let btnRu = document.getElementById('ru')
-
-let langBtns = document.querySelectorAll('.btn')
-
-// навигация по страницам по линкам <a>
-let arrayAriaLabel = [
-    {lg: 'de', pt: {de: 'index.html', uk: 'uk/index.html', ru: 'ru/index.html'} 
-    },
-    {lg: 'uk', pt: {de: '../index.html', uk: 'index.html', ru: '../ru/index.html'}     
-    },
-    {lg: 'ru', pt: {de: '../index.html', uk: '../uk/index.html', ru: 'index.html'}  
-    }
-]
-
-if (currentlang == "de") {
-    selectBtn(btnDe, currentlang)
-    path = 'img/'
-} 
-else if (currentlang == "uk") {
-    selectBtn(btnUk, currentlang)
-    path = '../img/'
-}
-else if (currentlang == "ru") {
-    selectBtn(btnRu, currentlang)
-    path = '../img/'
-}
-
-function selectBtn(btn, currentlg) {
-    btn.style.boxShadow = '0 0 0 4px' + myWhite
-    let arr = arrayAriaLabel.filter(item => item.lg == currentlg)
-    langBtns[0].href = arr[0].pt.de
-    langBtns[1].href = arr[0].pt.uk
-    langBtns[2].href = arr[0].pt.ru
-}
-
-// навигация по страницам по их адресу в строке браузера и применяя <button>
-/*
-btnDe.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/' + 'index.html') })
-btnUk.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/uk/' + 'index.html') })
-btnRu.addEventListener('click', function(){ location.assign(currentprotocol + '//' + currenthost + '/ru/' + 'index.html') }) 
-
-let arrayAriaLabel = [
-    {lg: 'de', ariaL: {de: 'Deutsch', uk: 'Ukrainisch', ru: 'Russisch'} },
-    {lg: 'uk', ariaL: {de: 'Німецька', uk: 'Українська', ru: 'Російська'}},
-    {lg: 'ru', ariaL: {de: 'Немецкий', uk: 'Украинский', ru: 'Русский'}}
-]
-
-if (currentlang == "de") {
-    selectBtn(btnDe, currentlang)
-    path = 'img/'
-} 
-else if (currentlang == "uk") {
-    selectBtn(btnUk, currentlang)
-    path = '../img/'
-}
-else if (currentlang == "ru") {
-    selectBtn(btnRu, currentlang)
-    path = '../img/'
-}
-
-function selectBtn(btn, currentlg) {
-    btn.disabled = true
-    btn.style.outline = 'none'
-    btn.style.boxShadow = '0 0 0 4px' + myWhite
-    let arr = arrayAriaLabel.filter(item => item.lg == currentlg)
-    langBtns[0].areaLabel = arr[0].ariaL.de
-    langBtns[1].areaLabel = arr[0].ariaL.uk
-    langBtns[2].areaLabel = arr[0].ariaL.ru
-}
-*/
-
-/*************************************************************
-  при наведении мышкой меняем цвет иконок телефона, адреса
-    важно, чтобы сначала определили адреса, а затем уже описываем img
+    !!! адреса before icons
 **************************************************************/
 let one11 = ['ukr', 'hil', 'nfo', 'ma',  'ne-', 'lwp', 'ilto:', 'fe@','ai',  '.i']
 let one22 = ['in', 'tes', 'mai', 'n.de', 'lto:', 'bun', 'isse', '-me', 'fo@']
@@ -195,38 +86,78 @@ lmArray1.forEach((elem, ind, array) => {
     lm[ind].textContent = lmArray2[ind]
 })
 
-let linkIcons = document.querySelectorAll('.linkIcon')
+/*************************************************************
+  ICONS - HERO, EL
+  при наведении мышкой меняем цвет иконок телефона, адреса
+    важно, чтобы сначала определили адреса, а затем уже описываем img
+**************************************************************/// ---------------
+// иконка на hiro имеет два размера в зависимости от размеров экрана, поэтому при :hover выбираем соответствующую иконку - если загружена (currentSrc) иконка, у которой в конце (endsWith) имени '32.png', то и показываем соотв-щую икнку
+let herolinkIcon = document.querySelector('.linkIcon') 
+let heroIcon = document.querySelector('.hero__icon')
+//heroIcon.currentSrc.endsWith("32.png") ? console.log(heroIcon.currentSrc) : console.log(heroIcon.className)
+
+herolinkIcon.addEventListener('mouseenter', () => setMediaImg(heroIcon, '48.png', pathImg + 'icon-phone-blue-48.png', pathImg + 'icon-phone-blue-64.png'))
+herolinkIcon.addEventListener('mouseleave', () => setMediaImg(heroIcon, '48.png', pathImg + 'icon-phone-white-48.png', pathImg + 'icon-phone-white-64.png'))
+
+function setMediaImg(elem, nameEnd, srcset1, srcset2) {
+    elem.currentSrc.endsWith(nameEnd) ? elem.srcset = srcset1 : elem.srcset = srcset2
+//    console.log(`${elem.currentSrc}, ${elem.srcset}`)
+}
+
+/*class ElemHover {
+    handleEvent(event) {
+        switch(event.type) {
+            case 'mouseenter':
+                setMediaImg(heroIcon, '32.png', path+'icon-phone-blue-32.png', path+'icon-phone-blue.png')
+                break
+            case 'mouseleave':
+                setMediaImg(heroIcon, '32.png', path+'icon-phone-white-32.png', path+'icon-phone-white.png')
+                break
+        }
+    }
+}
+let heroIconHover = new ElemHover()
+herolinkIcon.addEventListener('mouseenter', heroIconHover)
+herolinkIcon.addEventListener('mouseleave', heroIconHover)
+*/
+
+
+// обходим 1-ую hero-icon
+let linkIcons = document.querySelectorAll('.linkIcon:not(.hero__linkIcon)') 
+// - исключаем с конкретным className OR
+//let linkIcons = document.querySelectorAll('.linkIcon:not(:nth-child(n+2))')
+//console.log(`${linkIcons.length}, ${linkIcons[0].className}`)
 
 let iconArray = [
-    {imgName: 'icon hero__icon',
+    /*{imgName: 'icon hero__icon',
     imgSrc: path + 'icon-phone-white.png',
     imgAlt: 'icon-phone',
-    imgSrcHover: path + 'icon-phone-blue.png'},
+    imgSrcHover: path + 'icon-phone-blue.png'},*/
     
     {imgName: 'icon',
-    imgSrc: path + 'icon-location-blue.png',
+    imgSrc: pathImg + 'icon-location-blue.png',
     imgAlt: 'icon-location',
-    imgSrcHover: path + 'icon-location-white.png'},
+    imgSrcHover: pathImg + 'icon-location-white.png'},
     
     {imgName: 'icon',
-    imgSrc: path + 'icon-ml-blue.png',
+    imgSrc: pathImg + 'icon-ml-blue.png',
     imgAlt: 'icon-ml',
-    imgSrcHover: path + 'icon-ml-white.png'},
+    imgSrcHover: pathImg + 'icon-ml-white.png'},
     
     {imgName: 'icon',
-    imgSrc: path + 'icon-phone2-blue.png',
+    imgSrc: pathImg + 'icon-phone2-blue.png',
     imgAlt: 'icon-phone',
-    imgSrcHover: path + 'icon-phone2-white.png'},
+    imgSrcHover: pathImg + 'icon-phone2-white.png'},
     
     {imgName: 'icon',
-    imgSrc: path + 'icon-location-blue.png',
+    imgSrc: pathImg + 'icon-location-blue.png',
     imgAlt: 'icon-location',
-    imgSrcHover: path + 'icon-location-white.png'},
+    imgSrcHover: pathImg + 'icon-location-white.png'}, 
     
     {imgName: 'icon',
-    imgSrc: path + 'icon-ml-blue.png',
+    imgSrc: pathImg + 'icon-ml-blue.png',
     imgAlt: 'icon-ml',
-    imgSrcHover: path + 'icon-ml-white.png'}
+    imgSrcHover: pathImg + 'icon-ml-white.png'}
 ]
 
 iconArray.forEach((elem, ind, array) => {
@@ -235,21 +166,22 @@ iconArray.forEach((elem, ind, array) => {
     img.src = array[ind].imgSrc
     img.alt = array[ind].imgAlt
     linkIcons[ind].prepend(img)
-    
+//    console.log(`${array[ind].imgSrc}`)
+
     linkIcons[ind].addEventListener('mouseenter', () => img.src = array[ind].imgSrcHover)
     linkIcons[ind].addEventListener('mouseleave', () => img.src = array[ind].imgSrc)
 })
 
 /*************************************************************
   Scrolling - eсли координата top секции > половины длины видимой части окна (content+padding):
-    (1) автоматически закр-ся моб.меню,
-    (2) подсвечиваем пункты меню при прокрутке окна,
-    (3) прокрутка вверх - показывать, когда видна 2-ая страница 
-    (4) при скроллинге добавляем background-color для header и для laptop меняем цвет меню на темно-синий
+    (1) HEADER - NAV: автоматически закр-ся моб.меню после выбора пункта меню,
+    (2) HEADER - NAV: подсвечиваем пункты меню при прокрутке окна,
+    (3) EL: прокрутка вверх - блок показывается, когда видна 2-ая страница 
+    (4) HEADER - NAV: добавляем background-color для header и для laptop меняем цвет меню на темно-синий
 **************************************************************/
 activeNav(navLinks[0]) // по умолчанию - подчеркиваем 1-ый линк меню, как активный
-main.addEventListener('scroll', showVisible) 
 
+main.addEventListener('scroll', showVisible) 
 function showVisible() {  
     // (1), (2), (3)
     Object.keys(articles).forEach(elem => {  
@@ -260,7 +192,7 @@ function showVisible() {
                 // <a data-brackets-id="25" class="nav__link nav__link_anim" href="#el-1">Ukraine-hilfe</a>
             
             // (1) 
-            mqFunctionCloseMobMenu(mql) // mql=max-width:1024px (header-nav.js)
+            mqFunctionCloseMobMenu(mql) // mql=max-width:900px (header-nav.js)
             mql.addListener(mqFunctionCloseMobMenu) 
             function mqFunctionCloseMobMenu(mql) {if (mql.matches) closeMobMenu()}    
             
@@ -310,6 +242,7 @@ function isVisible(elem) {
 }
 
 /*************************************************************
+  HEADER - NAV
   topmenu будет активным (жирная белая полоса), если активен хоть один пункт из submenu:
     1. передаем <a>
     2. определяем в topmenu, для его 1-го ребенка <a> - href:
@@ -329,6 +262,7 @@ function isVisible(elem) {
     также класс activeTopmenu содержит cursor: no-drop
 **************************************************************/
 let topMenuLink 
+
 function activeSubmenu(elem) {
     let parentHref = elem.parentElement.parentElement.parentElement.firstElementChild.getAttribute('href')
     
@@ -354,8 +288,6 @@ function activeNav(elem) {
     let currentlyActive = document.querySelector('.nav__link.activeNav')
     let shouldBeActive = elem
     
-//    console.log(`${elem.href}`)
-    
     if (currentlyActive) {
         currentlyActive.classList.remove('activeNav')       
         
@@ -378,7 +310,7 @@ function activeNav(elem) {
 }
 
 /*************************************************************
-  Lazyload
+  EL - Lazyload img
   нельзя применить к предыдущему scroll, так как там функция запускается без scroll, а здесь только при scroll
 **************************************************************/
 let lazyloadImages = document.querySelectorAll('.lazy')
@@ -414,6 +346,7 @@ function isVisibleImg(elem) {
 }
 
 /*************************************************************
+  HEADER - NAV
   SUBMENU открываем/закрываем - mouseenter/mouseleave - и меняем направление стрелок
 **************************************************************/
 Object.keys(topmenus).forEach((elem,index) => {
@@ -421,7 +354,7 @@ Object.keys(topmenus).forEach((elem,index) => {
         topmenus[elem].children[1].classList.remove('arrow_down')
         topmenus[elem].children[1].classList.add('arrow_up')
         topmenus[elem].children[2].classList.add('submenu-open')   
-        topmenus[elem].children[2].style.transition = 'transform .7s linear'
+        topmenus[elem].children[2].style.transition = 'transform .7s linear' 
         
         mqFunctionMouseenter(mql) // mql=max-width:1024px (header-nav.js)
         mql.addListener(mqFunctionMouseenter) 
@@ -467,8 +400,16 @@ Object.keys(topmenus).forEach((elem,index) => {
 })
 
 /*************************************************************
-  Мобильное меню 
+  HEADER - NAV
+  Мобильное меню - открываем/закрываем
 **************************************************************/
+let bars = document.querySelectorAll('.bar') // nav-toggle
+let direc1 = 'translateX(' //меню открывается по горизонтали
+//let direc1 = 'translateY(' //меню открывается по вертикали
+let direc2 = '-300' // слева / сверху
+//let direc2 = '300' // справа / снизу
+let direc3 = '%)'
+
 // анимация 
 mqFunctionMobMenu(mql) // mql=max-width:1024px (header-nav.js)
 mql.addListener(mqFunctionMobMenu) 
@@ -552,11 +493,16 @@ function setHeight(section, item) {
             section[elem].style.minHeight = calculateHeight(item[elem]) + 'px'
         }
         
-//        console.log(`2. ${section[elem].id}, ${item[elem].classList[1]}: ${determineHeight(item[elem])}`) 
+//        console.log(`2. ${section[elem].id}, ${item[elem].classList[1]}: ${calculateHeight(item[elem])}`)
+        
+        /*let sss = item[elem].children
+        Object.keys(sss).forEach(ch => {
+            console.log(`2. ${section[elem].id}: ${calculateHeight(item[elem])}, ${sss[ch].className}: ${calculateHeight(sss[ch])}`)
+        })*/
     })   
 }
 
-/*function determineHeight(elem) {
+/*function calculateHeight(elem) {
     return Math.max(
         elem.scrollHeight,  // content+padding - невидимая часть
         elem.offsetHeight,  // content+padding+border+scrollbar - видимая часть
@@ -583,6 +529,18 @@ function calculateHeight(elem){
     
     return Math.max(height1, height2)
 }
+
+/*************************************************************
+  Прокрутка вверх 
+**************************************************************/
+let alertUp = document.createElement('div')
+alertUp.className = 'alert-up'
+let arrowUp = document.createElement('a')
+arrowUp.className = 'arrow arrow_up alert-up__arrow'
+arrowUp.href = '#el-1'
+alertUp.append(arrowUp)
+document.body.append(alertUp)
+alertUp.style.display = 'none' // по умолчанию alertUp не виден, далее видимость регулируется функцией при скроллинге
 
 /*************************************************************
   переход по пунктам меню: 

@@ -1,0 +1,116 @@
+/*************************************************************
+  NAV
+**************************************************************/
+.submenu-open { 
+    position: static;
+}
+
+/* меню открывается */
+.nav.open li {
+    opacity: 1;
+}
+
+.nav.open li:nth-child(1) {
+     transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.1s, opacity 0.5s linear 0.1s;
+}
+.nav.open li:nth-child(2) {
+    transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s, opacity 0.5s linear 0.2s;
+}
+.nav.open li:nth-child(3) {
+    transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s, opacity 0.5s linear 0.3s;
+}
+.nav.open li:nth-child(4) {
+    transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s, opacity 0.5s linear 0.4s;
+}
+.nav.open li:nth-child(5) {
+    transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s, opacity 0.5s linear 0.5s;
+}
+.nav.open li:nth-child(6) {
+    transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.6s, opacity 0.5s linear 0.6s;
+}
+
+/*************************************************************
+  nav-toggle
+**************************************************************/
+.bar2_open {
+    width: 100%;
+    transform: rotate(45deg);
+}
+
+.bar3_open {
+    width: 100%;
+    transform: rotate(-45deg);
+}
+
+.bar1_open,
+.bar4_open,
+.bar5_open {
+    background-color: transparent;
+}
+
+/*************************************************************
+  EL
+**************************************************************/
+.grid_gap {
+    grid-gap: var(--minGap);
+    padding: var(--minGap);
+}
+
+/* (el-2, el-5) */
+.grid_1 {
+    grid-template-columns: 99%;;
+    grid-template-areas: "h1"
+                         "content1"
+                         "img"
+                         "content2"; 
+}
+
+/* el-31 */
+.grid_2 { 
+    grid-template-columns: minmax(150px, auto) auto;
+    grid-template-areas: "h1       h1"
+                         "img      h2"
+                         "content1 content1";
+}
+
+/* (el-32, el-34) */
+#el-34 .grid_3 {
+    grid-template-columns: auto minmax(150px, auto);
+    grid-template-areas: "h2  img"
+                         "content1 content1";
+}
+#el-32 .grid_3 {
+    grid-template-columns: minmax(150px, auto) auto;
+    grid-template-areas: "h2 img"
+                         "content1 content1";
+}
+
+/* (el-33, el-6) */
+#el-33 .grid_4 {
+    grid-template-columns: minmax(150px, auto) auto;
+    grid-template-areas: "img h2"
+                         "content1 content1";
+}
+#el-6 .grid_4 {
+    grid-template-columns: 99%;
+    grid-template-areas: "h1"
+                         "img"
+                         "content1";
+}
+
+/* el-4 */
+.grid_5 {
+    grid-template-columns: 48.8% 48.8%;
+    grid-template-areas: "content1 content1"
+                         "content2 content2"
+                         "content3 content3"
+                         "img      img";
+}
+
+.grid_2 .h2,
+.grid_3 .h2,
+.grid_4 .h2,
+.grid_4 .h1 {
+    margin: auto;
+}
+
