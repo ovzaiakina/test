@@ -148,7 +148,7 @@ figcaption {
 .btn:active {
     outline: none;
     box-shadow: 0 0 0 4px var(--white);
-    transform: translateZ(-1px) scale(.9);
+/*    transform: translateZ(1px) scale(.9);*/
 }
 /* .btn:focus: только после hover, получение фокуса при использовании клавиатуры - клавиша ТAB */
 

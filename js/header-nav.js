@@ -1,8 +1,6 @@
-'use strict'     
-
-let white = '#fafafa'
-//let pathImg = setValues('img/', '../img/', '../img/')  
+'use strict'      
 let main = document.querySelector('.main') 
+let white = '#fafafa'
 
 // -----------------------------------------------------
 function createElem(elemE, classN, innerH, hrefE, srcE, altE, srcsetE, sizesE) { 
@@ -351,7 +349,7 @@ Object.keys(langBtns).forEach(elem => onloadBgimg(langBtns[elem], '', '', arrayB
 
 function selectBtn(btn, currentlg) {    
     btn.style.boxShadow = '0 0 0 4px' + white
-    let arr = arrayByLang.filter(item => item.lg == currentlg)
+    let arr = arrayByLang.filter(item => item.lg == currentlg) 
     
     langBtns[0].href = arr[0].pt.de 
     langBtns[1].href = arr[0].pt.uk

@@ -502,7 +502,7 @@ function setHeight(section, item) {
     })   
 }
 
-/*function calculateHeight(elem) {
+/*function calculateHeight(elem) { 
     return Math.max(
         elem.scrollHeight,  // content+padding - невидимая часть
         elem.offsetHeight,  // content+padding+border+scrollbar - видимая часть
