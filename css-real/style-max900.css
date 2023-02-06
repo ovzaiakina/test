@@ -1,0 +1,165 @@
+html {font-size: 24px} 
+
+/*************************************************************
+  Button - lang
+**************************************************************/
+.btn {   
+    min-width: 55px; 
+    min-height: 55px;
+}
+
+.btn:not(:last-child) {
+    margin-right: 10px; 
+}
+
+/*************************************************************
+  NAV
+**************************************************************/
+.nav { 
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    padding-right: 0;
+}
+
+.nav ul {
+    display: block;
+}
+
+.nav__link {
+    justify-content: center;
+    padding: 24px;
+    color: var(--white);
+}
+
+.nav__link_1level {
+    background-color: var(--blue);
+}
+
+.submenu .nav__link {
+    justify-content: flex-end;
+}
+
+.nav__arrow {
+    top: 40%;
+    left: 90%;
+}
+ 
+.nav.close {
+    pointer-events: none;  /* меню в потоке и маркер для ссылок срабатывает */
+}
+
+/* меню закрывается */
+.nav.close li {
+    opacity: 0;
+}
+
+.nav.close li:nth-child(6) {
+    transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.25s, opacity 0.3s linear 0.25s;
+}
+.nav.close li:nth-child(5) {
+    transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.3s, opacity 0.3s linear 0.3s;
+}
+.nav.close li:nth-child(4) {
+    transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.35s, opacity 0.3s linear 0.35s;
+}
+.nav.close li:nth-child(3) {
+    transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.4s, opacity 0.3s linear 0.4s;
+}
+.nav.close li:nth-child(2) {
+    transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.45s, opacity 0.3s linear 0.45s;
+}
+.nav.close li:nth-child(1) {
+    transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.5s, opacity 0.3s linear 0.5s;
+} 
+
+/*************************************************************
+  nav-toggle
+**************************************************************/
+:root {      
+    /* полоски */
+    --toggleWidth: 15vw; --toggleHeight: 9vw;
+/*    --toggleWidth: 22vw; --toggleHeight: 14vw;*/
+    
+    /* крестик */
+/*    --toggleWidth: 20vw; --toggleHeight: 20vw;*/
+    
+    /* для полосок - средняя полоса, для крестика - перемещаем вниз, вверх*/
+    --toggleGap: calc(var(--toggleHeight)/2 - var(--barHeight)/2); 
+    --barHeight: 4px; /* толщина полосок */
+}
+
+/*
+bar1 - полоска 1
+bar2 - крестик: полоска левая
+bar3 - крестик: полоска правая
+bar4 - полоска 2
+bar5 - полоска 3
+*/
+
+.nav-toggle {
+    position: relative;
+    width: var(--toggleWidth);
+    height: var(--toggleHeight);
+/*    margin: var(--maxGap) auto;*/
+    z-index: 2;
+    cursor: pointer;
+    
+    /* крестик */
+    /*background-color: var(--blue);
+    border-radius: 50%;*/
+}
+
+.bar {
+    position: absolute; 
+    display: block;
+    width: 100%;  
+    height: var(--barHeight);
+    background-color: var(--white);
+    transition: all 0.4s ease-in-out, transform 0.4s ease-in-out 0.4s;
+}
+
+.bar2,
+.bar3,
+.bar4 {
+    top: var(--toggleGap); 
+}
+
+.bar2,
+.bar3 {
+    width: 1px;
+}
+
+.bar2 {
+    transform: rotate(90deg);
+}
+
+.bar5 {
+    bottom: 0px;
+}
+
+/*************************************************************
+  Main
+**************************************************************/
+.main {scroll-padding-top: 21%}
+
+.el:not(:last-child) {
+    /* чтобы блоки не наезжали друг на друга */
+    margin-bottom: 20%; 
+}
+
+.padding-bottom,
+.padding-bottom_tablet {
+    padding-bottom: var(--minGap);
+}
+
+.hero__titles {
+    padding-right: var(--minGap);
+    padding-left: var(--minGap);
+}
+
+.hero__txt {
+    font-size: calc(0.21rem + 2.5vmax);
+}
+

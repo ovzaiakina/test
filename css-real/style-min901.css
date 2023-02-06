@@ -1,0 +1,88 @@
+:root {
+    --light-gray: #cdd7e5; 
+}
+
+html {font-size: 16px}
+
+/*************************************************************
+  Button - lang
+**************************************************************/
+.btn {  
+    min-width: 50px; 
+    min-height: 50px;
+}
+
+.btn:not(:last-child) {
+    margin-right: 7px; 
+}
+
+/*************************************************************
+  NAV
+**************************************************************/
+@media all and (min-width: 1601px) {
+    .header {  
+        /*центрирвание по горизонтали*/ 
+        left: 50%;
+        margin-left: calc(var(--maxWidthPage)/2*(-1));
+    }
+}
+
+.nav-toggle {  
+    display: none; 
+}
+
+.nav__ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav__link { 
+    justify-content: flex-start;
+    padding: var(--minGap);
+/*    color: var(--light-gray);*/
+    color: #fff;
+}   
+
+.topmenu { 
+    position: relative; /* submenu, nav__arrow*/
+}
+
+/* стрелку сдвинуть вправо - submenu */
+.nav__link_paddingRight {
+    padding-right: 32px;
+}
+
+.nav__arrow { 
+    top: 30%;
+    margin-right: 11px;
+}
+
+@media all and (min-width: 901px) {.nav__arrow {right: 1%}}
+@media all and (min-width: 1350px) {.nav__arrow {right: -1%}}
+@media all and (min-width: 1750px) {.nav__arrow {right: -2%}}
+
+/*************************************************************
+  Hero, El
+**************************************************************/
+.hero__txt {
+    padding-top: 12%;
+}
+
+@media all and (min-width: 1360px) { .main {scroll-padding-top: 10%} }
+@media all and (max-width: 1359px) { .main {scroll-padding-top: 13%} }
+
+.padding-bottom {
+    padding-bottom: var(--maxGap);
+} 
+
+.hero__txt {
+    padding-right: calc(2 * var(--maxGap));
+    font-size: calc(0.2rem + 2.5vmax);
+}
+
+.el:not(:last-child) {
+    /* чтобы блоки не наезжали друг на друга */
+    margin-bottom: 6%; 
+}
+

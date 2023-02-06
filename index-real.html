@@ -1,0 +1,426 @@
+<!DOCTYPE html>    
+<html lang="de">  
+    <head>
+        <link rel="shortcut icon" type="image/ico" href="img/favicon.ico">
+    
+        <meta charset="utf-8">  
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="preload" as="image" href="img/flags-1440.jpg" imagesrcset="img/flags-1024.jpg 1024w, img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w" imagesizes="(max-width: 1150px) 1024px, (min-width: 1600px) 1920px, 1440px" media="(min-width: 901px)">    
+        
+        <link rel="preload" as="image" href="img/flags-768.jpg" imagesrcset="img/flags-360.jpg 360w, img/flags-768.jpg 768w" imagesizes="(max-width: 500px) 360px, 768px" media="(max-width: 900px)">
+         
+        <link rel="preload" as="image" href="img/icon-germany.png">
+        <link rel="preload" as="image" href="img/icon-ukraine.png" >
+        <link rel="preload" as="image" href="img/icon-russia.png"> 
+        
+        <link rel="preload" as="image" href="img/icon-phone-white-48.png" imagesrcset="img/icon-phone-white-48.png 48w, img/icon-phone-white-64.png 64w" imagesizes="(max-width: 800px) 48px, 64px">
+        
+        <link rel="preload" as="font" href="font/Chivo-ExtraBold.otf" type="font/otf" crossorigin="anonymous">
+        <link rel="preload" as="font" href="font/RedHatText-Regular.otf" type="font/otf" crossorigin="anonymous">    
+        <link rel="preload" as="font" href="font/Chivo-Medium.otf" type="font/otf" crossorigin="anonymous">
+        
+        <!--<link rel="alternate" hreflang="x-default" href="https://ukrainehilfe-meissen.info/index.html">
+        <link rel="alternate" hreflang="de" href="https://ukrainehilfe-meissen.info/index.html">
+        <link rel="alternate" hreflang="uk" href="https://ukrainehilfe-meissen.info/uk/index.html">
+        <link rel="alternate" hreflang="ru" href="https://ukrainehilfe-meissen.info/ru/index.html">-->
+        <link rel="alternate" hreflang="x-default" href="http://127.0.0.1:63080/index.html">
+        <link rel="alternate" hreflang="de" href="http://127.0.0.1:63080/index.html">
+        <link rel="alternate" hreflang="uk" href="http://127.0.0.1:63080/uk/index.html">
+        <link rel="alternate" hreflang="ru" href="http://127.0.0.1:63080/ru/index.html">
+        
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/style-min901.css" rel="stylesheet" media="(min-width: 901px)">
+        <link href="css/style-max900.css" rel="stylesheet" media="(max-width: 900px)">
+        <!--<link href="css-real/style.css" rel="stylesheet">
+        <link href="css-real/style-min901.css" rel="stylesheet" media="(min-width: 901px)">
+        <link href="css-real/style-max900.css" rel="stylesheet" media="(max-width: 900px)">-->
+        
+        <noscript>
+            <link href="css/style2.css" rel="stylesheet">
+            <link href="css/style2-min901.css" rel="stylesheet" media="(min-width: 901px)">
+            <link href="css/style2-max900.css" rel="stylesheet" media="(max-width: 900px)">
+            <!--<link href="css-real/style2.css" rel="stylesheet">
+            <link href="css-real/style2-min901.css" rel="stylesheet" media="(min-width: 901px)">
+            <link href="css-real/style2-max900.css" rel="stylesheet" media="(max-width: 900px)">-->
+        </noscript>
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <title>Ukraine-hilfe</title>
+        <meta name="description" content="Ukraine-Hilfe ACHTUNG! | Neue Telefonnummer: 03521-72806-700">
+    </head>
+    <body>
+      <div class="wrapper">  
+       <!--<header class="header"></header>-->   
+       <main class="main">
+           <section id="el-1" class="el hero padding-bottom">   
+             <div class="wrap wrap_width">
+                  <script>
+                    let currentlang = (document.querySelector('html')).getAttribute('lang');  
+                    let mql = window.matchMedia('(max-width: 900px)');
+                    let hero = document.querySelector('.hero');
+                      
+                    let pathImg = setValues('img/', '../img/', '../img/'); 
+                      
+                    let pathCss = setValues('css/', '../css/', '../css/'); 
+                    /*let pathCss = setValues('css-real/', '../css-real/', '../css-real/');*/
+                      
+                    let pathJs = setValues('js/', '../js/', '../js/');  
+                    /*let pathJs = setValues('js-real/', '../js-real/', '../js-real/');*/
+                    
+                    function setValues(valueDe, valueUkr, valueRu) {
+                        let item; 
+                        if (currentlang == "de") {item = valueDe;}
+                        else if (currentlang == "uk") {item = valueUkr;}
+                        else if (currentlang == "ru") {item = valueRu;}
+                        return item;
+                    }  
+                    
+                    mqFunctionHero(mql); 
+                    mql.addListener(mqFunctionHero); 
+                      
+                    function mqFunctionHero(mql) { 
+                        if (mql.matches) {
+                            onloadBgimg(
+                                hero, 
+                                pathImg + 'flags-360.jpg 360w,' +  pathImg +'flags-768.jpg 768w',
+                                '(max-width: 500px) 360px, 768px',
+                                pathImg + 'flags-768.jpg',
+                                '--img'
+                            );
+                        } 
+                        else {
+                            onloadBgimg(
+                                hero, 
+                                pathImg + 'flags-1024.jpg 1024w,' + pathImg + 'flags-1440.jpg 1440w,' + pathImg + 'flags-1920.jpg 1920w',
+                                '(max-width: 1150px) 1024px, (min-width: 1600px) 1920px, 1440px',
+                                pathImg + 'flags-1440.jpg',
+                                '--img'
+                            );
+                        }
+                    } 
+
+                    function onloadBgimg(elem, srcsetN, sizesN, srcN, elemVar) {
+                        let bgImg = document.createElement('img'); 
+                        if(srcsetN) bgImg.srcset = srcsetN;
+                        if(sizesN) bgImg.sizes = sizesN;
+                        if(srcN) bgImg.src = srcN;
+
+                        bgImg.onload = function() { 
+                            let bgUrl = bgImg.currentSrc;  
+                            /*elemVar: background: var(--img, auto); для ::before в JS*/
+                            if(elemVar) {
+                                elem.style.setProperty(elemVar, "url("+bgUrl+") top center no-repeat");
+                            }
+                            else {
+                                elem.style.background = "url("+bgUrl+") no-repeat center";
+                                elem.style.backgroundSize = '100% 100%';
+                            }
+                        }
+                    }
+                      
+                    loadScript(pathJs + 'header-nav.js');
+                    function loadScript(src) {
+                        let script = document.createElement('script');
+                        script.src = src;
+                        document.body.append(script);
+                    }
+                </script> 
+             </div> 
+           </section> 
+           <article id="el-2" class="el el_above_background">
+            <div class="wrap wrap_above grid grid_1 grid_gap">
+                <div class="boxImg">
+                    <img class="img lazy" 
+                             data-srcset="img/ukraine-jetzt-510.jpg 510w,
+                                          img/ukraine-jetzt-755.jpg 755w,
+                                          img/ukraine-jetzt-762.jpg 762w,
+                                          img/ukraine-jetzt-861.jpg 861w"
+                             sizes="(max-width: 600px) 564px,
+                                    (max-width: 900px) 861px, 
+                                    (min-width: 1200px) 755px,
+                                    510px"
+                             data-src="img/ukraine-jetzt-861.jpg" 
+                             width="861" height="645"
+                             alt="Aris Messinis, Agence France-Presse, Alles verloren. Yevghen Zbormyrsky wischte sich am Freitag seine Tränen weg, als sein ausgebombtes Haus in Irpen bei Kiew hinter ihm in Flammen aufging."
+                             title="Aris_Messinis_Agence_France_Presse_Tout_perdre_Yevghen_Zbormyrsky_000_324G24Q-web">  
+                </div>
+                <h1 class="h1 el__h">Ukraine jetzt</h1>
+                <div class="content1 hyphenate">
+                      <p class="padding-bottom">Anfang 2022 hatte das russische Regime entlang der ukrainischen Grenze in Weißrußland und Rußland enorme Truppenmengen konzentriert. Bis zum  23. Februar 2022 tischten sowohl der russische Machthaber Putin als auch sein Außenminister Lawrow der Weltöffentlichkeit die Lüge auf, es handele sich lediglich um Truppenübungen. </p>
+                      <p>Februar 2022 fielen russische Truppen dann ohne Vorwarnung in der Ukraine ein. Der Versuch, im Handstreich die Hauptstadt Kiew zu besetzen, scheiterte jedoch am erbitterten Widerstand der Ukrainer und dem Unvermögen des russischen Militärs. Aktuell konzentrieren sich die militärischen Aktivitäten der russischen Invasoren darauf, Territorium der Ukraine im Osten und Westen zu erobern und unter Kontrolle zu bringen.</p>
+                </div>
+                <div class="content2 hyphenate">
+                      <h2 class="h3 el__h">Die russische Kriegsführung ist gekennzeichnet durch:</h2>
+                      <ul class="list padding-bottom">
+                          <li>den massiven Beschuß ukrainischer Städte,</li>
+                          <li>die gezielte Vernichtung von Leben der Zivilbevölkerung,</li>
+                          <li>gezielte Angriffe auf Schulen, Krankenhäuser, Infrastruktur  und Kultureinrichtungen,</li>
+                          <li>den feigen Einsatz von Fernwaffen gegen zivile Einrichtungen und Wohngebiete in der gesamten Ukraine,</li>
+                          <li>schwere Kriegsverbrechen, Mißhandlung von Zivilbevölkerung und Kriegsgefangenen und Plünderungen in den besetzten Gebieten.</li>
+                      </ul> 
+                      <p>Politisch und wirtschaftlich spüren wir in Deutschland ebenfalls die Auswirkungen der russischen Gewalt in der Ukraine. Die Menschen in dem angegriffen Land sind dagegen mit dem Tode bedroht. Nach dem Überfall der russischen Truppen brennt die Ukraine. Menschen werden umgebracht, verletzt und in die Flucht getrieben, alte Städte fallen in Schutt und Asche. Das können wir nicht ändern, aber wir können den Menschen in und aus der Ukraine helfen. Viele Menschen, besonders Frauen und Kinder sind vor dem Krieg geflüchtet. In der Stadt Meißen sind derzeit ca. 500 Ukrainerinnen und Ukrainer, meist Frauen und Kinder zu Gast. Lassen Sie uns gemeinsam zeigen, wie stark und solidarisch unsere deutsche Zivilgesellschaft trotz der Auswirkungen des russischen Großmachtstrebens ist. Unterstützen Sie die &laquo;Ukraine-Hilfe&raquo;!</p> 
+              </div> 
+            </div> 
+           </article>
+           
+           <section id="el-31" class="el">  
+            <div class="wrap wrap_under wrap_under_background grid grid_2 grid_gap">
+                <div class="boxImg boxImg_flex">
+                    <img class="img lazy" 
+                             data-srcset="img/ukraine-hilfe-262.jpg 262w,
+                                          img/ukraine-hilfe-405.jpg 405w,
+                                          img/ukraine-hilfe-715.jpg 715w"
+                             sizes="(max-width: 600px) 262px,
+                                    (min-width: 901px) 715px,
+                                    405px"
+                             data-src="img/ukraine-hilfe-715.jpg" 
+                             width="715" height="537"
+                             alt="ukraine-hilfe"
+                             title="ukraine-hilfe">
+                </div> 
+                <h1 class="h1 el__h">So können Sie helfen</h1>
+                <h2 class="h2 el__h">Etwas abgeben</h2>
+                <div class="content1 hyphenate">
+                    <p class="padding-bottom">Ukrainische Gäste brauchen eine Wohnung und eine Grundausstattung dafür. Wenn Sie eine Wohnung vermieten wollen oder Einrichtungsgegenstände bereitstellen können, melden Sie sich bei uns! Geldspenden ermöglichen es, auch Hilfsgüter in die Ukraine zu bringen.</p>
+                    <h3 class="h3 el__h">Helfen Sie:</h3>
+                    <dl class="list">
+                      <dt>durch Bereitstellung von Mietwohnungen:</dt>
+                        <dd>auch 1- und 2-Zimmerwohnungen sind willkommen,</dd>
+                        <dd>die Miete wird im Rahmen der Bestimmungen vom Jobcenter zugewendet,</dd>
+                        <dd>der Verein kümmert sich um die Grundausstattung,</dd>
+                      <dt>indem Sie Einrichtungsgegenstände für Wohnungen anbieten (Möbel, Küchengeräte, Geschirr ...),</dt>
+                      <dt>durch eine Geldspende.</dt>
+                    </dl>
+                 </div>
+            </div>
+           </section>
+                   
+           <section id="el-32" class="el el_above_background">
+            <div class="wrap wrap_above grid grid_3 grid_gap">
+               <div class="boxImg boxImg_flex">
+                    <img class="img img_maxWidth lazy" 
+                             data-srcset="img/piktogramm-transport-247.jpg 247w,
+                                          img/piktogramm-transport-387.jpg 387w,
+                                          img/piktogramm-transport-500.jpg 500w"
+                             sizes="(max-width: 600px) 247px,
+                                    (min-width: 901px) 500px,
+                                    387px"
+                             data-src="img/piktogramm-transport-500.jpg" 
+                             width="500" height="375"
+                             alt="piktogramm-transport"
+                             title="piktogramm-transport"> 
+               </div>
+               <h1 class="h2 el__h">Hilfstransporte</h1>      
+               <div class="content1 hyphenate">
+                   <p class="padding-bottom_tablet">Nahezu wöchentlich bringen wir Hilfsgüter in die Ukraine. Ehrenamtliche Helfer bereiten den Transport vor, ehrenamtliche Fahrer bringen die Hilfsgüter mit Vereinsfahrzeugen zur Übergabe an die ukrainische Grenze.</p>  
+                   <h2 class="h3 el__h">Helfen Sie den Menschen in der Ukraine:</h2>
+                   <ul class="list">
+                       <li>durch die Mitarbeit bei der Beschaffung von Hilfsgütern,</li>
+                       <li>durch die Vorbereitung von Transporten an die ukrainische Grenze,</li>
+                       <li>als Helfer beim Verpacken von Hilfsgütern und der Beladung,</li>
+                       <li>als Fahrer für einen Hilfsgütertransport an die ukrainische Grenze.</li>
+                   </ul>
+               </div>
+            </div>       
+           </section>    
+                     
+           <section id="el-33" class="el">
+             <div class="wrap wrap_under wrap_under_background grid grid_4 grid_gap">
+              <div class="boxImg boxImg_flex">
+                    <img class="img img_maxWidth lazy" 
+                             data-srcset="img/piktogramm-wohnungseinrichtung-247.jpg 247w,
+                                          img/piktogramm-wohnungseinrichtung-387.jpg 387w,
+                                          img/piktogramm-wohnungseinrichtung-500.jpg 500w"
+                             sizes="(max-width: 600px) 247px,
+                                    (min-width: 901px) 500px,
+                                    387px"
+                             data-src="img/piktogramm-wohnungseinrichtung-500.jpg" 
+                             width="500" height="375"
+                             alt="piktogramm-wohnungseinrichtung"
+                             title="piktogramm-wohnungseinrichtung">
+              </div>
+              <h1 class="h2 el__h">Wohnungen</h1>
+              <div class="content1 hyphenate">
+                   <p class="padding-bottom_tablet">Bisher konnten wir ca. 100 ukrainischen Gästen, vielen Müttern mit Kindern, den Bezug einfach ausgestatteter kleiner Wohnungen ermöglichen. Im Gegensatz zu Gemeinschaftsunterkünften schafft das von Anfang an Sicherheit und stärkt die Integrationsperspektive.</p>
+                   <h2 class="h3 el__h">Helfen Sie mit:</h2>
+                   <ul class="list">
+                       <li>indem Sie Wohnungen zur Vermietung anbieten,</li>
+                       <li>bei der Koordination von Wohnungssuchenden und Wohnungsangeboten,</li>
+                       <li>bei der Beschaffung von Wohnungsausstattungen,</li>
+                       <li>bei Möbelabholungen (Transport) zur Ausstattung von Wohnungen,</li>
+                       <li>beim Aufbau von Möbeln in vorzubereitenden Wohnungen.</li>
+                   </ul>
+              </div> 
+             </div>
+           </section>
+                  
+           <section id="el-34" class="el el_above_background">
+            <div class="wrap wrap_above grid grid_3 grid_gap">
+               <div class="boxImg boxImg_flex">
+                    <img class="img img_maxWidth lazy" 
+                             data-srcset="img/piktogramm-betreuung-247.jpg 247w,
+                                          img/piktogramm-betreuung-387.jpg 387w,
+                                          img/piktogramm-betreuung-500.jpg 500w"
+                             sizes="(max-width: 600px) 247px,
+                                    (min-width: 901px) 500px,
+                                    387px"
+                             data-src="img/piktogramm-betreuung-500.jpg" 
+                             width="500" height="375"
+                             alt="piktogramm-betreuung"
+                             title="piktogramm-betreuung">
+               </div> 
+               <h1 class="h2 el__h">Betreuung der ukrainischen Gäste</h1>
+               <div class="content1 hyphenate">
+                   <p class="padding-bottom">Es ist nicht leicht, mit schlimmen Erlebnissen, in einem fremden Land mit fremder Schrift, ohne Sprachkenntnisse und getrennt von Partnern, Freunden und Verwandten zurechtzukommen. Alles wird leichter, wenn man Kontakt aufnehmen kann und nicht mehr allein ist.</p>
+                   <h2 class="h3 el__h">Dabei können Sie helfen:</h2>
+                   <ul class="list">
+                       <li>werden Sie Pate! Als Pate für einen ukrainischen Gast oder eine Familie helfen Sie bei der Wohnungsübernahme, der Wohnungseinrichtung und der Orientierung in unserer Stadt. Und vielleicht gewinnen Sie neue Freunde,</li>
+                       <li>als Helfer koordinieren Sie die bereitstehenden Paten und die ukrainischen Gäste, damit möglichst alles zusammenpaßt,</li>
+                       <li>als Begleiter und Berater stehen Sie ukrainischen Gästen bei Behördengängen, in Schul- und Arztangelegenheiten zur Seite,</li>
+                       <li>sie machen Begegnungs- und Integrationsangebote für ukrainische Gäste im Stadtteiltreff &laquo;Kreuzpunkt&raquo; im Triebischtal.</li>
+                   </ul>
+               </div>
+              </div>       
+           </section>     
+                   
+           <section id="el-4" class="el">
+            <div class="wrap wrap_under wrap_under_background grid grid_5 grid_gap">
+                  <div class="boxImg">
+                    <img class="img lazy" 
+                             data-srcset="img/kontakt-481.jpg 481w,
+                                          img/kontakt-542.jpg 542w,
+                                          img/kontakt-713.jpg 713w,
+                                          img/kontakt-820.jpg 820w"
+                             sizes="(max-width: 600px) 542px,
+                                    (max-width: 900px) 820px, 
+                                    (min-width: 1200px) 713px,
+                                    481px"
+                             data-src="img/kontakt-820.jpg" 
+                             width="820" height="615"
+                             alt="kontakt"
+                             title="kontakt">  
+                  </div>
+                  <div class="content1 hyphenate">
+                      <h1 class="h2 el__h">Kontakt für Spenden, Wohnungsangebote, Mithilfe</h1>
+                      <ul>
+                          <li>
+                              <address class="linkIcon el__linkIcon location">
+                                 <!--<img class="icon" src="img/icon-location-blue.png" alt="icon-location">-->
+                                 Lebensfahrten e.V. Bahnhofstraße 1 01662 Meißen
+                              </address>
+                          </li>
+                          <li><a class="linkIcon el__linkIcon ml" href=""></a></li>
+                          <li>                             
+                              <a class="linkIcon el__linkIcon phone" href="tel:0352172806700">
+                                <!--<img class="icon" src="img/icon-phone2-blue.png" alt="icon-phone">-->
+                                03521&#45;72806&#45;700
+                              </a>
+                          </li>
+                      </ul>
+                </div>
+                <div class="content2 hyphenate">
+                      <h2 class="h2 el__h">Spendenkonto</h2>
+                      <ul class="list list_font">
+                          <li>IBAN: DE21 8707 0024 0699 5906 00</li>
+                          <li>BIC (SWIFT): 	DEUTDEDBCHE </li>
+                          <li>Deutsche Bank</li>
+                          <li>Verwendungszweck:	Ukraine-Hilfe</li>
+                      </ul>
+                </div>
+                <div class="content3 hyphenate">
+                      <p>Geldspenden verwenden wir vollständig für die Unterstützung der Ukraine, den Aufwand der Hilfstransporte und die Aufnahme von ukrainischen Gästen.</p> 
+                </div> 
+            </div> 
+           </section>
+           
+           <article id="el-5" class="el el_above_background">
+            <div class="wrap wrap_above grid grid_1 grid_gap">
+               <figure class="boxImg">
+                   <img class="img lazy" 
+                             data-srcset="img/besetzte-gebiete-510.jpg 510w,
+                                          img/besetzte-gebiete-755.jpg 755w,
+                                          img/besetzte-gebiete-762.jpg 762w,
+                                          img/besetzte-gebiete-861.jpg 861w"
+                             sizes="(max-width: 600px) 564px,
+                                    (max-width: 900px) 861px, 
+                                    (min-width: 1200px) 755px,
+                                    510px"
+                             data-src="img/besetzte-gebiete-861.jpg" 
+                             width="861" height="662"
+                             alt="So sehen die von Russland besetzten Gebiete aus"
+                             title="So sehen die von Russland besetzten Gebiete aus"> 
+                   <figcaption class="caption">So sehen die von Russland besetzten Gebiete aus: Ein Wohnhaus in der größtenteils zerstörten Hafenstadt Mariupol. (Foto: Vladimir Gerdo/Imago)<br> Quelle: https://www.sueddeutsche.de/politik/lawrow-ukraine-russland-sjewjerodonezk-donbass-1.5594320</figcaption> 
+               </figure>
+               <h1 class="h1 grid__h el__h">Desinformation erkennen</h1>
+               <div class="content1 hyphenate">
+                   <p class="padding-bottom_tablet">Neben der Gewaltanwendung auf dem Gebiet der Ukraine führt die russische Diktatur einen gezielten, von Desinformation und Lügen geprägten Propagandakrieg in der freien Welt. Leider lassen sich davon immer wieder Menschen beeindrucken.</p>
+                   <p>Das russische Regime muß die völkerrechtswidrige Gewaltanwendung in der Ukraine umgehend beenden und die Voraussetzungen für eine friedliche Beilegung des von ihm selbst heraufbeschworenen Konflikts schaffen.</p>
+                </div>
+               <div class="content2 hyphenate">
+                   <h2 class="h3 el__h">Festzuhalten ist:</h2>
+                   <ul class="list">
+                       <li>Der Überfall auf den völkerrechtlich anerkannten Staat Ukraine ist ein schwerer Verstoß gegen das Gewaltverbot der UN-Charta und ein Bruch von Vereinbarungen zwischen Rußland, der Ukraine und weiteren Staaten. Rußland tritt offensichtlich das internationale Recht mit Füßen und setzt an dessen Stelle das Recht des vermeintlich stärkeren.</li>
+                       <li>Weder wurde Rußland zuvor bedroht noch angegriffen. Es gab auch keine Vereinbarungen zu NATO-Mitgliedschaften oder Stationierungen, auf die sich Rußland zur Rechtfertigung seiner Gewalttat berufen könnte. Es gibt schlicht keine Rechtfertigung für den Überfall auf das Nachbarland.</li>
+                       <li>Rußland hat keinen exklusiven Anspruch darauf, daß seine Sicherheitsinteressen zu Lasten der Nachbarländer vorrangig zu beachten sind. Jedes Volk und jeder Staat entscheidet selbst, mit wem er verbündet sein will.</li>
+                       <li>Die Ukraine ist kein „Nazi-Staat“, dessen Führung einen Teil Rußlands besetzt hält, für den die russische Führung das Territorium der Ukraine hält. Vielmehr wurden der ukrainische Präsident und das Parlament frei gewählt. In Rußland wird dagegen die Opposition unterdrückt. An die Stelle der freien Meinungsäußerung sind staatlich gelenkte Medien getreten und Wahlen werden in Rußland durch die Verhaftung von Gegenkandidaten zur Farce. Rußland weist bereits mehrere Merkmale eines faschistischen Systems auf.</li>
+                       <li>Die russische Kriegsführung verstößt gegen die kriegsvölkerrechtlichen Regeln und ist durch äußersten Terror gegen die Bevölkerung, die angeblich &laquo;befreit&raquo; werden soll, gekennzeichnet. Die russische Führung bezeichnet den von ihr angezettelten Vernichtungskrieg irreführend als &laquo;Spezialoperation&raquo;, um die eigene Bevölkerung zu beruhigen, während täglich Menschen in der Ukraine umgebracht werden.</li>
+                   </ul>
+               </div>
+              </div>       
+           </article> 
+
+           <section id="el-6" class="el">
+            <div class="wrap wrap_under wrap_under_background grid grid_4 grid_gap">
+               <div class="boxImg">
+                    <img class="img lazy" 
+                             data-srcset="img/start-konvoi-483.jpg 483w,
+                                          img/start-konvoi-535.jpg 535w,
+                                          img/start-konvoi-715.jpg 715w,
+                                          img/start-konvoi-817.jpg 817w"
+                             sizes="(max-width: 600px) 535px,
+                                    (max-width: 900px) 817px, 
+                                    (min-width: 1200px) 715px,
+                                    483px"
+                             data-src="img/start-konvoi-817.jpg" 
+                             width="817" height="613"
+                             alt="Start Konvoi"
+                             title="Start-Konvoi"> 
+               </div> 
+               <h1 class="h1 el__h">Wir kooperieren mit allen Helfern!</h1>
+               <div class="content1 hyphenate">
+                   <h2 class="h2 el__h">Weitere Informationen finden Sie auch hier:</h2>
+                   <ul>                      
+                      <li>
+                          <address class="linkIcon el__linkIcon location">
+                             <!--<img class="icon" src="img/icon-location-blue.png" alt="icon-location">-->
+                             Buntes Meißen Bündnis Zivilcourage e.V.<br> Hirschberstraße 59<br> 01662 Meißen
+                          </address>
+                      </li>
+                      <li><a class="linkIcon el__linkIcon ml" href=""></a></li>    
+                   </ul>
+               </div>
+            </div>
+           </section>
+        </main>   
+      </div>
+      
+        <script>  
+            asyncCSS(pathCss + 'style2.css');
+            asyncCSS(pathCss + 'style2-min901.css', '(min-width: 901px)');
+            asyncCSS(pathCss + 'style2-max900.css', '(max-width: 900px)');
+
+            function asyncCSS(href, media = '') {
+                let css = document.createElement('link');
+                css.rel = 'stylesheet';
+                css.href = href;
+                css.media = media;
+                document.head.appendChild(css); 
+            }
+
+            /* important that nav-footer.js loaded after css here!!!, for determining the height of a section */
+            loadScript(pathJs + 'nav-footer.js');
+        </script>  
+    </body>
+</html>
