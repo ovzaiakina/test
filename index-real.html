@@ -1,14 +1,15 @@
-<!DOCTYPE html>    
-<html lang="de">  
+<!DOCTYPE html>     
+<html lang="de">   
     <head>
-        <link rel="shortcut icon" type="image/ico" href="img/favicon.ico">
+        <link rel="shortcut icon" type="image/ico" href="img/favicon.ico"> 
     
         <meta charset="utf-8">  
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <link rel="preload" as="image" href="img/flags-1440.jpg" imagesrcset="img/flags-1024.jpg 1024w, img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w" imagesizes="(max-width: 1150px) 1024px, (min-width: 1600px) 1920px, 1440px" media="(min-width: 901px)">    
+        <!--<link rel="preload" as="image" href="img/flags-1440.jpg" imagesrcset="img/flags-360.jpg 360w, img/flags-768.jpg 768w, img/flags-1024.jpg 1024w, img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w" imagesizes="(max-width: 500px) 360px, (max-width: 900px) 768px, (max-width: 1150px) 1024px, (max-width: 1599px) 1440px, 1920px">-->    
+        <link rel="preload" as="image" href="img/flags-768.jpg" imagesrcset="img/flags-360.jpg 360w, img/flags-768.jpg 768w" imagesizes="(max-width: 500px) 360px, 768px" media="(max-width: 900px)"> 
         
-        <link rel="preload" as="image" href="img/flags-768.jpg" imagesrcset="img/flags-360.jpg 360w, img/flags-768.jpg 768w" imagesizes="(max-width: 500px) 360px, 768px" media="(max-width: 900px)">
+        <link rel="preload" as="image" href="img/flags-1440.jpg" imagesrcset="img/flags-1024.jpg 1024w, img/flags-1440.jpg 1440w, img/flags-1920.jpg 1920w" imagesizes="(max-width: 1150px) 1024px, (min-width: 1600px) 1920px, 1440px" media="(min-width: 901px)">    
          
         <link rel="preload" as="image" href="img/icon-germany.png">
         <link rel="preload" as="image" href="img/icon-ukraine.png" >
@@ -20,24 +21,20 @@
         <link rel="preload" as="font" href="font/RedHatText-Regular.otf" type="font/otf" crossorigin="anonymous">    
         <link rel="preload" as="font" href="font/Chivo-Medium.otf" type="font/otf" crossorigin="anonymous">
         
-        <!--<link rel="alternate" hreflang="x-default" href="https://ukrainehilfe-meissen.info/index.html">
+        <link rel="alternate" hreflang="x-default" href="https://ukrainehilfe-meissen.info/index.html">
         <link rel="alternate" hreflang="de" href="https://ukrainehilfe-meissen.info/index.html">
         <link rel="alternate" hreflang="uk" href="https://ukrainehilfe-meissen.info/uk/index.html">
-        <link rel="alternate" hreflang="ru" href="https://ukrainehilfe-meissen.info/ru/index.html">-->
-        <link rel="alternate" hreflang="x-default" href="http://127.0.0.1:63080/index.html">
-        <link rel="alternate" hreflang="de" href="http://127.0.0.1:63080/index.html">
-        <link rel="alternate" hreflang="uk" href="http://127.0.0.1:63080/uk/index.html">
-        <link rel="alternate" hreflang="ru" href="http://127.0.0.1:63080/ru/index.html">
+        <link rel="alternate" hreflang="ru" href="https://ukrainehilfe-meissen.info/ru/index.html">
         
-        <link href="css/style.css" rel="stylesheet">
+        <link href="css/style-20230305.css" rel="stylesheet">
         <link href="css/style-min901.css" rel="stylesheet" media="(min-width: 901px)">
         <link href="css/style-max900.css" rel="stylesheet" media="(max-width: 900px)">
-        <!--<link href="css-real/style.css" rel="stylesheet">
-        <link href="css-real/style-min901.css" rel="stylesheet" media="(min-width: 901px)">
+        <!--<link href="css-real/style.css" rel="stylesheet">-->
+        <!--<link href="css-real/style-min901.css" rel="stylesheet" media="(min-width: 901px)">
         <link href="css-real/style-max900.css" rel="stylesheet" media="(max-width: 900px)">-->
         
         <noscript>
-            <link href="css/style2.css" rel="stylesheet">
+            <link href="css/style2-20230210.css" rel="stylesheet">
             <link href="css/style2-min901.css" rel="stylesheet" media="(min-width: 901px)">
             <link href="css/style2-max900.css" rel="stylesheet" media="(max-width: 900px)">
             <!--<link href="css-real/style2.css" rel="stylesheet">
@@ -56,19 +53,30 @@
        <main class="main">
            <section id="el-1" class="el hero padding-bottom">   
              <div class="wrap wrap_width">
-                  <script>
+                <script>
                     let currentlang = (document.querySelector('html')).getAttribute('lang');  
                     let mql = window.matchMedia('(max-width: 900px)');
                     let hero = document.querySelector('.hero');
+                    let white = '#fafafa';   
+                    let pathImg = setValues('img/', '../img/', '../img/');  
                       
-                    let pathImg = setValues('img/', '../img/', '../img/'); 
-                      
-                    let pathCss = setValues('css/', '../css/', '../css/'); 
-                    /*let pathCss = setValues('css-real/', '../css-real/', '../css-real/');*/
-                      
-                    let pathJs = setValues('js/', '../js/', '../js/');  
-                    /*let pathJs = setValues('js-real/', '../js-real/', '../js-real/');*/
+                    /* header-nav.js - установить навигацию по страницам c <button> или <a> 
+                       let navigPath = ''/'real' - index-real.html/index-real.html */           
                     
+                    let navigPath; 
+                    let styleArray = ['css/style2-20230210.css','css/style2-min901.css','css/style2-max900.css'];
+                    let headerNav = 'js/header-nav-20230305.js';  
+                    let navFooter = 'js/nav-footer-20230304.js';    
+                    
+                    /*let navigPath = 'real';*/
+                    /*let styleArray = ['css-real/style2.css','css-real/style2-min901.css','css-real/style2-max900.css']; */         
+                    /*let headerNav = 'js-real/header-nav.js';*/     
+                    /*let navFooter = 'js-real/nav-footer.js';*/   
+                    
+                      
+                    let jsHeaderNav = setValues(headerNav, '../'+headerNav, '../'+headerNav);  
+                    let jsNavFooter = setValues(navFooter, '../'+navFooter, '../'+navFooter);  
+          
                     function setValues(valueDe, valueUkr, valueRu) {
                         let item; 
                         if (currentlang == "de") {item = valueDe;}
@@ -76,6 +84,14 @@
                         else if (currentlang == "ru") {item = valueRu;}
                         return item;
                     }  
+                      
+                    /*onloadBgimg(
+                        hero, 
+                        pathImg + 'flags-360.jpg 360w,' +  pathImg +'flags-768.jpg 768w,' + pathImg + 'flags-1024.jpg 1024w,' + pathImg + 'flags-1440.jpg 1440w,' + pathImg + 'flags-1920.jpg 1920w',
+                        '(max-width: 500px) 360px, (max-width: 900px) 768px, (max-width: 1150px) 1024px, (max-width: 1599px) 1440px, 1920px', 
+                        pathImg + 'flags-1440.jpg',
+                        '--img'
+                    );*/
                     
                     mqFunctionHero(mql); 
                     mql.addListener(mqFunctionHero); 
@@ -119,16 +135,34 @@
                             }
                         }
                     }
+                    
+                    asyncLoad('script', jsHeaderNav);
                       
-                    loadScript(pathJs + 'header-nav.js');
-                    function loadScript(src) {
-                        let script = document.createElement('script');
-                        script.src = src;
-                        document.body.append(script);
+                    styleArray.forEach(el => {
+                        let cssStyle = setValues(el, '../'+el, '../'+el);
+                        if(cssStyle.includes('min')) {var media = '(min-width: 901px)';}
+                        else if (cssStyle.includes('max')) {var media = '(max-width: 900px)';}
+                        else {var media = '';}
+                        asyncLoad('link', cssStyle, media);
+                    });  
+                      
+                    function asyncLoad(elem, file, media = '') {
+                        let item = document.createElement(elem);
+                        if (item.tagName == 'SCRIPT') {
+                            item.src = file;
+                            if(item.src.includes('header')) {document.querySelector('.hero').append(item);}
+                            else if(file.includes('footer')) {document.body.append(item);}
+                        } else if (item.tagName == 'LINK') {
+                            item.rel = 'stylesheet';
+                            item.href = file;
+                            item.media = media;
+                            document.head.appendChild(item); 
+                        }
                     }
                 </script> 
-             </div> 
+             </div>
            </section> 
+           
            <article id="el-2" class="el el_above_background">
             <div class="wrap wrap_above grid grid_1 grid_gap">
                 <div class="boxImg">
@@ -405,22 +439,6 @@
            </section>
         </main>   
       </div>
-      
-        <script>  
-            asyncCSS(pathCss + 'style2.css');
-            asyncCSS(pathCss + 'style2-min901.css', '(min-width: 901px)');
-            asyncCSS(pathCss + 'style2-max900.css', '(max-width: 900px)');
-
-            function asyncCSS(href, media = '') {
-                let css = document.createElement('link');
-                css.rel = 'stylesheet';
-                css.href = href;
-                css.media = media;
-                document.head.appendChild(css); 
-            }
-
-            /* important that nav-footer.js loaded after css here!!!, for determining the height of a section */
-            loadScript(pathJs + 'nav-footer.js');
-        </script>  
+      <script>asyncLoad('script', jsNavFooter);</script>
     </body>
 </html>

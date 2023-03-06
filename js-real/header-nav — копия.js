@@ -285,12 +285,27 @@ function getNavLinks(arrayLinks, arrayTitles, i) {
 let langButtonsDiv = createElem('div', 'lang') 
 header.append(langButtonsDiv)
 
-// ---------------------------------------
-// create buttons with tag <button> or <a>
+// навигация по страницам, используя <button> и адрес страниц в строке браузера
+// !!! также добавить style для <button> и header: <link rel="alternate"...>
+/*let myBtn = 'button'
+//let navigationPath = ['/index.html', '/uk/index.html', '/ru/index.html']
+let navigationPath = ['/index-real.html', '/uk/index-real-uk.html', '/ru/index-real-ru.html']*/
 
-//let myBtn = 'button'; // !!! также добавить style для <button> и header: <link rel="alternate"...>
-let myBtn = 'a';
- 
+// навигация по страницам, используя <a>
+let myBtn = 'a'
+if (pathJs.includes('real')) {
+    let navigationPath = [
+    ['index-real.html', 'uk/index-real-uk.html', 'ru/index-real-ru.html'],
+    ['../index-real.html', 'index-real-uk.html', '../ru/index-real-ru.html'],
+    ['../index-real.html', '../uk/index-real-uk.html', 'index-real-ru.html']
+] else {
+    let navigationPath = [
+        ['index.html', 'uk/index.html', 'ru/index.html'],
+        ['../index.html', 'index.html', '../ru/index.html'],
+        ['../index.html', '../uk/index.html', 'index.html']
+    ]
+}}
+
 let langArray = [
     {lg: 'de', 
      lb: ['Deutsch', 'Ukrainisch', 'Russisch'],
@@ -308,60 +323,41 @@ let langArray = [
 
 langArray.forEach(elem => {   
     let btn = createElem(myBtn, 'btn')
+    if(btn.type == 'button') btn.type = 'button'
     langButtonsDiv.append(btn) 
 })
 
 let langBtns = document.querySelectorAll('.btn')
 
-// ---------------------------------------
-// set attributes for buttons 
-
+let currentprotocol = window.location.protocol
+let currenthost = window.location.host
+let currentpath = window.location.pathname
+ 
 Object.keys(langBtns).forEach(elem => {
-    onloadBgimg(langBtns[elem], '', '', langArray[elem].fl) // асинхронная загрузка background-image для всех кнопок - картинкa флага
+    console.log(`2.1 h-nav.js - ${langBtns[elem].tagName}`)
     
-    if(myBtn == 'button') langBtns[elem].type = 'button'
+    // асинхронная загрузка background-image для всех кнопок - картинкa флага
+    onloadBgimg(langBtns[elem], '', '', langArray[elem].fl)
     
+    // при клике на <BUTTON> навигация по страницам
+    /*langBtns[elem].addEventListener('click', () => { 
+        if(langBtns[elem].tagName == 'BUTTON') location.assign(currentprotocol + '//' + currenthost + navigationPath[elem])
+        else langBtns[elem].removeEventListener('click')
+    }) */
+    
+    // если язык страницы совпадает с полем lg в массиве langArray 
     if(currentlang == langArray[elem].lg) {
-        Object.keys(langBtns).forEach(el => langBtns[el].ariaLabel = langArray[elem].lb[el]) // устанавливаем значения ariaLabel для всех 3-х кнопок на языке активной страницы  
-        langBtns[elem].style.boxShadow = '0 0 0 4px' + white // устанавливаем border для этой активной кнопки
+        
+        // устанавливаем border для этой активной кнопки
+        langBtns[elem].style.boxShadow = '0 0 0 4px' + white
+        
+        // устанавливаем значения ariaLabel для всех 3-х кнопок на языке активной страницы
+        Object.keys(langBtns).forEach(el => langBtns[el].ariaLabel = langArray[elem].lb[el]) 
+        
+        // при клике на <A> навигация по страницам 
+        if(langBtns[elem].tagName == 'A') Object.keys(langBtns).forEach(el => langBtns[el].href = navigationPath[elem][el])
     }
 })
-
-// ---------------------------------------
-// навигация по страницам
-
-if(myBtn == 'button') {
-    
-    let currentprotocol = window.location.protocol
-    let currenthost = window.location.host
-    let currentpath = window.location.pathname
-    
-    if (pathJs.includes('real')) {var navigationPath = ['/index-real.html', '/uk/index-real-uk.html', '/ru/index-real-ru.html']}
-    else {var navigationPath = ['/index.html', '/uk/index.html', '/ru/index.html']}
-    
-    Object.keys(langBtns).forEach(elem => langBtns[elem].addEventListener('click', () => location.assign(currentprotocol + '//' + currenthost + navigationPath[elem])))
-    
-} else if(myBtn = 'a') {
-    
-    if (navigPath) {
-        var navigationPath = [
-             ['index-real.html', 'uk/index-real-uk.html', 'ru/index-real-ru.html'],
-             ['../index-real.html', 'index-real-uk.html', '../ru/index-real-ru.html'],
-             ['../index-real.html', '../uk/index-real-uk.html', 'index-real-ru.html']
-        ]
-    } else {
-        var navigationPath = [
-            ['index.html', 'uk/index.html', 'ru/index.html'],
-            ['../index.html', 'index.html', '../ru/index.html'],
-            ['../index.html', '../uk/index.html', 'index.html']
-        ]
-    }
-     
-    Object.keys(langBtns).forEach(elem => {
-        if(currentlang == langArray[elem].lg) Object.keys(langBtns).forEach(el => langBtns[el].href = navigationPath[elem][el])
-    })
-}
-
 
 
 

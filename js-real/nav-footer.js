@@ -1,21 +1,4 @@
-/*************************************************************
-  CSS - асинхронная загрузка стилей
-**************************************************************/
-/*let pathCss = setValues('css/', '../css/', '../css/')  
-
-asyncCSS(pathCss + 'style2.css')
-asyncCSS(pathCss + 'style2-min901.css', '(min-width: 901px)')
-asyncCSS(pathCss + 'style2-max900.css', '(max-width: 900px)')
-
-function asyncCSS(href, media = '') {
-    let css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = href;
-    css.media = media;
-    document.head.appendChild(css); 
-}*/
-
-// --------------------------------
+let main = document.querySelector('.main') 
 let myBorderActive = '3px solid' + white 
 let myBorder = '1px solid rgba(255,255,255,.6)'
 
@@ -34,10 +17,48 @@ let articles = document.querySelectorAll('*[id^="el"]') // выбираем id �
 let wraps = document.querySelectorAll('.wrap') // контент секций
 let borderTop = document.querySelectorAll('.borderTop')  
 
-let submenyFirstChild = document.querySelectorAll('.nav__link[href="#"')
+//let submenyFirstChild = document.querySelectorAll('.nav__link[href="#"') 
+let submenyFirstChild = document.querySelectorAll('.nav__link[href="#"]') 
 //let navANotSub = document.querySelectorAll('.nav__link:not(.submenu a)')
 
-//console.log(navLinksSubmenu.length) 
+//console.log(submenyFirstChild) 
+//Object.keys(submenyFirstChild).forEach(el => console.log(submenyFirstChild[el].className))
+
+/*************************************************************
+  EL - Lazyload img
+  нельзя применить к предыдущему scroll, так как там функция запускается без scroll, а здесь только при scroll
+**************************************************************/
+let lazyloadImages = document.querySelectorAll('.lazy')
+main.addEventListener('scroll', lazyload)
+
+function lazyload() {
+    
+    if (lazyloadImages.length == 0) {
+        document.removeEventListener('scroll', lazyload)
+        return
+    }
+
+    lazyloadImages.forEach( img => {
+        if (isVisibleImg(img)) {   
+            const src = img.getAttribute('data-src')
+            const srcset = img.getAttribute('data-srcset')
+            if (src) img.src = src
+            if (srcset) img.srcset = srcset
+            img.classList.remove('lazy') 
+        }
+    })
+}
+
+function isVisibleImg(elem) {
+    let coords = elem.getBoundingClientRect()
+    let windowHeight = document.documentElement.clientHeight
+
+    // видны верхний ИЛИ нижний край элемента
+    let topVisible = coords.top > 0 && coords.top < windowHeight
+    let bottomVisible = coords.bottom < windowHeight && coords.bottom > 0
+    
+    return topVisible || bottomVisible
+}
 
 /*************************************************************
   Определяем высоту секций: 
@@ -49,7 +70,7 @@ let submenyFirstChild = document.querySelectorAll('.nav__link[href="#"')
 // удаляем scroll, чтобы не было лишних вычислений
 main.addEventListener('scroll', setHeight(articles, wraps))
 //main.addEventListener('scroll', setHeight(articless, wraps))
-main.removeEventListener('scroll', setHeight)
+//main.removeEventListener('scroll', setHeight)
 
 // без function() 'resize' не работает
 window.addEventListener('resize', function() {setHeight(articles, wraps)})
@@ -370,42 +391,6 @@ function activeNav(elem) {
         shouldBeActive.classList.add('activeNav')
         shouldBeActive.style.borderBottom = myBorderActive
     }
-}
-
-/*************************************************************
-  EL - Lazyload img
-  нельзя применить к предыдущему scroll, так как там функция запускается без scroll, а здесь только при scroll
-**************************************************************/
-let lazyloadImages = document.querySelectorAll('.lazy')
-main.addEventListener('scroll', lazyload)
-
-function lazyload() {
-    
-    if (lazyloadImages.length == 0) {
-        document.removeEventListener('scroll', lazyload)
-        return
-    }
-
-    lazyloadImages.forEach( img => {
-        if (isVisibleImg(img)) {   
-            const src = img.getAttribute('data-src')
-            const srcset = img.getAttribute('data-srcset')
-            if (src) img.src = src
-            if (srcset) img.srcset = srcset
-            img.classList.remove('lazy') 
-        }
-    })
-}
-
-function isVisibleImg(elem) {
-    let coords = elem.getBoundingClientRect()
-    let windowHeight = document.documentElement.clientHeight
-
-    // видны верхний ИЛИ нижний край элемента
-    let topVisible = coords.top > 0 && coords.top < windowHeight
-    let bottomVisible = coords.bottom < windowHeight && coords.bottom > 0
-    
-    return topVisible || bottomVisible
 }
 
 /*************************************************************
