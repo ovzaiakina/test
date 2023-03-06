@@ -85,7 +85,7 @@ img {
     aspect-ratio: 1 / 1; 
 }
 
-@supports not (aspect-ratio: 1 / 1) {
+/*@supports not (aspect-ratio: 1 / 1) {
     .linkIcon {
         position: relative;
         padding-top: 100%;  
@@ -95,7 +95,7 @@ img {
         position: absolute;
         top: 0;
     }
-}
+}*/
 
 
 /*************************************************************
